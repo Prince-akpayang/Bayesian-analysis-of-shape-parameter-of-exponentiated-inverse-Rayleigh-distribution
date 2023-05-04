@@ -1,0 +1,2677 @@
+\documentclass[a4paper,12pt]{report}
+
+\usepackage{amssymb,amsmath,makeIdx,amsthm,verbatim,latexsym,amsfonts,lscape}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage[top=2.5cm,bottom=2.5cm,left=3.5cm,right=2.5cm]{geometry}
+\usepackage{lipsum}
+\usepackage[authoryear]{natbib}
+\usepackage{ragged2e,etoolbox}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{color,colortab}
+\usepackage{xcolor}
+\usepackage{titlesec,titletoc}
+\usepackage{times}
+\usepackage{tocloft}
+\usepackage{fmtcount}
+\usepackage[classicReIm]{kpfonts}
+\setlength{\bibhang}{4em}
+
+
+\fontfamily{ptm}
+\rmfamily
+%\titlecontents*{section}[0.5em]{}{}{}{\dotfill\contentspage}[0.5em]
+
+
+\titlespacing*{\chapter}{0cm}{-1cm}{1cm}
+\renewcommand{\bibname}{REFERENCES}
+\renewcommand{\contentsname}{\centerline {\small\bf TABLE OF CONTENTS}}
+\renewcommand{\listfigurename}{\centerline {\small\bf LIST OF FIGURES}}
+\renewcommand{\listtablename}{\centerline {\small\bf LIST OF TABLES}}
+
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+
+\titleformat{\chapter}[display]
+{\normalfont \Large\rmfamily\bfseries\centering}
+{\MakeUppercase\chaptertitlename\ \vspace{0.5cm} \NUMBERstringnum \thechapter}{14pt}{\Large}
+
+
+\newcommand{\para}{\hspace{0.5cm}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{prf}{Proof}
+\doublespacing
+
+\begin{document}
+\fontfamily{ptm}
+\rmfamily
+
+\newpage
+\addcontentsline{toc}{part}{Cover page}
+\pagenumbering{gobble}
+\begin{titlepage}
+	\centering
+	\large{\textbf{BAYESIAN ANALYSIS OF THE SHAPE PARAMETER OF THE EXPONENTIATED INVERSE RAYLEIGH DISTRIBUTION}}\vspace{3cm}\\
+	\textbf{BY}\vspace{3cm}\\
+	\textbf{\textbf{ETINI INEMESIT \underline{AKPAYANG}}}\\
+	\textbf{P17PSST8021}\vspace{5cm}\\
+	\textbf{DEPARTMENT OF STATISTICS\\
+	FACULTY OF PHYSICAL SCIENCES\\
+	AHMADU BELLO UNIVERSITY, ZARIA NIGERIA\vspace{3cm}\\
+	DECEMBER, 2021}
+\end{titlepage}
+
+\newpage 
+\addcontentsline{toc}{part}{flyleaf}
+\pagenumbering{gobble}
+\begin{center}
+	
+	
+\end{center}
+
+\newpage
+\newgeometry{top=2.5cm,bottom=2.5cm,left=2cm,right=1cm}
+\begin{center}	
+\textbf{BAYESIAN ANALYSIS OF THE SHAPE PARAMETER OF THE EXPONENTIATED INVERSE RAYLEIGH DISTRIBUTION} \vspace{2cm}\\
+\textbf{BY}\vspace{2cm}\\
+\textbf{\textbf{ETINI INEMESIT \underline{AKPAYANG}}}\\
+\textbf{P17PSST8021}\vspace{3cm}\\
+
+\textbf{A DISSERTATION SUBMITTED TO THE SCHOOL OF POSTGRADUATE STUDIES\\ AHMADU BELLO UNIVERSITY, ZARIA\vspace{1cm}\\
+IN PARTIAL FULFILMENT OF THE REQUIREMENTS FOR THE AWARD OF MASTER OF SCIENCE DEGREE IN STATISTICS\vspace{1cm}\\
+DEPARTMENT OF STATISTICS,\\
+FACULTY OF PHYSICAL SCIENCES\\
+AHMADU BELLO UNIVERSITY, ZARIA\\
+NIGERIA\vspace{3cm}\\
+	DECEMBER, 2021\\}
+\end{center}
+
+\pagenumbering{roman}
+\addcontentsline{toc}{chapter}{Title page}
+\restoregeometry
+
+\newpage
+\begin{center}
+\bf	DECLARATION\\
+\end{center}
+ {\singlespacing I hereby declare that the work in this dissertation entitled ``Bayesian analysis of the Parameters of the Exponentiated Inverse Rayleigh Distribution'' has been performed by me in the Department of Statistics, under the supervision of Dr. J. Garba and Dr. B. B. Alhaji. The information derived from the literature has been duly acknowledged in the text and a list of references provided. No part of this dissertation has been presented for another degree or diploma at this or any other institution. \vspace{2.5cm}\\
+\addcontentsline{toc}{chapter}{Declaration}
+
+\noindent
+\begin{tabular}[t]{c}
+	Etini Inemesit Akpayang\\
+	  \hspace{2cm}
+\end{tabular}%
+\hspace{1cm}
+\begin{tabular}[t]{c}
+	\rule{3cm}{0.4pt}\\Signature
+\end{tabular}%
+\hspace{1cm}
+\begin{tabular}[t]{c}
+	\rule{3cm}{0.4pt}\\Date
+\end{tabular}%
+\hfill\strut
+
+
+}
+
+
+
+
+
+\newpage
+\begin{center}
+\bf	CERTIFICATION\\
+\end{center}
+{\singlespacing
+\noindent This dissertation entitled ``BAYESIAN ANALYSIS OF THE SHAPE PARAMETER OF THE EXPONENTIATED INVERSE RAYLEIGH DISTRIBUTION'' by Etini Inemesit AKPAYANG meets the regulations governing the award of the degree of Master of Science of the Ahmadu Bello University, Zaria and is approved for its contribution to knowledge and literary presentation. \vspace{0.5cm}\\
+
+\vspace*{4em}
+\noindent
+\begin{tabular}[t]{l}
+	Dr. J. Garba\\ Chairman, Supervisory committee
+	\hspace{1cm}\\
+	\vspace*{4em}	\\
+		Dr. B. B. Alhaji \\ Member, Supervisory committee
+	\hspace{1cm}\\
+	\vspace*{4em}	\\
+	Dr. Gerald Onwuka\\ External Examiner
+	\hspace{1cm}\\
+	\vspace*{4em}	\\
+	Dr. A. Yahaya \\ Head of Department
+	\hspace{1cm}\\
+	\vspace*{4em}	\\
+		Prof. S. Abdullahi \\ Dean, School of Postgraduate Studies 
+	\hspace{1cm}
+	
+\end{tabular}%
+\hspace{0.001cm}
+\begin{tabular}[t]{c}
+	\rule{3cm}{0.4pt}\\Signature\\ \vspace*{4em} \\
+		\rule{3cm}{0.4pt}\\Signature\\
+		\vspace*{4em} \\
+		\rule{3cm}{0.4pt}\\Signature\\
+		\vspace*{4em} \\
+		\rule{3cm}{0.4pt}\\Signature\\
+		\vspace*{4em} \\
+		\rule{3cm}{0.4pt}\\Signature
+\end{tabular}%
+\hspace{0.5cm}
+\begin{tabular}[t]{c}
+	\rule{3cm}{0.4pt}\\Date\\ \vspace*{4em} \\
+		\rule{3cm}{0.4pt}\\Date\\
+		\vspace*{4em} \\
+		\rule{3cm}{0.4pt}\\Date\\
+		\vspace*{4em} \\
+		\rule{3cm}{0.4pt}\\Date\\
+		\vspace*{4em} \\
+		\rule{3cm}{0.4pt}\\Date
+\end{tabular}%
+\hfill\strut\\}
+ 
+	\addcontentsline{toc}{chapter}{Certification}
+
+
+\newpage
+\begin{center}
+\bf	DEDICATION\\ [30pt]
+\end{center}
+\begin{center}
+This research is dedicated to all seekers of knowledge.
+\end{center}
+\addcontentsline{toc}{chapter}{Dedication}
+
+\newpage
+
+\begin{center}
+	\textbf{ACKNOWLEDGEMENT}\\
+\end{center}
+{\singlespacing 
+I want to thank God immensely for his provision and guidance at every turn of my academic pursuit, I am grateful to my supervisors Dr. J. Garba and  Dr. B. B. Alhaji their efforts in ensuring that this study is successful. I also want to acknowledge my father Mr. Inemesit Akpayang, my mother Mrs. Edo-Abasi Akpayang, my aunties Mrs. Comfort Obot Essien Mrs. Arit Francis Udofa and family, my siblings Diana, Nsikan, Mfonakem, my niece Idaresit, my family at Zaria (ie The Church of Christ, Samaru), for their support morally, financially, emotionally, spiritually and otherwise as it had been sufficient to see me through my period of study.
+I appreciate all my lecturers Dr. S. I. S. Doguwa, Dr. H. G. Dikko, , Dr. A. Yahaya, Prof. Isah Audu, Late Prof. O. E. Asiribo, Dr. B. I. Isma'il and Dr. Fatimah B. Abdullahi for the tutelage they accorded me during the course of my study as it has made me a better statistician. Finally I appreciate my course-mates and others too numerous to mention who have in one way or the other contributed and affected my life positively during my academic pursuit.
+}
+\addcontentsline{toc}{chapter}{Acknowledgement}
+
+
+
+
+
+\newpage
+\addcontentsline{toc}{chapter}{Abstract}
+
+
+\begin{center}
+	\textbf{ABSTRACT}\\
+\end{center}
+The Exponentiated Inverse Rayleigh distribution is a life time distribution whose parameters have been estimated assuming classical techniques (the percentile based estimator, least square estimator, weighted least square estimator and maximum likelihood estimator only). In this dissertation, the shape parameter of the Exponentiated Inverse Rayleigh distribution is estimated using the Bayesian method of estimation under an informative and a non-informative prior (gamma and Jeffrey prior) distribution. This study made use of estimators obtained using Squared error loss function, Precautionary loss function and Quadratic loss function. The posterior distributions of the shape parameter were derived; the estimates, their biases, the mean square errors and posterior risks were also obtained. Furthermore, a simulation study showed that when there is sufficient information about the parameter of interest before estimation, then the best estimators recommended in this study is that of the gamma prior under squared error loss function, which gives better estimates in terms of mean square error, and  the gamma prior under quadratic loss function gives better estimates in terms of posterior risk. However when there is no information of the parameter of interest before estimation the best estimator to consider should be that using the Jeffreys prior under the quadratic loss function. This study showed that the estimates obtained using Bayes technique are better than the Maximum Likelihood estimates based on the mean square errors.
+
+
+\newpage
+
+
+%\setcounter{page}{1}
+{\addcontentsline{toc}{chapter}{Table of contents}\tableofcontents}
+
+\clearpage
+
+\newpage
+\addcontentsline{toc}{chapter}{List of tables}\listoftables 
+
+\newpage
+\addcontentsline{toc}{chapter}{List of figures}\listoffigures 
+
+\newpage
+\addcontentsline{toc}{chapter}{Abbreviations and Symbols}
+\chapter*{ABBREVIATIONS AND SYMBOLS}
+
+\begin{tabbing}\hspace{0.5cm}\=\hspace{4cm}\=\kill\\
+	\> Symbols \> Meaning \\ 
+	\>$\alpha,\beta,\theta,\gamma,\tau,\sigma$ \> Greek letters generally represent parameters in a probability \\
+	\> \> function where a hat on the Greek letters represent an estimate. \\
+	\>$\pi(.)$ \> probability function\\	
+	\>$\alpha^*$ \> level of significance\\
+	\>$\hat{\alpha}_{MLE}$ \> estimate of alpha using the maximum likelihood estimator\\
+	\>$\hat{\alpha}_{SELF}$ \>  estimate of alpha using the squared error loss function\\
+	\>$\hat{\alpha}_{PLF}$ \> estimate of alpha using the precautionary loss function\\
+	\>$\hat{\alpha}_{QLF}$ \> estimate of alpha using the quadratic loss function\\
+	\>$\hat{\alpha}_{JSELF}$ \> estimate of alpha using the squared error loss function \\
+	\>\>with Jeffrey prior\\
+	\>$\hat{\alpha}_{JPLF}$ \> estimate of alpha using the precautionary loss function\\ 
+	\> \> with Jeffrey prior\\
+	\>$\hat{\alpha}_{JQLF}$ \> estimate of alpha using the quadratic loss function\\ 
+	\>\> with Jeffrey prior\\
+	\> $\hat{\alpha}_{GPLF}$\> estimate of alpha using the precautionary loss function\\
+	\>\> with gamma prior\\
+	\>$\hat{\alpha}_{GQLF}$ \> estimate of alpha using the quadratic loss function\\
+	\>\> assuming gamma prior\\
+	\>$\hat{\alpha}_{GSELF}$ \> estimate of alpha using the squared error loss function\\
+	\>\> assuming gamma prior\\
+	\>$R_{SELF}$ \> risk associated with the squared error loss function\\
+	\>$R_{PLF}$ \>risk associated with the precautionary loss function \\
+	\>$R_{QLF}$ \> risk associated with the quadratic loss function\\
+	\>$R_{JSELF}$ \> squared error loss function assuming a Jeffrey prior\\
+	\>$R_{JPLF}$ \> precautionary loss function assuming Jeffrey prior\\
+	\>$R_{JQLF}$ \> quadratic loss function assuming Jeffrey prior\\
+	\>$R_{GSELF}$ \> risk associated with the squared error loss function\\
+	\>\> assuming gamma prior\\
+	\>$R_{GPLF}$ \> risk associated with the precautionary loss function\\
+	\>\> assuming gamma prior\\
+	\>$R_{GQLF}$ \> risk associated with the quadratic loss function\\
+	\>\> assuming gamma prior\\
+\end{tabbing}
+\begin{tabbing}\hspace{0.5cm}\=\hspace{4cm}\=\kill\\
+	\>Abbreviations \> Meaning\\
+	\>SELF \> Squared Error Loss Function\\
+	\>PLF \> Precautionary Loss Function\\
+	\>QLF \> Quadratic Loss Function\\
+	\>MLE \> Maximum Likelihood Estimate\\
+	\>MLEs \> Maximum Likelihood Estimates\\
+	\>MCMC \> Markov Chain Monte Carlo\\
+	\>MSE \> Mean Square Error\\
+	\>EIRD \> Exponentiated Inverse Rayleigh Distribution\\
+	\>JSELF \> Squared Error Loss Function Assuming a Jeffrey Prior\\
+	\>JPLF \> Precautionary Loss Function Assuming Jeffrey Prior\\
+	\>JQLF \> Quadratic Loss Function Assuming Jeffrey Prior\\
+	\>GSELF \> Squared Error Loss Function Assuming Gamma Prior\\
+	\>GPLF \> Precautionary Loss Function Assuming Gamma Prior\\
+	\>GQLF \> Quadratic Loss Function Assuming Gamma Prior\\
+	
+\end{tabbing}
+\pagebreak
+\rmfamily
+\pagenumbering{arabic} 	
+\chapter{INTRODUCTION}
+\section{Background to the study}
+\justifying
+
+
+\noindent\para The Inverse Rayleigh distribution introduced by \cite{trayer1964} has been perceived by many researchers to be a better and more flexible distribution than the baseline distribution (Rayleigh distribution). Many researches have been carried out in this area to further improve on the work of \cite{trayer1964} for more flexibility, this include Modified Inverse Rayleigh distribution introduced by \cite{muhammad2014}, Transmuted Inverse Rayleigh distribution by Ahmad \textit{et al.} (2014) and lately Exponentiated Inverse Rayleigh distribution by \cite{rao2019exponentiated}. The statistical properties and application of these distributions have been extensively studied and their parameters estimated using various statistical estimation techniques.
+
+\noindent\para The estimation of the parameters of probability models is not a new concept in statistical inferences and modeling; as it is a necessary procedure in situations where the models are applied in order to deduce relevant information. Over the years, researchers have gone extra miles to seek for better and more efficient methods of estimating parameter(s) of various distributions. In statistical estimation, there are clearly two sets of approaches to estimations. Some prefer the classical approach while others the Bayesian approach. These classes of estimation have been applied in vast fields of studies over the years; especially in reliability studies and life data analysis. Although the most widely used method for estimating distribution parameters has been the classicals maximum likelihood estimation due to its very relevant property for providing the best linear unbiased estimate, however, other estimators have their own salient properties that make them relevant. In recent times, Bayesian approach to statistical estimation has received considerable attention from many researchers; among whom are \cite{pandey2009bayesian} who in their study estimated the shape parameter of the generalized Pareto distribution using the Bayesian approach assuming asymmetric loss functions. \cite{yahaya2017bayesian} in their study estimated the scale parameter of log-logistic distribution under the assumption of informative priors, wherein the Bayes estimates and posterior risks were derived under squared error loss function(SELF) and precautionary loss function(PLF). Among the two priors used in their study, the chi-square prior had lower posterior risks thereby producing the best estimate and when compared with the estimates produced under the assumption of non-informative priors (uniform and Jeffrey’s).
+ 
+\noindent\para \cite{aliyu2016bayesian} obtained the estimates of the shape parameter of the generalized Rayleigh distribution under the squared error, entropy and precautionary loss functions assuming non-informative priors and they compared their results with the maximum likelihood estimates (MLE) too, it was observed that Bayes estimator under the Entropy loss function did better than the Bayes estimators under the squared error, precautionary loss functions and that of maximum likelihood estimates (MLEs). Also Mudasir \textit{et al.} (2016) in their study introduced a two parameter length biased Nakagami distribution, and the Bayesian estimates of the scale parameter of the distribution under squared error loss function, quadratic loss function and entropy loss function were obtained assuming the quasi and Jeffrey’s priors. \cite{usta2019bayesian} studied the Bayesian parametric estimation of the reduced kies distribution using the independent gamma priors for the parameters, estimates were obtained under the squared error and linear exponential loss functions, the Maximum likelihood estimates were obtained and a Monte-Carlo simulation was conducted to do numerical analysis to compare the estimates.
+
+\noindent\para This study explores the Bayesian estimators for the shape parameters of the Exponentiated Inverse Rayleigh Distribution under the squared error loss function, precautionary loss function and quadratic loss function using a non-informative and an informative prior. After which a numerical analysis using Monte-Carlo method of simulation and compare our estimators with the maximum likelihood estimators which gave the best estimate in the classical approach as observed by \cite{rao2019exponentiated}.
+
+\section{Statement of the problem}
+\noindent\para \cite{rao2019exponentiated} obtained the Exponentiated Inverse Rayleigh Distribution with two parameters: a shape and a scale parameter and gave its properties. Their study considered the estimation of the parameters using maximum likelihood estimators, percentile based estimators, least squares estimators, and weighted least squares estimators which are all classical approaches and compared those estimates using extensive numerical simulations, and concluded that the maximum likelihood estimates of the proposed distribution performed better than the other estimates obtained using the other methods of parametric estimations. So this study seeks to get the Bayesian approach to analyze the shape parameter of this model using an informative and non-informative priors.
+
+\section{Aim and objectives}
+The aim of this study is to estimate the shape parameter of the Exponentiated Inverse Rayleigh Distribution (EIRD) using the Bayesian approach. This aim is to be achieved through the following objectives, to:
+\begin{itemize}
+	\item[i.]	determine the posterior distribution using the informative and non-informative priors (Jeffreys and Gamma prior);
+	\item[ii.]	obtain the estimators, their posterior risks and mean square errors using the squared error loss function, the quadratic loss function and the precautionary loss function;
+	\item[iii.]	carry out a Monte-Carlo simulation study for estimating the shape parameter of the Exponentiated Inverse Rayleigh Distribution for the priors using different loss function;
+	\item [iv.]	compute a credible interval for the values of the estimates of the shape parameter for the informative and non-informative priors;
+	\item[v.]	compare the Bayes estimators with the maximum likelihood estimator.
+
+\end{itemize}
+
+\section{Scope and limitations of the study}
+\noindent\para This study focuses on estimating the shape parameter of the Exponentiated Inverse Rayleigh Distribution using the Bayesian approach and compares the results with that of the maximum likelihood estimator as proposed by \cite{rao2019exponentiated}. 
+
+\noindent\para There are various kinds/classes of informative and non-informative priors (ie symmetric, assymetric, proper, conjugate etc) and loss function (such as linear exponential, generalised linear exponential, normal, chi-square, Maxwell, etc. ) in existence which could be considered for a study like this but we only consider the the gamma prior and the Jeffreys prior under the precautionary loss function (PLF), squared error loss function (SELF) and quadratic loss function (QLF).
+
+
+\section{Significance of the study}
+\noindent\para This study explores the advantages of the Bayesian estimation which takes the cognitive property of the parameters of interest (ie the prior information), and a current observation and uses them as guide to generate a more concise distribution for the parameter (which is the posterior distribution). This distribution is then used to derive estimators to generate the estimates for the parameter(s) of interest by application of any loss function as a researcher may deem fit (also note that the parameter of interest is being considered in the Bayesian inference as a random variable). Whereas, in the classical method of parameter estimation the parameter(s) is considered as a fixed attribute and no prior information is required to estimate this quantity, as the available information at any point is deemed sufficient to estimate this parameter as such any prior belief or related idea is superfluous. This study will point out the best estimators of the shape parameter of the Exponentiated Inverse Rayleigh Distribution taking into consideration the Bayesian perspective. Again this study makes available rich literature to researchers who will like to explore similar fields of study.
+
+\section{Motivation}
+\noindent\para Modeling in statistics has been useful in statistical data analysis. As a tool, it helps in offering better explanations and predictions to phenomenon which arises in real life. A wrong or less precise estimate of relevant parameters in models that explain the kinds of phenomena is damaging. This calls for the proper analysis of the properties of models to a phenomenon necessary, because mediocre analysis can lead to inaccurate simulation studies and the deductions could affect the decisions made with such erroneous or less accurate models; especially in cases where the estimates are not robust. It is against this background that this study seeks to explore the Bayes estimator with the hope of obtaining a more precise estimator for estimating the shape parameter of the EIRD
+
+\section{Definition of terms}
+Let $f(X|\tau)$ represent a distribution where X is the random variable indexed by the parameter $\tau$, let $x_1,x_2,...,x_n$ represent a random sample of size n drawn from the main population. Then the following definitions hold;
+\begin{enumerate}
+	\item  \textbf{Estimator:} any statistic that can be used to obtain the estimate of the population parameter $\tau$ is called an \textbf{estimator} of $\tau$, where the numerical value obtained is called the \textbf{estimate} of $\tau$ and is denoted as $\hat{\tau}$
+	
+	\item  \textbf{Prior distribution:} In statistics, this is a probability distribution that captures the information about a parameter(s) before a new observation is considered. This distribution is further classified into two: the informative and the non-informative priors.\\
+	Given the scenario above and $\tau$ is an unknown parameter to be estimated. In the Bayesian inference this parameter is taken to be a random variable and the distribution of this random variable is called the \textbf{prior distribution} denoted by $\pi(\tau)$.
+
+	\item  \textbf{Posterior distribution:} If $\tau$ is the unknown parameter to be estimated. The conditional density function denoted as $\pi(\tau|x_1,x_2,...,x_n)$ is called the posterior distribution of $\tau$ and is expressed mathematically as
+	\[\pi(\tau|x_1,x_2,...,x_n)=\frac{f(X|\tau)\pi(\tau)}{g(x)} \tag{1}\]
+	where g(x) is the marginal distribution of X and is given by
+	\[g(x)=\begin{cases}
+	\sum_{\tau}f(X|\tau)\pi(\tau)\para when \, \tau \, is \, discrete.\\\int_{\tau}f(X|\tau)\pi(\tau) \,\,\,\para when \, \tau \, is \, continuous.
+	\end{cases}\tag{2}\]
+	
+	\item  \textbf{Loss function:} This is a function which represents the loss incurred when an unknown parameter from a distribution say the scenario above and $\tau$ is the parameter to be estimated, is being estimated by an estimator say $\hat{\tau}$ and is denoted by $L(\hat{\tau}, \tau)$
+	
+	\item  \textbf{Bayesian confidence Interval:} An interval of a posterior distribution which is such that the density at any point inside the interval is greater than the density at any point outside and that the area under the curve for that interval is equal to a prespecified probability level. For any probability level there is generally only one such interval, which is also often known as the highest posterior density region. Unlike the usual confidence interval associated with frequentist inference, here the intervals specify the range within which parameters lie with a certain probability.
+\end{enumerate}
+\newpage
+
+\chapter{LITERATURE REVIEW}
+\justifying
+
+\noindent\para Parameter estimation has been an essential part of statistics since time immemorial. It enhances human capacity to fully understand the performances of existing variables and how they could be modeled appropriately. The model that map certain real life events contain parameters which when estimated, give information on variables of interest. This information is valuable for the forecasting of future occurrences of the variables. It could also aid in better planning, better understanding, budgeting, among many others. It has been applied in financial, medical, demographical and engineering fields among many others (Wikipedia (2020)) \nocite{wiki}. Over the years studies in this field have yielded various methods of statistical estimation. Some of these proposed methodologies provide estimates that are more precise and meet statistical properties required of an estimate than other methods. This chapter discusses relevant literature associated with this study.\\
+
+\noindent\para Researchers like \cite{aliyu2016bayesian} carry out the Bayesian estimation to obtain the estimates of the shape parameters of the generalized Rayleigh distribution. The study was done under the assumption of non-informative prior. The estimates were obtained under the squared error, Entropy and Precautionary loss functions. Extensive Monte Carlo simulations study was also carried out to compare the performances of the Bayes estimates obtained. They used the loss functions mentioned and a non-informative prior to obtain the estimates, they obtained maximum likelihood estimates. From their findings, it was observed that the estimates that was obtained under the Entropy loss function was more stable than the estimates under the squared error loss function, Precautionary loss function and maximum likelihood estimates (MLEs).\\
+
+\noindent\para \cite{gupta2017bayesian} carried out the Bayesian and E-Bayesian method of estimation. The E-Bayesian method of estimation was introduced by \cite{Han2017} for the estimation of failure probability; and \cite{gupta2017bayesian} adopted this technique for the estimation of the parameter of the Rayleigh distribution. The Bayes estimate of the parameter was derived under the assumption that the prior distribution on the parameter of interest is informative and the gamma prior was used. The loss function was considered in the study using a linear exponential (LINEX) loss function. \cite{gupta2017bayesian} went further to perform a comparison between the E-Bayes estimators with the associated Bayes estimator by carrying out a simulation study with the aid of MATLAB software. From simulation study, it was observed that the E-Bayes estimates had smaller Mean Square Error when compared with the associated Bayes estimate. They also observed that E-Bayes estimate, in most cases, tended to be more efficient than Bayes estimate except for the specific situation as cited in their study where n= 35, b= 0.75 and n= 30, 40, b= -0.75 (note that n is the sample size and b is the value that determines the shape of the LINEX loss when used). They concluded that the Bayes estimates and E-Bayesian estimates were equally efficient.\\
+
+\noindent\para The work of Guure \textit{et al.} (2012) examined the performance of maximum likelihood estimator and Bayesian estimators using an extension of the Jeffreys prior information. They considered three loss functions which are: the linear exponential, general entropy, and the squared error loss functions. They obtained the estimates of the two-parameter Weibull failure time distribution. The methods were assessed using the mean square errors which were obtained through simulation study assuming samples of various sizes. The results implied that Bayesian estimator, using the extension of Jeffreys’ prior under the linear exponential loss function in most cases gave the smallest mean square error and absolute bias for both the scale parameter $\alpha$ and the shape parameter $\beta$ for the various values of extension of Jeffreys’ prior. They observed that as the sample size increases the mean squared error and the absolute bias for maximum likelihood estimator and that of Bayes estimator under all the loss functions decrease correspondingly.\\
+
+\noindent\para Mudasir \textit{et al.} (2016) in their work developed a two-parameter length biased Nakagami distribution which was obtained by applying the weights $X^c$ , which when c=1 is the weighted Nakagami distribution which was proposed by \cite{karagiannidis2001distribution}. They further went on to obtain the Bayesian estimators of the scale parameter of the distribution under squared error, quadratic and entropy loss function using quasi and Jeffrey’s priors. They also used the Nakagami and Rayleigh distribution to fit the transformed data set that was considered by \cite{kundu2005generalized}. They concluded their study by comparing the performance of their model with that of the Rayleigh and Nakagami distribution, in doing this they determined the Akaike information criterion (AIC), Bayesian information criterion (BIC) and the Akaike information criterion corrected (AICC). It was discovered that the developed distribution performed better after the comparison.\\
+
+\noindent\para \cite{salah2018bayesian} work evaluated the Bayes estimator, the maximum likelihood estimator and the approximate likelihood estimator of the scale parameter for the Marshall-Olkin exponential distribution under the progressive type-II censored sample. The estimators were derived and presented of which are: Bayes estimator, maximum likelihood estimator and approximate likelihood estimator in simplified forms. From this study, the Bayes estimator and the maximum likelihood estimator could not be solved theoretically, hence a numerical approach was applied to solve the problem. After which, a comparison of the various methods of estimations that they had presented was done in order to find out the difference in performances among the estimators. The AMLE was used as a starting point to find out the MLE. The accurate approximations for posterior moments and marginal densities method developed by \cite{tierney1986accurate} was used to find the numerical approximate solution of the Bayes estimator. It was discovered from the study that, the performance of the maximum likelihood estimator and the approximate maximum likelihood estimator gave estimates closer to each other; but the Bayes estimator gave estimates slightly far from the maximum likelihood  and the approximate maximum likelihood estimator but they all compete significantly.\\
+
+\noindent\para \cite{usta2019bayesian} in their study carried out the Bayesian estimation of the two unknown parameters of the reduced Kies distribution. Using the independent gamma prior for the parameters, Bayesian estimators of the parameters were obtained under the squared error loss function (SELF) and linear exponential loss functions (LINEX). As the conditional posterior function could not be reduced analytically to the well-known distributions, a hybrid Markov chain Monte Carlo (MCMC) method was used to compute the Bayesian estimates of the parameters. The corresponding maximum likelihood estimators (MLEs) of the parameters were obtained and the performances of the estimators were compared through a Monte Carlo simulation study. Finally, a real life data set was analyzed to illustrate the result of their work. The Bayesian estimators of the unknown parameters of reduced Kies distribution(RKD) under SELF and LINEX assuming the gamma priors were obtained using the hybrid MCMC method. Moreso, they calculated the maximum likelihood estimates, and compared the estimators through a Monte Carlo simulation study; the results showed that the Bayes estimators under LINEX had the minimum bias and the MSEs for all considered cases.\\
+
+\noindent\para \cite{yahaya2017bayesian} conducted a research that estimated the scale parameter of the log-logistic distribution under the assumption of a chi-square and Maxwell priors. The Bayes estimators and posterior risks estimators were derived under squared error loss function (SELF) and precautionary loss function (PLF). Furthermore, a simulation study was undertaken using the Markov-chain Monte Carlo (MCMC) simulation technique in order to assess the performance of the assumed prior distributions and loss functions. Between the two priors used in their study, the chi-square prior appeared to yield lower posterior risks which led to the production of the best estimates and when compared with the estimates generated under the assumption of non-informative priors (uniform and Jeffrey’s), they realized that indeed the assumption of informative priors yielded better estimates and overall the precautionary loss function performed better for the estimation of the parameter of interest.\\
+
+\noindent\para Yahgmaei \textit{et al.} (2013) in their study proposed a different technique of estimating the scale parameter of the inverse Weibull distribution. This proposed technique was applied to obtain the maximum likelihood estimator after which they derived the Bayes estimators for the scale parameter in inverse Weibull distribution by assuming the quasi, the gamma and the uniform priors as the prior distribution of the scale parameter of the inverse Weibull distribution (IWD) under the squared error loss functions, entropy loss functions and precautionary loss functions. The different proposed estimators were being compared by an extensive simulation studies. The mean square errors and the posterior risk were obtained and examined.  From their study it was found that whenever the quasi prior was applied, the results showed that no particular one of the estimators uniformly dominated the other. It was evident from their study that, the Bayes method of estimation for gamma prior were superior to the maximum likelihood estimator. Again, when the gamma prior was applied the Bayes estimators related to precautionary loss function had the smallest mean square errors when compared with the Bayes estimators in relation to the squared error loss function or the Bayes estimators under the entropy loss function or the maximum likelihood estimators MLEs. It was pointed out from their study that whenever the uniform prior was applied, the Bayes estimators under squared error loss function did better than the Bayes estimators under precautionary loss function.\\
+
+\noindent\para \cite{naji2019bayesian} studied Bayesian estimation of the parameters of Gamma distribution under Generalized Weighted loss function. They assumed the Gamma prior and the Exponential prior for estimating the shape and scale parameters respectively. Method of moment and Maximum likelihood estimators were the classical techniques considered for their study and Lindley’s approximation was used effectively for the Bayesian estimation. Based on the results from Monte Carlo simulations, the estimators were compared in terms of the mean square error. From their findings they concluded that to obtain the best estimate for the parameters of the gamma distribution, the proposed loss function gave the best estimates when compared to the others (especially when estimating the parameter $\alpha$), but the estimates of the parameter $\beta$ was the same cutting across all competing estimators considered and specifically they noted that the generalized weighted loss function performed better with larger samples.\\
+
+\noindent\para  \cite{feroze2012note} in their studies obtained the Bayesian estimators of the scale parameter of Error function distribution. Different informative priors (Maxwell, Rayleigh, Chi, Normal) and non informative priors (Uniform, Jeffrey) were used to derive the corresponding posterior distribution. Also different loss functions were used namely Square error, Quadratic, Entropy, Precautionary loss functions. The Bayesian credible intervals were constructed for each of the prior considered and the performance of the Bayes estimators assessed and compared with the aid of a simulation study. The study indicated that for Bayesian point estimation, the use of entropy loss function under the Maxwell prior is more reliable than the others. While for interval estimation, the chi prior can be considered, for it proved to be more effective when employed.\\
+
+\noindent\para \cite{zaka2014bayesian} estimated the scale parameter of Nakagami distribution using the Bayesian approach. The study revealed that the scale parameter was estimated under three prior distributions, namely: Uniform, Inverse Exponential and Levy priors. While for the three loss functions namely: squared error loss function, quadratic loss function and precautionary loss function were used. Relative posterior risk and Monte Carlo simulations were used to assess the performance of the estimators. It was discovered from the study that the Precautionary Loss Function produces the least posterior risk when uniform prior is used, and the squared error loss Function is the best when inverse exponential and Levy Priors are used.\\
+
+\noindent\para \cite{ieren2018comparison} conducted a study in which they considered the Bayesian analysis of a shape parameter of the Weibull-Exponential distribution. They assumed a class of non-informative priors so as to obtain the corresponding posterior distributions in their study. The Bayes estimators and associated risks were also calculated under different loss functions which are: the quadratic and the precautionary loss functions. The performances of the Bayes estimators were assessed and compared to the method of maximum likelihood by simulation study. From their study it was discovered and recommended that for the shape parameter to be estimated, the quadratic loss function under both uniform and Jeffrey’s priors should be used for decreasing parameter values while the use of precautionary loss function can be employed for increasing parameter values, this is irrespective of the variations in sample size.\\
+
+\noindent\para Having reviewed previous literature, the current researchers through this study, carried out an analysis of the shape parameter of the Exponentiated Inverse Rayleigh distribution. To achieve this, a Monte Carlo simulation is adopted to compare the performance of the estimators considered.
+
+\newpage
+\chapter{METHODOLOGY}
+\section{The Exponentiated Inverse Rayleigh Distribution}
+The probability density function of the Exponentiated Inverse Rayleigh distribution is given as:
+\begin{equation}\label{3.1}
+f(x)=\frac{2\alpha\sigma^2}{x^3}e^{-(\frac{\sigma}{x})^2}\left(1-e^{-(\frac{\sigma}{x})^2}\right)^{\alpha-1};\hspace{1cm}x>0,\,\sigma,\alpha>0
+\end{equation}
+and the cumulative distribution function is given as:
+\begin{equation}\label{3.2}
+F(x)=1-\left(1-e^{-(\frac{\sigma}{x})^2}\right)^\alpha
+\end{equation}
+
+\noindent where $\sigma$ is the scale parameter, $\alpha$ is the shape parameter and X is the random variable.\\
+
+\section{Maximum Likelihood Estimation Method}
+Let $x_1,x_2,...,x_n$ be n independent random variables (r.v.’s) with probability density functions (pdf)  $f(x|\beta)$ depending on a vector-valued parameter  $\beta$. The joint density of  n independent observations  $X=(X_1,...,X_n)$ is 
+\begin{equation}\label{3.3}
+L(x|\beta ) = \prod\limits_{i = 1}^n {f({x_i};\beta )}
+\end{equation}
+This expression is a function of the unknown parameter $\beta$ given the data x. The likelihood function $L(\beta|x)$ is the joint probability mass or density function of the observed data x, viewed as a function of the unknown parameter $\beta$. Suppose $x_1,x_2,\dots,x_n$ is a random sample of size n, drawn from the Exponentiated Inverse Rayleigh distribution, then the joint density function is
+\begin{equation}\label{3.4}
+\begin{split}
+L(x|\alpha ,\sigma ) &=  \prod\limits_{i=1}^{n}f(x_i)\\
+&=\prod\limits_{i=1}^{n}\left[\frac{2\alpha\sigma^2}{x_i^3}e^{-(\frac{\sigma}{x_i})^2}\left(1-e^{-(\frac{\sigma}{x_i})^2}\right)^{\alpha-1}\right]\\
+&=(2\alpha\sigma^2)^n\prod\limits_{i=1}^{n}(x_i^{-3})e^{-\sum\limits_{ i=1 }^{n}(\frac{\sigma}{x_i})^2}\prod\limits_{i=1}^{n}\left(1-e^{-(\frac{\sigma}{x_i})^2}\right)^{\alpha-1}
+\end{split}
+\end{equation}
+\noindent which is the likelihood function of the distribution, while the likelihood function proportional to the shape parameter only can be expressed as:
+\begin{equation}\label{3.5}
+L(x|\alpha) \propto \alpha^n \prod\limits_{i=1}^{n}\left(1-e^{-(\frac{\sigma}{x_i})^2}\right)^{\alpha-1}
+\end{equation}
+\noindent and the log likelihood function of the joint distribution is given as:
+\begin{equation}\label{3.6}
+\ln L(x|\alpha ,\sigma ) = n\ln \alpha  + (\alpha  - 1){\sum\limits_{ i=1 }^{n} {\ln \left( {1 - {e^{ - {{\left( {\frac{\sigma }{x_i}} \right)}^2}}}} \right)}}
+\end{equation}
+\subsection{Estimator}
+By partially differentiating equation (\ref{3.6}) with respect to $\alpha$ and equating the result to zero, the Maximum likelihood estimator of $\alpha$ denoted by $\hat{\alpha}_{MLE}$ is given as:
+
+\begin{equation}
+\begin{split}
+\frac{{\partial \ln L(x|\alpha ,\sigma )}}{{\partial \alpha }} &\propto\frac{n}{\alpha}+\sum\limits_{ i=1 }^{n} {\ln \left( {1 - {e^{ - {{\left( {\frac{\sigma }{x_i}} \right)}^2}}}} \right)}=0\\
+\frac{n}{\alpha}&=-\sum\limits_{ i=1 }^{n} {\ln \left( {1 - {e^{ - {{\left( {\frac{\hat{\sigma} }{x_i}} \right)}^2}}}} \right)}
+\\n&=-\alpha\sum\limits_{ i=1 }^{n} {\ln \left( {1 - {e^{ - {{\left( {\frac{\sigma }{x_i}} \right)}^2}}}} \right)}\\
+\therefore\, \hat{\alpha}_{\small{MLE}}&=\frac{-n}{\sum\limits_{ i=1 }^{n} {\ln \left( {1 - {e^{ - {{\left( {\frac{\hat{\sigma} }{x_i}} \right)}^2}}}} \right)}}
+\end{split}\label{3.7}
+\end{equation}
+
+\section{Posterior Distributions}
+%The likelihood is the joint probability function of the data, but viewed as a function of the parameters, treating the observed data as fixed quantities. Assuming that the values, $x=(x_1,x_2,\dots,x_n)$ are obtained independently, the likelihood function is given by
+%
+%\begin{equation}\label{3.15}
+%L(\alpha|x)=P(x_1,x_2,….,x_n |\alpha)= \prod\limits_{i=1}^nP(X_i|\alpha)
+%\end{equation}
+%\noindent Note that the likelihood is a function of $\alpha$ for a given x, while the PDF is a function of x for a given parameter.
+\noindent\para To obtain the posterior distribution denoted as $P(\alpha|x)$ which is the probability distribution of the parameter having observed the data, one simply applies Bayes’ Theorem. The posterior distribution of the shape parameter of the Exponentiated Inverse Rayleigh distribution (EIRD) can be obtained by the expression given below:
+\begin{equation}\label{3.16}
+P(\alpha|x)=\frac{L(x|\alpha)\pi(\alpha)}{g(x)}
+\end{equation} 
+\noindent Where $g(x)$ is the conditional density function of x indexed by $\alpha$ which can be expressed as:
+\begin{equation}\label{3.17}
+g(x)=
+\begin{cases}
+\int\limits_{\alpha} L(x|\alpha)\pi(\alpha) d\alpha \para\quad where\ \alpha\ is\ continous \\
+\sum\limits_{\alpha} L(x|\alpha)\pi(\alpha) \para\qquad where\ \alpha\ is\ discrete
+\end{cases}
+\end{equation}
+\noindent and $\pi(\alpha)$ is the prior distribution of the parameter to be estimated. It may assume more than one distribution based on the preference of the researcher. It may be picked based on information; either informative or non-informative, could be conjugate, also it could be improper or proper.
+
+\subsection{Prior distribution}
+\noindent\para The prior distribution represents the initial belief about the parameter of interest, in this study $\alpha$ is the parameter of interest. This means that $\alpha$ is regarded as a random variable with probability density function $\pi(\alpha)$. In this study, the prior distributions that are employed based on deductions from previous studies such as \cite{gupta2017bayesian}, Guure \textit{et al.} (2012), \cite{naji2019bayesian} and \cite{ieren2018comparison} are informative and non-informative as seen below:
+\begin{enumerate}
+\item \textbf{Non-informative prior}\\
+\noindent\para \cite{jeffrey1946} proposed a method for generating non-informative priors which was based on the principles of the Fishers information index or matrix denoted as $I(\alpha)$ for vectors. The Jeffreys prior for the shape parameter of the Exponentiated Inverse Rayleigh distribution (EIRD) is obtained as:\\
+let $\pi(\alpha)$ denote the prior distribution of the shape parameter of the Exponentiated Inverse Rayleigh distribution (EIRD), then it can be expressed as 
+\begin{equation}\label{3.10} 
+\pi(\alpha) = \sqrt{I(\alpha)}
+\end{equation}
+where  $I(\alpha)$ is the Fisher Information expressed as
+\begin{equation}\label{3.11}
+I(\alpha) = -E\left[\frac{\partial^2 ln L(x|\alpha)}{\partial \alpha^2}\right]
+\end{equation}
+from equation (\ref{3.4})
+\[\begin{split}
+lnL(x|\alpha,\sigma) &=ln\left[ (2\alpha\sigma^2)^n\prod\limits_{i=1}^{n}(x_i^{-3})e^{-\sum\limits_{ i=1 }^{n}(\frac{\sigma}{x_i})^2}\prod\limits_{i=1}^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{\alpha-1}\right]\\
+&=n\ ln\ 2 + n\ ln\alpha+2n\ln\sigma-3\sum_{i=1}^{n}ln\ x_i -\sum_{i=1}^{n} \left(\frac{\sigma}{x_i}\right)^2+(\alpha-1)\sum_{i=1}^{n} ln\ \left(1-e^{-\left(\dfrac{\sigma}{x_i}\right)^2}\right)\\
+\frac{\partial ln L(x|\alpha,\sigma)}{\partial \alpha} &=\frac{n}{\alpha}+\sum\limits_{i=1}^n ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)  \\
+\end{split}\]
+\begin{equation}\label{3.12} 
+\begin{split}
+\frac{\partial^2 ln L(x|\alpha,\sigma)}{\partial \alpha^2} &=-\frac{n}{\alpha^2}\\
+E\left[\frac{\partial^2 ln L(x|\alpha,\sigma)}{\partial \alpha^2}\right] &=-E\left(\frac{n}{\alpha^2}\right)=-\frac{n}{\alpha^2}\\
+-E\left[\frac{\partial^2 ln L(x|\alpha,\sigma)}{\partial \alpha^2}\right] &= -\left(-\frac{n}{\alpha^2}\right)=\frac{n}{\alpha^2}
+\end{split}
+\end{equation}
+The Jeffreys prior is obtained as 
+\begin{equation}\label{3.13}
+\begin{split}
+\sqrt{I(\alpha)}&=\sqrt{-E\left[\frac{\partial^2 ln L(x|\alpha)}{\partial \alpha^2}\right] }= \sqrt{\frac{n}{\alpha^2}}=\frac{\sqrt{n}}{\alpha}\\
+\implies \pi(\alpha)&=\frac{\sqrt{n}}{\alpha}\propto\frac{1}{\alpha}\ where\ \sqrt{n} \ is \ the\ constant\ of\ proportionality.
+\end{split}
+\end{equation}
+
+\item \textbf{Informative prior}\\
+\noindent\para The gamma prior is an informative prior that can sometimes be used as a conjugate prior and it is expressed as: \\
+Let $\pi(\alpha)$ denote the prior distribution of the shape parameter of the Exponentiated Inverse Rayleigh distribution (EIRD), then it can be expressed as 
+\begin{equation}\label{3.14}
+\pi(\alpha)=\frac{b^a}{\Gamma(a)}\alpha^{a-1}e^{-\alpha b}
+\end{equation}
+\end{enumerate}
+
+\subsection{Posterior Distribution of the Shape Parameter under the Assumption of Non-informative prior}	
+
+\noindent\para From equation (\ref{3.16}), substituting (\ref{3.5}) and (\ref{3.13}), then the posterior distribution of the shape parameter of the Exponentiated Inverse Rayleigh distribution (EIRD) can be expressed as:
+\begin{equation}\label{3.18}
+P(\alpha_J|x)=\frac{\alpha^n \prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{\alpha-1}\times \frac{1}{\alpha}}{g(x)}
+\end{equation}
+from equation (\ref{3.17}) g(x) can expressed as: 
+
+\begin{equation}\label{3.19}
+\begin{split}
+g(x)&=\int\limits_{\alpha}\alpha^n \prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{\alpha-1}\times \frac{1}{\alpha} d\alpha \\
+&=\int\limits_{\alpha}\alpha^{n-1} \prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{\alpha}\prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1} d\alpha\\
+let\, u&=\prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{\alpha}\\
+ln\, u&=\alpha\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)\\
+-ln\, u&=\alpha\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\\
+\alpha&=-\frac{ln\,u}{\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}\\
+\frac{d\alpha}{du}&= -\frac{1}{u\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}\\
+d\alpha&=-\frac{du}{u\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}\\
+g(x)&=-\int\limits_{\alpha}\left[-\frac{ln\,u}{\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}\right]^{n-1}\frac{u\prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}du}{u\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}\\
+&=-\frac{\prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}{\left(\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)^n}\int\limits_{u}(-ln\,u)^{n-1}\,du\\
+Let\ t=-ln\,u,\implies\,u=e^{-t},&\implies\dfrac{du}{dt}=-e^{-t},\implies \, du=-e^{-t}dt\\
+\implies g(x)&=\frac{\prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}{\left(\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)^n}\int\limits_{t}t^{n-1}e^{-t}dt\\
+\therefore g(x)&=\frac{\prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}{\left(\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)^n}\Gamma(n)
+\end{split}
+\end{equation}
+from equation (\ref{3.18}) and equation (\ref{3.19}) we can obtain $P(\alpha_J|x)$ to be 
+\begin{equation}
+\begin{split}
+P(\alpha_J|x)&= \frac{\alpha^n \prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{\alpha-1}\times \frac{1}{\alpha}}{\frac{\prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}{\left(\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)^n}\Gamma(n)}\\
+\end{split}
+\end{equation}
+\begin{equation}\label{3.20}
+\begin{split}
+&= \frac{\alpha^{n-1} \prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{\alpha}\prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}{\frac{\prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}{\left(\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)^n}\Gamma(n)}\\
+but \, u&=\prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{\alpha},\implies ln\,u=\alpha\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)=-\alpha\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\\
+&\implies \prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{\alpha}=u=e^{-\alpha\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}\\
+\implies P(\alpha_J|x)&=\frac{\alpha^{n-1}\left(\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)^n e^{-\alpha\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}}{\Gamma(n)}
+\end{split} 	
+\end{equation}
+
+\subsubsection{Posterior mean of the Shape Parameter under the Assumption of Non-informative prior}
+The posterior mean denoted as $E(\alpha|X_i)$ can be expressed as:
+
+
+\[\begin{split}
+E(\alpha|X_i)&=\int\limits_{0}^{\infty}\alpha \times P(\alpha_J|x)d\alpha\\
+&=\int\limits_{0}^{\infty}\alpha \times \frac{\alpha^{n-1}\left(\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)^n e^{-\alpha\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}}{\Gamma(n)} d\alpha\\
+\end{split} \]
+
+\begin{equation}\label{pm1}
+\begin{split}
+let\ W&=\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\\
+\implies E(\alpha|X_i)&=\int\limits_{0}^{\infty}\alpha \times \frac{\alpha^{n-1}W^n e^{-\alpha W}}{\Gamma(n)} d\alpha\\
+&=\int\limits_{\alpha}\frac{\alpha^{n+1-1}W^n e^{-\alpha W}}{\Gamma(n)} d\alpha \\
+Let\,q&=\alpha W \implies\alpha=\dfrac{q}{W}\implies\dfrac{d\alpha}{dq}=\dfrac{1}{W}\implies d\alpha=\dfrac{dq}{W}\\
+E(\alpha_J)&=\int\limits_{q}\left(\frac{q}{W}\right)^{n}\frac{W^n}{\Gamma(n)}e^{-q}\frac{dq}{W}\\
+&=\frac{1}{\Gamma(n)}\int\limits_{q}\frac{q^{n}W^ne^{-q}}{W^{n+1}}dq\\
+&=\frac{1}{\Gamma(n)}\frac{W^n}{W^{n+1}}\int\limits_{q}q^{n}e^{-q}dq\\
+E(\alpha_J)&=\frac{\Gamma(n+1)}{W\Gamma(n)}\\
+&=\frac{n\Gamma(n)}{W\Gamma(n)}=\frac{n}{W}\\
+&=\frac{n}{\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}
+\end{split}
+\end{equation}
+
+\subsection{Posterior Distribution of the Shape Parameter under the Assumption of Informative Prior}
+From equation (\ref{3.16}), substituting (\ref{3.6}) and (\ref{3.14}), the posterior distribution of the shape parameter of the Exponentiated Inverse Rayleigh distribution (EIRD) can be expressed as:
+\begin{equation}\label{3.23}
+P(\alpha_G|x)=\frac{\alpha^n \prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{\alpha-1}\times \frac{b^a}{\Gamma(a)}\alpha^{a-1}e^{-\alpha b}d\alpha}{g(x)} 
+\end{equation} 
+from equation (\ref{3.17}) g(x) can expressed as:
+
+{\footnotesize
+\[\begin{split}
+g(x)&=\int\limits_{\alpha}\alpha^n \prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{\alpha-1}\times \frac{b^a}{\Gamma(a)}\alpha^{a-1}e^{-\alpha b}d\alpha \\
+&=\int\limits_{\alpha}\frac{b^a}{\Gamma(a)}\alpha^{n+a-1}\prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{\alpha}\prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}e^{-\alpha b} d\alpha\\
+let\ u	&=\prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{\alpha}\implies
+ln\ u=\alpha\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)\\
+-ln\ u	&=\alpha\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\implies
+\alpha=-\frac{ln\ u}{\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}\\
+\frac{d\alpha}{du}&= -\frac{1}{u\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}\implies
+d\alpha	=-\frac{du}{u\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}\\
+g(x)&=-\int\limits_{\alpha}\frac{b^a}{\Gamma(a)}\left[-\frac{ln\,u}{\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}\right]^{n+a-1}u\prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\frac{e^{-\left[-\frac{ln\,u}{\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}\right]b}du}{u\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}\\
+&=-\frac{b^a}{\Gamma(a)}\frac{\prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}{\left(\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)^{n+a}}\int\limits_{u}(-ln\,u)^{n+a-1} e^{-\left[-\frac{ln\,u}{\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}\right]b}du\\
+Let\ t&=-ln\,u,\implies\,u=e^{-t},\implies\dfrac{du}{dt}=-e^{-t},\implies \, du=-e^{-t}dt\\
+\implies g(x)&=\frac{b^a}{\Gamma(a)}\frac{\prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}{\left(\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)^{n+a}}\int\limits_{t}t^{n+a-1}e^{-\left[\frac{t}{\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}\right]b}e^{-t}dt\\
+&=\frac{b^a}{\Gamma(a)}\frac{\prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}{\left(\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)^{n+a}}\int\limits_{t}t^{n+a-1}e^{-t\left[\frac{b}{\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}+1\right]}dt\\
+&=\frac{b^a}{\Gamma(a)}\frac{\prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}{\left(\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)^{n+a}}\int\limits_{t}t^{n+a-1}e^{-t\left[\frac{b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}{\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}\right]}dt\\
+\end{split}\]
+
+\begin{equation}\label{3.24}
+\begin{split}
+g(x)&=\frac{b^a}{\Gamma(a)}\frac{\prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}{\left(\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)^{n+a}}\Gamma(n+a)\times\left(\frac{\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}{b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}\right)^{n+a}\\
+\therefore g(x)&=\frac{b^a\Gamma(n+a)}{\Gamma(a)}\frac{\prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}{\left(b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)^{n+a}}
+\end{split}
+\end{equation}
+}
+from equation (\ref{3.23}) and equation (\ref{3.24}) we can obtain $P(\alpha_G|x)$ to be
+
+\[\begin{split}
+P(\alpha_G|x)&=\frac{\alpha^n \prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{\alpha-1} \times \frac{b^a}{\Gamma(a)}\alpha^{a-1}e^{-\alpha b}}{\frac{b^a\Gamma(n+a)}{\Gamma(a)}\frac{\prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}{\left(b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)^{n+a}}}\\
+&=\frac{\frac{b^a}{\Gamma(a)}\alpha^{n+a-1}\prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{\alpha}\prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}e^{-\alpha b}}{ \frac{b^a\Gamma(n+a)}{\Gamma(a)}\frac{\prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}{\left(b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)^{n+a}}}\\
+&=\frac{\alpha^{n+a-1}\prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{\alpha}\left(b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)^{n+a}e^{-\alpha b}}{\Gamma(n+a)}\\
+but \, u&=\prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{\alpha},\implies ln\,u=\alpha\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)=-\alpha\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\\
+&\implies \prod\limits_{ i=1 }^{n}\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{\alpha}=u=e^{-\alpha\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}\\
+\implies P(\alpha_G|x)&=\frac{\alpha^{n+a-1}\left(b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)^{n+a}e^{-\alpha\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}e^{-\alpha b}}{\Gamma(n+a)}\\
+\end{split}\]
+\begin{equation}\label{3.25}
+\begin{split}
+&=\frac{\alpha^{n+a-1}\left(b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)^{n+a}e^{-\alpha\left(b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)}} {\Gamma(n+a)}
+\end{split}
+\end{equation}
+
+\subsubsection{Posterior Mean of the Shape Parameter Under the Assumption of Informative Prior}
+The posterior mean denoted as $E(\alpha|x_i)$ can be expressed as:
+\[\begin{split}
+E(\alpha|X_i)&=\int\limits_{0}^{\infty}\alpha \times P(\alpha_G|x)d\alpha\\
+&=\int\limits_{0}^{\infty}\alpha \times \frac{\alpha^{n+a-1}\left(b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)^{n+a}e^{-\alpha\left(b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)}} {\Gamma(n+a)} d\alpha\\
+let\ M&=\left(b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)\\
+\implies E(\alpha|X_i)&=\int\limits_{0}^{\infty}\alpha \times \frac{\alpha^{n+a-1}M^{n+a}e^{-\alpha M}} {\Gamma(n+a)} d\alpha\\
+E(\alpha_G)&=\int\limits_{\alpha}\alpha \frac{\alpha^{n+a-1}M^{n+a} e^{-\alpha M}}{\Gamma(n+a)} d\alpha \\
+&=\int\limits_{\alpha}\frac{\alpha^{n+a+1-1}M^{n+a} e^{-\alpha M}}{\Gamma(n+a)} d\alpha\\
+&=\frac{1}{\Gamma(n+a)}\int\limits_{\alpha}\alpha^{n+a}M^{n+a} e^{-\alpha M}d\alpha\\
+Let\,q&=\alpha M\implies\alpha=\dfrac{q}{M}\implies\dfrac{d\alpha}{dq}=\dfrac{1}{M}\implies d\alpha=\dfrac{dq}{M}\\
+&=\frac{1}{\Gamma(n+a)}\int\limits_{q}\left(\frac{q}{M}\right)^{n+a}M^{n+a} e^{-q}\frac{dq}{M}\\
+E(\alpha_G)&=\frac{M^{n+a}}{M^{n+a+1}\Gamma(n+a)}\int\limits_{q}q^{n+a}e^{-q}dq\\
+&=\frac{1}{M\Gamma(n+a)}\Gamma(n+a+1)=\frac{(n+a)\Gamma(n+a)}{M\Gamma(n+a)}=\frac{n+a}{M}\\
+\end{split}\]
+
+\begin{equation}\label{pm2}
+\begin{split}
+&=\frac{n+a}{\left(b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)}
+\end{split}
+\end{equation}
+\section{Bayesian Estimation}
+\noindent\para In statistics and decision theory, a loss function maps an event into a real number intuitively representing some “cost” which are associated with the event. Typically, it is used for the estimation of parameter, and the event in question is a function of the difference between an estimate and the true values.
+
+\noindent\para The squared error loss function, the precautionary loss function and the quadratic loss function are used to derive the Bayes estimators as well as, their corresponding Bayes posterior risk under the Jeffrey and gamma priors.
+
+\begin{enumerate}
+	\item \noindent\textbf{\underline{squared error loss function}}\\
+	The squared error loss function (SELF) was developed by \cite{legendre1805} and \cite{gauss1810}, it is frequently used by statisticians, and it is represented as:
+	\begin{equation}
+	L(\hat{\alpha},\alpha)=(\alpha-\hat{\alpha})^2	
+	\end{equation}
+	where $\hat{\alpha}$ is the Bayes estimator which is relative to SELF. The $\hat{\alpha}$ (which gives the estimate that minimizes the risk $R(\alpha,\hat{\alpha})$) is given as:	
+	
+	
+	\begin{equation}\label{3.32}
+	\begin{split}
+	\frac{\partial R(\theta,\hat{\alpha})}{\partial \alpha}&=\frac{\partial\int\limits_{-\infty}^{\infty}(\alpha-\hat{\alpha})^2\pi(\alpha|x)d\alpha}{\partial\alpha}=0\\
+	\implies &2\int\limits_{\alpha}(\alpha-\hat{\alpha})\pi(\alpha|x)d\alpha=0\\
+	0&=\int\limits_{\alpha}\left(\alpha\pi(\alpha|x)-\hat{\alpha}\pi(\alpha|x)\right)d\alpha\\
+	0&=\int\limits_{\alpha} \alpha\pi(\alpha|x) d\alpha - \int\limits_{\alpha} \hat{\alpha}\pi(\alpha|x) d\alpha\\
+	\implies &\int\limits_{\alpha} \hat{\alpha}\pi(\alpha|x) d\alpha=\int\limits_{\alpha} \alpha\pi(\alpha|x) d\alpha\\
+	&\hat{\alpha}\int\limits_{\alpha} \pi(\alpha|x) d\alpha=\int\limits_{\alpha} \alpha\pi(\alpha|x) d\alpha\\
+	\implies \hat{\alpha}_{SELF}&=\int\limits_{\alpha} \alpha\pi(\alpha|x) d\alpha\equiv E(\alpha_{SELF}|x)\\
+	\end{split}	
+	\end{equation}
+	This is a symmetric loss function that assigns equal losses to over estimation and under estimation of any parameter of interest. In reality, this situation could be impractical, as consequences for over estimation and under estimation could be severe. The SELF is often used because it does not need extensive numerical computation.	
+	\item \noindent\textbf{\underline{Precautionary loss function}}\\
+	\cite{Norstrom1996} introduced the asymmetric loss function, which is called precautionary loss function. It is defined as:
+	\begin{equation}
+	L(\hat{\alpha},\alpha)=\frac{(\hat{\alpha}-\alpha)^2}{\hat{\alpha}}
+	\end{equation}
+	
+	
+	where $\hat{\alpha}$ is the Bayes estimator relative to PLF. The $\hat{\alpha}$ (which gives the estimate that minimizes the risk $R(\alpha,\hat{\alpha})$) is given as:
+	\begin{equation}\label{3.33}\begin{split}
+	\frac{\partial R(\theta,\hat{\alpha})}{\partial \alpha}&=\frac{\partial\int\limits_{-\infty}^{\infty}\frac{(\hat{\alpha}-\alpha)^2}{\hat{\alpha}}\pi(\alpha|x)d\alpha}{\partial\alpha}=0\\
+	\implies &2\int\limits_{\alpha}\left(1-\frac{\alpha^2}{\hat{\alpha}^2}\right)\pi(\alpha|x)d\alpha=0\\
+	0&=\int\limits_{\alpha}\pi(\alpha|x)d\alpha-\int\limits_{\alpha}\left(\frac{\alpha^2}{\hat{\alpha}^2}\right)\pi(\alpha|x)d\alpha\\
+	\implies&\int\limits_{\alpha}\left(\frac{\alpha^2}{\hat{\alpha}^2}\right)\pi(\alpha|x)d\alpha=\int\limits_{\alpha}\pi(\alpha|x)d\alpha\\
+	&\int\limits_{\alpha}\left(\frac{\alpha^2}{\hat{\alpha}^2}\right)\pi(\alpha|x)d\alpha=1\\
+	&\frac{1}{\hat{\alpha}^2}\int\limits_{\alpha}\alpha^2\pi(\alpha|x)d\alpha=1\\
+	&\hat{\alpha}^2=\int\limits_{\alpha}\alpha^2\pi(\alpha|x)d\alpha\\
+	\implies&\hat{\alpha}=\sqrt{\int\limits_{\alpha}\alpha^2\pi(\alpha|x)d\alpha}\\
+	\implies\hat{\alpha}_{PLF}&=\sqrt{E(\alpha^2)}\equiv[E(\alpha_{PLF}^2)]^{1/2}
+	\end{split}
+	\end{equation}
+	
+	This loss function is called an asymmetric loss function because unlike the symmetric loss function it only considers the loss of greater importance, in either over estimation or under estimation, and is often preferred in reality.
+	
+	\item \noindent\textbf{\underline{Quadratic loss function}}\\
+	This loss function is frequently because of its variance property, and it is mathematically more tractable than other loss functions. This loss function is also an asymmetric loss function. It is defined as (see \cite{zaka2014bayesian}):
+	\begin{equation}
+	L(\hat{\alpha},\alpha)=\left[\frac{\alpha-\hat{\alpha}}{\alpha}\right]^2
+	\end{equation}
+	
+
+	where $\hat{\alpha}$ is the Bayes estimator which is relative to QLF. The $\hat{\alpha}$ (which gives the estimate that minimizes the risk $R(\alpha,\hat{\alpha})$) is given as:
+	\begin{equation}
+	\begin{split}
+	\frac{\partial R(\theta,\hat{\alpha})}{\partial \alpha}&=\frac{\partial\int\limits_{-\infty}^{\infty}\left[\frac{\alpha-\hat{\alpha}}{\alpha}\right]^2\pi(\alpha|x)d\alpha}{\partial\alpha}=0\\
+	\implies\hat{\alpha}_{QLF}&=\frac{E(\alpha^{-1}|x)}{E(\alpha^{-2}|x)}=\frac{\int \alpha^{-1}\pi(\alpha|x)d\alpha}{\int \alpha^{-2}\pi(\alpha|x)d\alpha}
+	\end{split}
+	\end{equation}
+	
+\end{enumerate}
+
+\subsection{Bayesian Estimation Under The Non-informative Prior Using The Three Loss Functions}
+\noindent\para When the non-informative prior (ie the Jeffreys prior) is assumed, a generalized expression for the expected value is denoted as $E(\alpha_J^r)$ (where r is a positive integer taking values from 1 to infinity), and can be estimated as follows;
+\begin{equation}
+\begin{split}
+E(\alpha_J^r)&=\int\limits_{\alpha}\alpha^r P(\alpha_J|x) d\alpha\\
+\end{split}\label{3.28}
+\end{equation}
+when we substitute $P(\alpha_J|x)$ from equation (\ref{3.20}) into equation (\ref{3.35}) we have:
+\[\begin{split}
+E(\alpha_J^r)&=\int\limits_{\alpha}\alpha^r \frac{\alpha^{n-1}\left(\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)^n e^{-\alpha\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}}{\Gamma(n)}d\alpha\\
+again\ let\ W&=\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\\
+E(\alpha_J^r)&=\int\limits_{\alpha}\alpha^r \frac{\alpha^{n-1}W^n e^{-\alpha W}}{\Gamma(n)} d\alpha \\
+&=\int\limits_{\alpha}\frac{\alpha^{n+r-1}W^n e^{-\alpha W}}{\Gamma(n)} d\alpha \\
+Let\,q&=\alpha W\implies\alpha=\dfrac{q}{W}\implies\dfrac{d\alpha}{dq}=\dfrac{1}{W}\implies d\alpha=\dfrac{dq}{W}\\
+E(\alpha_J^r)&=\int\limits_{q}\left(\frac{q}{W}\right)^{n+r-1}\frac{W^n}{\Gamma(n)}e^{-q}\frac{dq}{W}\\
+\end{split}\]
+\begin{equation}\label{3.29}
+\begin{split}
+&=\frac{1}{\Gamma(n)}\int\limits_{q}\frac{q^{n+r-1}W^ne^{-q}}{W^{n+r}}dq\\
+&=\frac{1}{\Gamma(n)}\frac{W^n}{W^{n+r}}\int\limits_{q}q^{n+r-1}e^{-q}dq\\
+E(\alpha_J^r)&=\frac{\Gamma(n+r)}{W^r\Gamma(n)}\\
+&=\frac{\Gamma(n+r)}{\left[\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]^r\Gamma(n)}
+\end{split}
+\end{equation}
+\noindent\para Therefore, the expression in equation (\ref{3.29}) gives the general expression for the expected value of the shape parameter of the Exponentiated Inverse Rayleigh distribution (EIRD) using Jeffreys prior. Hence, we obtained $E(\alpha_J^r)$ when \textbf{r} is 1 and 2 , it is given as:
+\begin{equation}\label{3.30}
+\begin{split}
+E(\alpha_J) &= \frac{\Gamma(n+1)}{W\Gamma(n)}\\
+&=\frac{\Gamma(n+1)}{\left[\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]\Gamma(n)}\\
+&=\frac{n\Gamma(n)}{\left[\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]\Gamma(n)}=\frac{n}{\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}\\
+Hence\ E(\alpha_{JSELF})&\equiv E(\alpha_J)=\frac{n}{\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}
+\end{split}
+\end{equation}
+and
+\[\begin{split}
+E(\alpha_{J}^2) &= \frac{\Gamma(n+2)}{W^2\Gamma(n)}\\
+E(\alpha_J^2) &= \frac{\Gamma(n+2)}{\left[\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]^2\Gamma(n)}\\
+&=\frac{(n+1)n\Gamma(n)}{\left[\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]^2\Gamma(n)}=\frac{(n+1)n}{\left[\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]^2}\\
+\end{split}\]
+\begin{equation}\label{3.31}
+\begin{split}\footnotesize
+Hence \ E(\alpha_{JPLF})&=\sqrt{E(\alpha_{J}^2)}=\sqrt{\frac{(n+1)n}{\left[\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]^2}}\\
+&=\frac{\sqrt{(n+1)n}}{\left[\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]}
+\end{split}
+\end{equation}
+
+\noindent also to find the Bayes estimate due to the Quadratic loss function we find the following expectations $E(\alpha_J^{-1})$ and $E(\alpha_J^{-2})$ which expressed as:\\
+\[\begin{split}
+E(\alpha_J^{-1}|x)&=\int \alpha^{-1}P(\alpha|x)d\alpha\\
+&=\int \frac{1}{\alpha}\frac{\alpha^{n-1}\left(\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)^n e^{-\alpha\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}}{\Gamma(n)}d\alpha\\
+&=\int \frac{\alpha^{n-2}\left(\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)^n e^{-\alpha\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}}{\Gamma(n)}d\alpha\\
+let \ \ W &=\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\\
+\implies E(\alpha_J^{-1}|x) &= \int \frac{\alpha^{n-2}W^ne^{-\alpha W}}{\Gamma(n)}\\
+Let\ \ q&=\alpha W\implies\alpha=\dfrac{q}{W}\implies\dfrac{d\alpha}{dq}=\dfrac{1}{W}\implies d\alpha=\dfrac{dq}{W}\\
+\end{split}\]
+\begin{equation}\label{3.31a}
+\begin{split}
+E(\alpha_J^{-1}|x)&=\int\limits_{q}\left(\frac{q}{W}\right)^{n-2}\frac{W^n}{\Gamma(n)}e^{-q}\frac{dq}{W}\\
+&=\frac{1}{\Gamma(n)}\int\limits_{q}\frac{q^{n-2}W^ne^{-q}}{W^{n-1}}dq=\frac{W^n}{W^{n-1}\Gamma(n)}\int q^{n-2}e^{-q}dq=\frac{W}{\Gamma(n)}\int q^{n-2}e^{-q}dq\\
+&=\frac{W}{\Gamma(n)}\Gamma(n-1)= \frac{W \Gamma(n-1)}{(n-1)\Gamma(n-1)}=\frac{W }{(n-1)}\equiv\frac{\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}{(n-1)}
+\end{split}
+\end{equation}
+similarly
+
+\[\begin{split}
+E(\alpha_J^{-2}|x)&=\int \alpha^{-2}P(\alpha|x)d\alpha\\
+&=\int \frac{1}{\alpha^2}\frac{\alpha^{n-1}\left(\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)^n e^{-\alpha\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}}{\Gamma(n)}d\alpha\\
+&=\int \frac{\alpha^{n-3}\left(\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)^n e^{-\alpha\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}}{\Gamma(n)}d\alpha\\
+let \ \ W &=\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\\
+\implies E(\alpha_J^{-2}|x) &= \int \frac{\alpha^{n-3}W^ne^{-\alpha W}}{\Gamma(n)}\\
+\end{split}\]
+
+\begin{equation}\label{3.31b}
+\begin{split}
+Let\ \ q&=\alpha W\implies\alpha=\dfrac{q}{W}\implies\dfrac{d\alpha}{dq}=\dfrac{1}{W}\implies d\alpha=\dfrac{dq}{W}\\
+E(\alpha_J^{-2}|x)&=\int\limits_{q}\left(\frac{q}{W}\right)^{n-3}\frac{W^n}{\Gamma(n)}e^{-q}\frac{dq}{W}\\
+&=\frac{1}{\Gamma(n)}\int\limits_{q}\frac{q^{n-3}W^ne^{-q}}{W^{n-2}}dq=\frac{W^n}{W^{n-2}\Gamma(n)}\int q^{n-3}e^{-q}dq=\frac{W^2}{\Gamma(n)}\int q^{n-3}e^{-q}dq\\
+&=\frac{W^2}{\Gamma(n)}\Gamma(n-2)\equiv \frac{W^2 \Gamma(n-2)}{(n-1)(n-2)\Gamma(n-2)}=\frac{W^2 }{(n-1)(n-2)}\equiv\frac{\left[\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]^2}{(n-1)(n-2)}
+\end{split}
+\end{equation}
+
+Therefore the estimate due to the QLF is given as:
+\begin{equation}
+\begin{split}
+E(\alpha_{JQLF})&=\frac{\frac{W }{(n-1)}}{\frac{W^2 }{(n-1)(n-2)}}=\frac{W(n-1)(n-2)}{(n-1)W^2}=\frac{(n-2)}{W}\\
+&=\frac{n-2}{\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}
+\end{split}
+\end{equation}
+\subsection{Bayesian Estimation Under The Informative Prior Using The Three Loss Functions}
+When the non-informative prior (ie the Gamma prior) is assumed, a generalized expression for the expected value is denoted as: $E(\alpha_G^r)$ (where r is a positive integer taking values from 1 to infinity) and can be estimated as:
+\begin{equation}\label{3.35}
+\begin{split}
+E(\alpha_G^r)&=\int\limits_{\alpha}\alpha^r P(\alpha_G|x) d\alpha\\
+\end{split}
+\end{equation}
+when we substitute $P(\alpha_G|x)$ from equation (\ref{3.25}) into equation (\ref{3.35}) we have:
+\begin{equation}\label{3.36}
+\begin{split}
+E(\alpha_G^r)&=\int\limits_{\alpha}\alpha^r \frac{\alpha^{n+a-1}\left(b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)^{n+a}e^{-\alpha\left(b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)}} {\Gamma(n+a)}\\
+again\ let\ M&=b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\\
+E(\alpha_G^r)&=\int\limits_{\alpha}\alpha^r \frac{\alpha^{n+a-1}M^{n+a} e^{-\alpha M}}{\Gamma(n+a)} d\alpha \\
+&=\int\limits_{\alpha}\frac{\alpha^{n+a+r-1}M^{n+a} e^{-\alpha M}}{\Gamma(n+a)} d\alpha\\
+&=\frac{1}{\Gamma(n+a)}\int\limits_{\alpha}\alpha^{n+a+r-1}M^{n+a} e^{-\alpha M}d\alpha\\
+Let\,q&=\alpha M\implies\alpha=\dfrac{q}{M}\implies\dfrac{d\alpha}{dq}=\dfrac{1}{M}\implies d\alpha=\dfrac{dq}{M}\\
+&=\frac{1}{\Gamma(n+a)}\int\limits_{q}\left(\frac{q}{M}\right)^{n+a+r-1}M^{n+a} e^{-q}\frac{dq}{M}\\
+E(\alpha_G^r)&=\frac{M^{n+a}}{M^{n+a+r}\Gamma(n+a)}\int\limits_{q}q^{n+a+r-1}e^{-q}dq\\
+&=\frac{1}{M^r\Gamma(n+a)}\Gamma(n+a+r)=\frac{\Gamma(n+a+r)}{\left[b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]^r\Gamma(n+a)}
+\end{split}
+\end{equation}
+Therefore the expression in equation (\ref{3.36}) gives the general expression for the expected value of the shape parameter of the Exponentiated Inverse Rayleigh distribution (EIRD) using Gamma prior. Hence if we intend to find $E(\alpha_G^r)$ when \textbf{r} is 1 and 2 it will be given as;
+
+\begin{equation}\label{3.67}
+\begin{split}
+E(\alpha)&=\frac{\Gamma(n+a+1)}{\left[b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]\Gamma(n+a)}\\
+&=\frac{(n+a)\Gamma(n+a)}{\left[b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]\Gamma(n+a)}\\
+&=\frac{n+a}{\left[b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]}\\
+E(\alpha_{GSELF})&\equiv E(\alpha) =\frac{n+a}{\left[b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]}
+\end{split} 
+\end{equation}
+and 
+\begin{equation}\label{pst}
+\begin{split}
+E(\alpha^2)&=\frac{\Gamma(n+a+2)}{\left[b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]^2\Gamma(n+a)}\\
+&=\frac{(n+a+1)(n+a)\Gamma(n+a)}{\left[b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]^2\Gamma(n+a)}\\
+E(\alpha_{GPLF})&=\sqrt{E(\alpha^2)}\\
+&=\sqrt{\frac{(n+a+1)(n+a)}{\left[b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]^2}}\\
+&=\frac{1}{\left[b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]}\sqrt{(n+a)(n+a+1)}
+\end{split}
+\end{equation}
+
+Also, to find the Bayes' estimate due to the Quadratic loss function we obtained the expectations $E(\alpha_J^{-1})$ and $E(\alpha_J^{-2})$ which are expressed as: \\
+\[\begin{split}
+E(\alpha_G^{-1}|x)&=\int \alpha^{-1}P(\alpha|x)d\alpha\\
+\end{split}\]
+
+\begin{equation}\label{psta}\footnotesize
+\begin{split}
+&=\int \frac{1}{\alpha}\frac{\alpha^{n+a-1}\left(b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)^{n+a} e^{-\alpha \left[b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]}}{\Gamma(n+a)}d\alpha\\
+&=\int \frac{\alpha^{n+a-2}\left(b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)^{n+a} e^{-\alpha \left[b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]}}{\Gamma(n+a)}d\alpha\\
+let \ \ M &=b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\\
+\implies E(\alpha_J^{-1}|x) &= \int \frac{\alpha^{n+a-2}M^{n+a}e^{-\alpha M}}{\Gamma(n+a)}\\
+Let\ \ q&=\alpha M\implies\alpha=\dfrac{q}{M}\implies\dfrac{d\alpha}{dq}=\dfrac{1}{M}\implies d\alpha=\dfrac{dq}{M}\\
+E(\alpha_J^{-1}|x)&=\int\limits_{q}\left(\frac{q}{M}\right)^{n+a-2}\frac{M^{n+a}}{\Gamma(n+a)}e^{-q}\frac{dq}{M}\\
+&=\frac{1}{\Gamma(n+a)}\int\limits_{q}\frac{q^{n+a-2}M^{n+a}e^{-q}}{M^{n+a-1}}dq=\frac{M^{n+a}}{M^{n+a-1}\Gamma(n+a)}\int q^{n+a-2}e^{-q}dq=\frac{M}{\Gamma(n+a)}\int q^{n+a-2}e^{-q}dq\\
+&=\frac{M}{\Gamma(n+a)}\Gamma(n+a-1)= \frac{M \Gamma(n+a-1)}{(n+a-1)\Gamma(n+a-1)}=\frac{M }{(n+a-1)}\equiv\frac{b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}{(n+a-1)}
+\end{split}
+\end{equation}
+similarly
+\[\begin{split}\footnotesize
+E(\alpha_G^{-2}|x)&=\int \alpha^{-2}P(\alpha|x)d\alpha\\
+&=\int \frac{1}{\alpha^2}\frac{\alpha^{n+a-1}\left(b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)^{n+a} e^{-\alpha \left[b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]}}{\Gamma(n+a)}d\alpha\\
+&=\int \frac{\alpha^{n+a-3}\left(b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)^{n+a} e^{-\alpha \left[b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]}}{\Gamma(n+a)}d\alpha\\
+let \ \ M &=b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\\
+\therefore &E(\alpha_J^{-2}|x) = \int \frac{\alpha^{n+a-3}M^{n+a} e^{-\alpha M}}{\Gamma(n+a)}\\
+Let\ \ q&=\alpha M\implies\alpha=\dfrac{q}{M}\implies\dfrac{d\alpha}{dq}=\dfrac{1}{M}\implies d\alpha=\dfrac{dq}{M}\\
+&E(\alpha_J^{-2}|x)=\int\limits_{q}\left(\frac{q}{M}\right)^{n+a-3}\frac{M^{n+a}}{\Gamma(n+a)}e^{-q}\frac{dq}{M}\\
+=\frac{1}{\Gamma(n+a)}&\int\limits_{q}\frac{q^{n+a-3}M^{n+a}e^{-q}}{M^{n+a-2}}dq=\frac{M^{n+a}}{M^{n+a-2}\Gamma(n+a)}\int q^{n+a-3}e^{-q}dq=\frac{M^2}{\Gamma(n+a)}\int q^{n+a-3}e^{-q}dq\\
+\end{split}\]
+
+
+\begin{equation}\label{pstb}
+\begin{split}
+&=\frac{M^2 \Gamma(n+a-2)}{\Gamma(n+a)}\equiv \frac{M^2 \Gamma(n+a-2)}{(n+a-1)(n+a-2)\Gamma(n+a-2)}=\frac{M^2}{(n+a-1)(n+a-2)}\\
+&\equiv \frac{\left[\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]^2}{(n+a-1)(n+a-2)}
+\end{split}
+\end{equation}
+
+Therefore the estimate due to the QLF is given as:
+
+\begin{equation}
+\begin{split}
+E(\alpha_{GQLF})&=\frac{\frac{M}{(n+a-1)}}{\frac{M^2 }{(n+a-1)(n+a-2)}}=\frac{M(n+a-1)(n+a-2)}{(n+a-1)M^2}=\frac{(n+a-2)}{M}\\
+&=\frac{n+a-2}{b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}
+\end{split}
+\end{equation}
+
+\section{Posterior Risks Under The Priors And Loss Functions}
+\noindent\para The posterior risk of a loss function can be defined as the expected loss incurred when a decision is made to use an estimate (say $\hat{\tau}$) for the parameter of interest (say $\tau$).
+The Bayes posterior risk is obtained by taking the expectation of the squared error loss function (SELF) as:
+\begin{equation}\label{prf1}
+\begin{split}
+E\left[(\alpha-\hat{\alpha})^2\right]&=E\left[\alpha^2-\alpha\hat{\alpha}+\hat{\alpha}^2\right]\\
+&=E(\alpha^2)-E(\alpha)\hat{\alpha}+\hat{\alpha}^2\\
+since\ E(\alpha)&=\hat{\alpha}=\alpha_{SELF}\ in\ the\ SELF\\
+E\left[(\hat{\alpha}-\alpha)^2\right]&=E(\alpha^2)-2\left[E(\alpha)\right]^2+\left[E(\alpha)\right]^2\\
+&=E(\alpha^2)-\left[E(\alpha)\right]^2\\
+Hence\ the\ &risk\ associated\ with\ the\ SELF\ is\ given\ as:\\
+R_{SELF}&=E(\alpha^2)-\left[E(\alpha)\right]^2=E(\alpha^2|x)-\left[E(\alpha|x)\right]^2
+\end{split}
+\end{equation}
+
+\noindent The Bayes posterior risk is obtained by taking the expectation of the precautionary loss function (PLF) as:
+
+\begin{equation}\label{prf2}
+\begin{split}
+E\left[\frac{(\hat{\alpha}-\alpha)^2}{\hat{\alpha}}\right]&=E\left[\frac{\hat{\alpha}^2-\alpha\hat{\alpha}+\alpha^2}{\hat{\alpha}}\right]\\
+substituting\ &\hat{\alpha}_{PLF} = \sqrt {E\left( {{\alpha^2}|x} \right)}\\
+E\left[ {\frac{{{{\left( {{\hat{\alpha}} - \alpha } \right)}^2}}}{{{\hat{\alpha}}}}} \right] &= \frac{{{{\left[ {\sqrt {E\left( {{\alpha ^2}} \right)} } \right]}^2} - 2\sqrt {E\left( {{\alpha ^2}} \right)} E\left( \alpha  \right) + E\left( {{\alpha ^2}} \right)}}{{\sqrt {E\left( {{\alpha ^2}} \right)} }}\\
+&= 2\sqrt {E\left( {{\alpha ^2}} \right)}  - 2E\left( \alpha  \right)\\
+Hence\ the\ &risk\ associated\ with\ the\ PLF\ is\ given\ as:\\
+{R_{PLF}} &= 2\left[ {\sqrt {E\left( {{\alpha ^2}} \right)}  - E\left( \alpha  \right)} \right] = 2\left[ {{\alpha _{PLF}} - E\left( {\alpha |x} \right)} \right]
+\end{split}
+\end{equation}
+
+\noindent The Bayes posterior risk is obtained by taking the expectation of the quadratic loss function (QLF) as:
+
+\[\begin{split}
+E\left[\left(\frac{\alpha-\hat{\alpha}}{\alpha}\right)^2\right]&=E\left[\frac{\alpha^2-2\alpha\hat{\alpha}+\hat{\alpha}^2}{\alpha^2}\right]\\
+&=E\left[1-2\alpha^{-1}\hat{\alpha}+\alpha^{-2}\hat{\alpha}^2\right]=1-2E(\alpha^{-1})\hat{\alpha}+E(\alpha^{-2})\hat{\alpha}^2\\
+substituting\ &\hat{\alpha}_{QLF} = \frac{E(\alpha^{-1}|x)}{E(\alpha^{-2}|x)}\\
+&=1-2E(\alpha^{-1})\frac{E(\alpha^{-1}|x)}{E(\alpha^{-2}|x)}+E(\alpha^{-2})\left[\frac{E(\alpha^{-1}|x)}{E(\alpha^{-2}|x)}\right]^2\\
+\end{split}\]
+\begin{equation}\label{prf3}
+\begin{split}
+&=1-2\frac{[E(\alpha^{-1}|x)]^2}{E(\alpha^{-2}|x)}+\frac{[E(\alpha^{-1}|x)]^2}{E(\alpha^{-2}|x)}\\
+Hence\ the\ &risk\ associated\ with\ the\ QLF\ is\ given\ as:\\
+R_{QLF} &= 1-\frac{[E(\alpha^{-1}|x)]^2}{E(\alpha^{-2}|x)}
+\end{split}
+\end{equation}
+\subsection{Posterior Risks Under The Non-Informative Prior}
+\noindent\para From equation (\ref{prf1}), (\ref{prf2}) and (\ref{prf3}) we can compute the posterior risk for the shape parameter of the Exponentiated Inverse Rayleigh distribution when the Jeffrey's prior is used. The posterior risk under the non-informative prior (ie Jeffrey's) is said to be given as:  
+\begin{equation}\label{prj}
+\begin{split}
+R_{SELF}&=E(\alpha^2)-\left[E(\alpha)\right]^2=E(\alpha^2|x)-\left[E(\alpha|x)\right]^2\\
+R_{PLF} &= 2\left[ {\sqrt {E\left( {{\alpha ^2}} \right)}  - E\left( \alpha  \right)} \right] = 2\left[ {{\alpha _{PLF}} - E\left( {\alpha |x} \right)} \right]\\
+R_{QLF} &= 1-\frac{[E(\alpha^{-1}|x)]^2}{E(\alpha^{-2}|x)}
+\end{split}
+\end{equation}
+\noindent Where $E(\alpha|x)$ is  the posterior mean of the posterior distribution assuming a Jeffrey's prior given in equation (\ref{pm1}), the $E(\alpha^2)$ and $\alpha_{PLF}$ are given as:
+\begin{equation}\label{a}
+\begin{split}
+&E(\alpha^2)=\frac{(n+1)n\Gamma(n)}{\left[\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]^2\Gamma(n)}=\frac{(n+1)n}{\left[\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]^2}\\
+\\
+&\alpha _{PLF}=\sqrt {E\left( {{\alpha ^2}} \right)}=\frac{\sqrt{(n+1)n}}{\left[\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]^2}\\
+and&\\
+&\alpha_{JQLF}=1-\frac{[E(\alpha^{-1}|x)]^2}{E(\alpha^{-2}|x)}=1-\frac{\left(\frac{W}{n-1}\right)^2}{\frac{W^2}{(n-1)(n-2)}}\\
+&\qquad\qquad=\frac{1}{n-1}
+\end{split}
+\end{equation}
+
+\noindent (See equation (\ref{3.30}) to (\ref{3.31b})).\\
+From equation (\ref{a}), we can obtain:
+\begin{equation}\label{rselfj}
+\begin{split}
+R_{JSELF}&=E(\alpha^2|x)-\left[E(\alpha|x)\right]^2\\
+&=\frac{(n+1)n}{\left[\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]^2}-\left[\frac{n}{\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}\right]^2\\
+&=\frac{(n+1)n-n^2}{\left[\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]^2}=\frac{n}{\left[\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]^2}
+\end{split}
+\end{equation}
+and
+\begin{equation}\label{rplfj}
+\begin{split}
+R_{JPLF}&= 2\left[ {{\alpha _{PLF}} - E\left( {\alpha |x} \right)} \right]\\
+&= 2\left[ {{\frac{\sqrt{(n+1)n}}{\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}} - \frac{n}{\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}} \right]\\
+&=2\left[\frac{\sqrt{(n+1)n}-n}{\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}\right]
+\end{split}
+\end{equation}
+Similarly
+\begin{equation}\label{rqlfj}
+\begin{split}
+R_{JQLF}&= 1-\frac{[E(\alpha^{-1}|x)]^2}{E(\alpha^{-2}|x)}\\
+&=\frac{1}{n-1} \ \ \ which \ is \ solely \ dependent\ on \ the \ sample \ size
+\end{split}
+\end{equation}
+
+\subsection{Posterior Risks Under The Informative Prior}
+\noindent\para From equation (\ref{prf1}), (\ref{prf2}) and (\ref{prf3}) we can compute the posterior risk for the shape parameter of the Exponentiated Inverse Rayleigh distribution when the Gamma's prior is used. The posterior risk under the informative prior (ie Gamma's) is said to be given as follows:\\
+
+\begin{equation}\label{prg}
+\begin{split}
+R_{SELF}&=E(\alpha^2)-\left[E(\alpha)\right]^2=E(\alpha^2|x)-\left[E(\alpha|x)\right]^2\\
+R_{PLF} &= 2\left[ {\sqrt {E\left( {{\alpha ^2}} \right)}  - E\left( \alpha  \right)} \right] = 2\left[ {{\alpha _{PLF}} - E\left( {\alpha |x} \right)} \right]\\
+R_{QLF} &= 1-\frac{[E(\alpha^{-1}|x)]^2}{E(\alpha^{-2}|x)}
+\end{split}
+\end{equation}
+Where $E(\alpha|x)$ is  the posterior mean of the posterior distribution assuming a Gamma's prior given in equation (\ref{pm2}), the $E(\alpha^2)$ and $\alpha _{PLF}$ are given as:
+
+\begin{equation}\label{b}
+\begin{split}
+&E(\alpha^2)=\frac{(n+a+1)(n+a)}{\left[b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]^2}\\
+and&\\
+&\alpha _{PLF}=\sqrt {E\left( {{\alpha ^2}} \right)}=\frac{\sqrt{(n+a)(n+a+1)}}{\left[b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]}\\
+also&\\
+&\alpha_{QLF}=1-\frac{[E(\alpha^{-1}|x)]^2}{E(\alpha^{-2}|x)}=1-\frac{\left(\frac{M}{n+a-1}\right)^2}{\frac{M^2}{(n+a-1)(n+a-2)}}\\
+&\qquad=\frac{1}{n+a-1}
+\end{split}
+\end{equation}
+(see equation (\ref{3.67}) to (\ref{pstb})).\\
+From equation (\ref{b}) above we can say that:
+
+\begin{equation}\label{rselfg}
+\begin{split}
+R_{GSELF}&=E(\alpha^2|x)-\left[E(\alpha|x)\right]^2\\
+&=\frac{(n+a+1)(n+a)}{\left[b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]^2}-\left[\frac{n+a}{\left(b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)}\right]^2\\
+&=\frac{(n+a+1)(n+a)-(n+a)^2}{\left[b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]^2}=\frac{n^2+2na+a^2+n+a-n^2-2na-a^2}{\left[b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]^2}\\
+&=\frac{n+a}{\left[b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]^2}
+\end{split}
+\end{equation}
+and
+\begin{equation}\label{rplfg}
+\begin{split}
+R_{GPLF}&= 2\left[ {{\alpha _{PLF}} - E\left( {\alpha |x} \right)} \right]\\
+&= 2\left[ {\frac{\sqrt{(n+a)(n+a+1)}}{\left[b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right]} - \frac{n+a}{\left(b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)}} \right]\\
+&=2\left[\frac{\sqrt{(n+a)(n+a+1)}-(n+a)}{\left(b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)}\right]
+\end{split}
+\end{equation}
+Similarly
+\begin{equation}\label{rqlfg}
+\begin{split}
+R_{GQLF}&= 1-\frac{[E(\alpha^{-1}|x)]^2}{E(\alpha^{-2}|x)}\\
+&=\frac{1}{n+a-1} \\
+ which \ is &\ solely \ dependent\ on \ the \ sample \ size \ and\ the \ value \ of \ \textbf{a}\  from \ the\ informative\ prior
+\end{split}
+\end{equation}
+\section{Bayesian credible interval}
+\para A credible interval is an interval in which the domain of a posterior distribution is easily found. If $P(\alpha|X)$ is the posterior distribution of a parameter $\alpha$, unlike the classical confidence interval which treats the parameter as fixed and the bounds as a random variable, the Bayesian interval treats the parameter as a random variable and the bounds as fixed. This interval is dependent on the prior distribution. The Bayesians' do however say with a certain certainty which is expressed as a probability that they are sure of having any estimate of interest within any particular credible interval constructed for such parameter, a Bayesian credible interval of size $1-\alpha^*$ of a parameter $\alpha$ is an interval (a,b) such that:
+
+\begin{equation}\label{crd1a}
+P(a\le\alpha\le b|X)=1-\alpha^*	
+\end{equation}
+\noindent and is obtained as
+\begin{equation}\label{credinta}
+\int\limits_{a}^{b}P(\alpha)d\alpha=1-\alpha^*
+\end{equation}
+\noindent when we substitute the expression of $P(\alpha)d\alpha$ from equation (\ref{3.20}) and (\ref{3.25}) in equation (\ref{credinta}), we can then obtain the posterior probability of the interval for the informative and non-informative priors respectively i.e. (c. \citep{BAEBMFDA})
+\begin{equation}\label{credintajeffery}
+P(a\le\alpha\le b|X)=\int\limits_a^b \frac{\alpha^{n-1}\left(\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)^n e^{-\alpha\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}}}{\Gamma(n)}d\alpha
+\end{equation}
+
+\begin{equation}\label{creditagamma}
+P(a\le\alpha\le b|X)=\int\limits_a^b\frac{\alpha^{n+a-1}\left(b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)^{n+a}e^{-\alpha\left(b+\sum\limits_{ i=1 }^{n}ln\left(1-e^{-\left(\frac{\sigma}{x_i}\right)^2}\right)^{-1}\right)}} {\Gamma(n+a)}d\alpha
+\end{equation}
+Due to the mathematical complexities associated with the integration of the above functions, we applied the Metropolis algorithm technique in order to obtain the credible interval.
+\subsection{Metropolis Algorithm.}
+\noindent\para In statistics, Metropolis algorithm is a Markov chain Monte Carlo technique. It was introduced by Metropolis \textit{et al.} (1953) and further worked on by \cite{hastings} to assume a higher generic level. The importance of Metropolis algorithm in the field of statistics cannot be overstated. It has contributed to statistical advancement as equations and fields previously avoided can now be solved and explored respectively. Its uses goes across solving difficult/complex integrals, sampling from distributions where the exact probability is unknown and computing expectations of complex equations etc. This technique can be classified as a numerical one for it overcomes the theoretical challenges such as involves the finding of solutions, instead, it generates estimates of interests over several trials which is associated with the Monte Carlo methods.
+\subsection{Principles of Metropolis-Hastings MCMC}
+\noindent\para In order to achieve its purpose the following simplified principles are followed;
+\begin{enumerate}
+\item Since it is easy at any point to obtain 
+\[posterior\ distribution \propto likelihood\ function \times prior\ distribution\]
+the posterior probability of any value of the parameter of interest. We define the likelihood function and the prior function to obtain the posterior function which we have established in equations (\ref{3.4}), (\ref{3.13}) and (\ref{3.16})
+\item Establish a proposal function that will randomly assume the estimate of the parameter of interest
+\item For each estimate assumed, the posterior probability is obtained.
+\item Decide whether the estimate obtained should be accepted or rejected based on the acceptance probability which expressed as:
+\[acceptance \ probability=\frac{prob(proposed\ estimate)}{prob(previous\ estimate)}\]
+if the value of the probability is greater than 1, accept the proposed value otherwise reject and retain the previous value, also note that the first value is arbitrarily picked.
+\item Repeat this process as many times as would seem appropriate by the researcher, the first few estimates from the iteration should be eliminated as warm-up(burn-in) as it may be further off from the true value.
+\end{enumerate} 
+\noindent\para With this principle, we write a code to obtain the credible interval for the shape parameter of the EIRD using R statistical package.
+
+\subsection{Order Statistic Estimator}
+\noindent\para According to Chen \textit{et al.} (2000) ``assuming that an MCMC sample, \{$\theta_i$, i = 1,2, ... ,n\}, is available from the marginal posterior distribution $\pi(\theta|D)$. Then the order statistics estimator of a 100(1 - $\alpha^*$)\% Bayesian credible interval is given by
+\begin{equation}\label{OSE}
+	(\theta_{([(\alpha^*/2)n])},\theta_{([(1-\alpha^*/2)n])})
+\end{equation}
+where $\theta_{([(\alpha^*/2)n])}$ and $\theta_{([(1-\alpha^*/2)n])}$ are the $[(\alpha^*/2)n]^{th}$ smallest and $[(1-\alpha^*/2)n]^{th}$ smallest of $\{\theta_i\}$, respectively. Here, $[(\alpha^*/2)n]$ and $[(1 - \alpha^*/2)n]$ are the integer parts of $(\alpha^*/2)n$ and $(1 - \alpha^*/2)n$."
+
+\noindent\para Similarly, after obtaining the MCMC sample of the marginal posterior distribution from the subsection above we will use this Order statistic estimator to obtain our Bayesian credible intervals and in this study our level of significance (i.e. $\alpha^*$) will be fixed at 0.10 so as to obtain a 90\% Bayesian credible interval for the shape parameter of the EIRD $\alpha$. The steps are as follows:
+\begin{enumerate}
+\item Obtain a MCMC sample \{$\alpha_i|i=1,2,...,n$\} from $P(\alpha|x)$
+\item Sort the sample i.e. \{$\alpha_i|i=1,2,...,n$\} and obtain the ordered value.
+\[\alpha_{(1)}\le\alpha_{(2)}\le . . .\le \alpha_{(n)}\]
+\item Compute the 100(1-$\alpha^*$)\% credible interval given by equation (\ref{OSE})
+\end{enumerate}
+\section{Simulation Study}
+\noindent\para In this dissertation, the R statistical software was used to generate random numbers from the Exponentiated Inverse Rayleigh distribution (EIRD) using the quantile function of the distribution. Different values were assigned to the shape parameters while the scale parameter was fixed to access the performance of the estimators.\\
+The quantile function is derived by inverting the cdf of any given continuous probability distribution. \cite{Hyndman1996} defined the quantile function for any distribution in the form
+
+\begin{equation}
+Q(u) = F^{-1}(u)
+\end{equation}  
+where Q(u) is the quantile function of F(x) for  0 $<$ u $<$ 1\\
+
+Taking F(x) to be the cdf of the Exponentiated Inverse Rayleigh distribution (EIRD) and inverting it as above, gives us the quantile function which can be expressed as:
+
+Inverting F(x)=u
+\begin{equation}\label{Fx}
+F(x)=1-(1-e^{-(\frac{\sigma}{x})^2})^\alpha=u 
+\end{equation}
+Simplifying equation (\ref{Fx}) above and making x the subject of the formula, we obtained:
+\begin{equation}
+\begin{split}
+1-u&=1-\left[1-\left(1-e^{\left(\frac{\sigma}{x}\right)^2}\right)^\alpha\right]\\
+&=\left(1-e^{\left(\frac{\sigma}{x}\right)^2}\right)^\alpha\\
+\implies(1-u)^{1/\alpha}&=1-e^{\left(\frac{\sigma}{x}\right)^2}\\
+-e^{\left(\frac{\sigma}{x}\right)^2}&=1-(1-u)^{1/\alpha}\\
+\implies \left(\frac{\sigma}{x}\right)^2&=-ln(1-(1-u)^{1/\alpha})\\
+\frac{\sigma}{x}&=\sqrt{-ln(1-(1-u)^{1/\alpha})}\\
+x&=\frac{\sigma}{\sqrt{-ln(1-(1-u)^{1/\alpha})}}
+\end{split}\label{quantilefn}
+\end{equation}
+
+
+\noindent\para The Maximum Likelihood estimates, Bayesian estimates and posterior risks were obtained under a reasonably high number of replications. Different sample sizes were used to investigate the performance of the estimators in relation to their biases and mean squared errors, as well as, the sample sizes. \\
+The performances of the two methods were evaluated using the following performance measures:
+\begin{equation}\label{Bias}
+Bias = \left| \frac{1}{N}\sum\limits_{i=1}^n \hat{\alpha}_i-\alpha\right|
+\end{equation}
+and
+\begin{equation}\label{(MSE)}
+Mean\ Square\ Error\ (MSE)= \frac{1}{N}\sum\limits_{ i=1 }^{n}(\hat{\alpha}-\alpha)^2 
+\end{equation}
+
+\noindent\para Under the assumption of the central limit theorem, $\hat{\alpha}_i$ is the computed value of the parameter of interest from the $i^{th}$ simulated sample from the Exponentiated Inverse Rayleigh distribution (EIRD) with shape parameter $\alpha$ and scale parameter $\sigma$ and N is the number of Monte Carlo simulations. The basis for comparison is that the estimator with the lowest bias MSE and posterior risk will be considered as the best. 
+
+\newpage
+\chapter{RESULTS AND DISCUSSION}
+\para In this chapter, numerical results which were obtained through simulations (following the Monte Carlo methods) are presented and discussed. This results aided us in the comparative assessments of the estimators discussed in the previous chapter. An appropriate simulation was set up to carry out this study at different samples sizes (ie 10, 20, 30, 40, 60, 95, 125, 150, 170, and 195) for different values of the shape parameter $\alpha$; (ie 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4), while fixing the scale parameter (at 1 precisely). The comparison was done by obtaining the corresponding mean square errors, biases and posterior risks where available for the estimates. The plots of the estimates and the credible intervals was also obtained, the simulation was done with the aid of R statistical package and the codes that was composed to attain this results can be seen in the appendix alongside the trace plots.\\
+
+\singlespacing
+\noindent{\textbf{Figure 4.1: The probability density plot for the Exponentiated Inverse Rayleigh Distribution at different values of $\alpha$ when $\sigma$}=1}\\
+\begin{minipage}{\linewidth}
+	\makebox[\linewidth]{
+		\includegraphics[keepaspectratio=true, scale=0.7]{shape}}
+	\noindent	\addcontentsline{lof}{figure}{Figure 4.1: The probability density plot for the Exponentiated Inverse Rayleigh Distribution at different values of $\alpha$ when $\sigma$=1}
+\end{minipage}
+
+
+
+\newpage
+\newgeometry{top=2.5cm,bottom=2.5cm,left=2cm,right=1cm}
+
+{\noindent{\small\textbf{Table 4.1: Estimators, their estimates, biases, mean square errors and posterior risks based on the sample sizes when $\alpha=0.5$ and $\sigma=1$}}}\\
+
+\begin{minipage}{\linewidth}
+	\small	\makebox[\linewidth]{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|}\hline
+			\LCC
+			\lightgray & & \lightgray & &  & &\lightgray & \lightgray&\lightgray \\
+			Sample size (n)&Measure &MLE          & JSELF          &  JPLF       &	JQLF	&   GSELF        & GPLF    &	GQLF	\\ \hline
+			10&				Estimates     & 0.5508 &0.5508 &0.5776 &0.4406 &0.6991 &0.6754 &0.6059 \\
+			&Bias          & 0.0508 &0.0508 &0.0776 &0.0594 &0.1991 &0.1754 &0.1059 \\
+			&MSE            &0.0400 &0.0400 &0.0472 &0.0275 &0.0797 &0.0681 &0.0413 \\ 
+			&Posterior risk  & NA &0.0348 &0.0543 &0.1111 &0.0359 &0.0462 &0.0714 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			20&				Estimates      &0.5233 &0.5233 &0.5362 &0.4709 &0.6043 &0.5921 &0.5559 \\ 
+			&			Bias           &0.0233 &0.0233 &0.0362 &0.0291 &0.1043 &0.0921 &0.0559 \\
+			&			MSE           & 0.0155 &0.0155 &0.0170 &0.0129 &0.0276 &0.0245 &0.0173 \\
+			&			Posterior risk &    NA &0.0147 &0.0261 &0.0526 &0.0155 &0.0241 &0.0417 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			30&				Estimates      &0.5164 &0.5164 &0.5250 &0.4820 &0.5720 &0.5638 &0.5393 \\
+			&			Bias           &0.0164 &0.0164 &0.0250 &0.0180 &0.0720 &0.0638 &0.0393 \\
+			&			MSE            &0.0096 &0.0096 &0.0103 &0.0084 &0.0154 &0.0140 &0.0107 \\
+			&			Posterior risk   &NA &0.0092 &0.0170 &0.0345 &0.0096 &0.0162 &0.0294 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			40&				Estimates      &0.5127 &0.5127 &0.5191 &0.4871 &0.5549 &0.5487 &0.5303 \\
+			&			Bias           &0.0127 &0.0127 &0.0191 &0.0129 &0.0549 &0.0487 &0.0303 \\
+			&			MSE            &0.0071 &0.0071 &0.0075 &0.0065 &0.0105 &0.0097 &0.0078 \\
+			&			Posterior risk   &NA &0.0067 &0.0127 &0.0256 &0.0070 &0.0123 &0.0227 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			60&			Estimates          &0.5083 &0.5083 &0.5125 &0.4913 &0.5368 &0.5326 &0.5203 \\
+			&				Bias        &   0.0083 &0.0083 &0.0125 &0.0087 &0.0368 &0.0326 &0.0203 \\
+			&				MSE          &  0.0045 &0.0045 &0.0047 &0.0042 &0.0060 &0.0057 &0.0048 \\
+			&				Posterior risk&     NA &0.0044 &0.0085 &0.0169 &0.0045 &0.0082 &0.0156 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			95&				Estimates      &0.5049 &0.5049 &0.5075 &0.4942 &0.5230 &0.5204 &0.5126 \\
+			&				Bias           &0.0049 &0.0049 &0.0075 &0.0058 &0.0230 &0.0204 &0.0126 \\
+			&				MSE            &0.0027 &0.0027 &0.0028 &0.0026 &0.0033 &0.0032 &0.0029 \\
+			&				Posterior risk   &NA &0.0027 &0.0053 &0.0106 &0.0028 &0.0052 &0.0101 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			125&			Estimates      &0.5040 &0.5040 &0.5060 &0.4959 &0.5178 &0.5158 &0.5099 \\
+			&			Bias           &0.0040 &0.0040 &0.0060 &0.0041 &0.0178 &0.0158 &0.0099 \\
+			&			MSE            &0.0021 &0.0021 &0.0021 &0.0020 &0.0025 &0.0024 &0.0022 \\
+			&			Posterior risk   &NA &0.0020 &0.0040 &0.0081 &0.0021 &0.0040 &0.0078 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			150&			Estimates      &0.5030 &0.5030 &0.5046 &0.4963 &0.5145 &0.5129 &0.5079 \\
+			&				Bias           &0.0030 &0.0030 &0.0046 &0.0037 &0.0145 &0.0129 &0.0079 \\
+			&				MSE            &0.0017 &0.0017 &0.0018 &0.0017 &0.0020 &0.0019 &0.0018 \\
+			&				Posterior risk   &NA &0.0017 &0.0034 &0.0067 &0.0017 &0.0033 &0.0065 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			170&			Estimates      &0.5028 &0.5028 &0.5043 &0.4969 &0.5130 &0.5116 &0.5072 \\
+			&				Bias           &0.0028& 0.0028 &0.0043 &0.0031 &0.0130 &0.0116 &0.0072 \\
+			&				MSE            &0.0015 &0.0015 &0.0015 &0.0015 &0.0017 &0.0017 &0.0015 \\
+			&				Posterior risk   &NA &0.0015 &0.0030 &0.0059 &0.0015 &0.0029 &0.0057 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			195&				Estimates    &  0.5023 &0.5023 &0.5036 &0.4971 &0.5112 &0.5099 &0.5061 \\
+			&				Bias           &0.0023 &0.0023 &0.0036 &0.0029 &0.0112 &0.0099 &0.0061 \\
+			&				MSE            &0.0013 &0.0013 &0.0013 &0.0013 &0.0014 &0.0014 &0.0013 \\
+			&				Posterior risk   &NA& 0.0013 &0.0026 &0.0052 &0.0013 &0.0026 &0.0050 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			\ECC
+		\end{tabular}
+	}
+	\addcontentsline{lot}{table}{Table 4.1: Estimators, their estimates, biases, mean square errors and posterior risks based on the sample sizes when $\alpha=0.5$ and $\sigma=1$}
+\end{minipage}
+
+\newpage
+
+{\noindent {\small\textbf{Table 4.2: Credible interval for $\alpha$=0.5 assuming Jeffreys prior.}}}\vspace{1cm}\\
+\begin{minipage}{\linewidth}
+	\makebox[\linewidth]{
+		% Table generated by Excel2LaTeX from sheet 'Sheet1'
+		\begin{tabular}{|c|c|c|c|c|}\hline
+	Credible		&\multicolumn{2}{|c|}{Jeffrey prior}&\multicolumn{2}{|c|}{gamma prior}\\\cline{2-5}
+	Interval	&   lower    &      upper	&   lower    &      upper \\			\hline
+at n=10    &  0.0170973 &   1.472473 & 0.4270119 &0.6004871 \\
+\hline
+at n=20    &  0.0013721 &   1.466642 &  0.4601677& 0.5946802 \\
+\hline
+at n=30    &  0.0224642 &   1.429137 & 0.3970086& 0.5302054 \\
+\hline
+at n=40   &  0.0213099 &   1.461115 &  0.4028659& 0.5987578 \\
+\hline
+at n=60   &  0.0206897 &   1.507197 &  0.4054002& 0.5938902 \\
+\hline
+at n=95 &  -0.079851 &   1.496973 &  0.4001242 &0.5952145 \\
+\hline
+at n=125 &  -0.047736 &   1.456349 & 0.4023712 &0.5940965 \\
+\hline
+at n=150  &  0.0158412 &   1.465951 & 0.3997494& 0.6011401 \\
+\hline
+at n=170  &  0.0267124 &   1.434127 &  0.4044946& 0.5951787 \\
+\hline
+at n=195  &  -0.050627 &    1.42773 &  0.3989025& 0.5948398 \\
+\hline
+
+		\end{tabular}  
+	}	\addcontentsline{lot}{table}{Table 4.2: Credible interval for $\alpha$=0.5 assuming Jeffreys prior.}
+\end{minipage}
+\\\vspace{1cm}
+
+{\normalfont\indent Table 4.1, shows that when the true value of the shape parameter is 0.5, at sample size 10, the best Bayes’ estimator is the JSELF, for it gives the closest estimate to the true values when the bias is taken into consideration followed by the JQLF, JPLF, GQLF, GPLF and finally the GSELF. But when the MSE is considered, the JQLF has the least MSE, followed by JSELF, GQLF, JPLF, GPLF and finally GSELF. In terms of the posterior risk the JSELF has the least posterior risk value followed by the GSELF, the GPLF, the JPLF, GQLF and finally the JQLF.
+As the sample size gets larger the estimates gets closer to the true value and the MSE. The bias and the posterior risk reduces with increase in the sample size. When we compared the Bayes’ estimates to that from the classical estimator MLE, we observed that the MLE and the JSELF have exactly the same results, as shown from the results of their estimators.\\
+}
+\newpage
+\noindent \textbf{Table 4.3: Estimators, their estimates, biases, mean square errors and posterior risks based on the sample sizes when $\alpha=1$ and $\sigma=1$}\vspace{1cm}\\
+\begin{minipage}{\linewidth}
+	\small	\makebox[\linewidth]{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|}\hline
+			\LCC
+			\lightgray & & \lightgray & &  & &\lightgray & \lightgray&\lightgray \\
+			Sample size (n)&Measure &MLE          & JSELF          &  JPLF       &	JQLF	&   GSELF        & GPLF    &	GQLF	\\ \hline
+			10&				Estimates      &1.1015 &1.1015 &1.1553 &0.8812 &1.2162 &1.1749 &1.0540 \\
+			&				Bias           &0.1015 &0.1015 &0.1553 &0.1188 &0.2162 &0.1749 &0.0540 \\
+			&				MSE            &0.1601 &0.1601 &0.1889 &0.1100 &0.1358 &0.1137 &0.0698 \\
+			&				Posterior risk    &NA &0.1392 &0.1086 &0.1111 &0.1061 &0.0803 &0.0714 \\ \hline
+			%&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			20&				Estimates      &1.0465 &1.0465 &1.0724 &0.9419 &1.1236 &1.1009 &1.0337 \\
+			&			Bias           &0.0465 &0.0465 &0.0724 &0.0581 &0.1236 &0.1009 &0.0337 \\
+			&			MSE            &0.0619 &0.0619 &0.0680 &0.0518 &0.0646 &0.0576 &0.0429 \\
+			&	Posterior risk    &NA &0.0589 &0.0521 &0.0526 &0.0533 &0.0448 &0.0417 \\ \hline
+			%			&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			30&				Estimates      &1.0329 &1.0329 &1.0500 &0.9640 &1.0890 &1.0733 &1.0268 \\
+			&Bias           &0.0329 &0.0329 &0.0500 &0.0360 &0.0890 &0.0733 &0.0268 \\
+			&MSE            &0.0384 &0.0384 &0.0411 &0.0338 &0.0415 &0.0380 &0.0306 \\
+			&Posterior risk    &NA &0.0367 &0.0341 &0.0345 &0.0347 &0.0309 &0.0294 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			40&				Estimates      &1.0254 &1.0254 &1.0382 &0.9742 &1.0694 &1.0574 &1.0218 \\
+			&Bias           &0.0254 &0.0254 &0.0382 &0.0258 &0.0694 &0.0574 &0.0218 \\
+			&MSE            &0.0285 &0.0285 &0.0300 &0.0258 &0.0307 &0.0286 &0.0241 \\
+			&Posterior risk    &NA &0.0270 &0.0255 &0.0256 &0.0260 &0.0236 &0.0227 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			60&				Estimates      &1.0166 &1.0166 &1.0250 &0.9827 &1.0472 &1.0391 &1.0150 \\
+			&Bias           &0.0166 &0.0166 &0.0250 &0.0173 &0.0472 &0.0391 &0.0150 \\
+			&MSE            &0.0180 &0.0180 &0.0186 &0.0168 &0.0191 &0.0182 &0.0161 \\
+			&Posterior risk    &NA &0.0176 &0.0169 &0.0169 &0.0172 &0.0161 &0.0156 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			95&Estimates      &1.0098 &1.0098 &1.0151 &0.9885 &1.0297 &1.0246 &1.0091 \\
+			&Bias           &0.0098 &0.0098 &0.0151 &0.0115 &0.0297 &0.0246 &0.0091 \\
+			&MSE            &0.0109 &0.0109 &0.0112 &0.0105 &0.0115 &0.0111 &0.0102 \\
+			&Posterior risk    &NA &0.0109 &0.0106 &0.0106 &0.0107 &0.0103 &0.0101 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			125&Estimates      &1.0080 &1.0080 &1.0120 &0.9918 &1.0233 &1.0194 &1.0076 \\
+			&Bias           &0.0080 &0.0080 &0.0120 &0.0082 &0.0233 &0.0194 &0.0076 \\
+			&MSE            &0.0084 &0.0084 &0.0085 &0.0081 &0.0087 &0.0085 &0.0080 \\
+			&Posterior risk    &NA &0.0082 &0.0080 &0.0081 &0.0081 &0.0078 &0.0078 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			150&Estimates      &1.0059 &1.0059 &1.0093 &0.9925 &1.0188 &1.0155 &1.0057 \\
+			&Bias           &0.0059 &0.0059 &0.0093 &0.0075 &0.0188 &0.0155 &0.0057 \\
+			&MSE            &0.0070 &0.0070 &0.0071 &0.0068 &0.0072 &0.0070 &0.0067 \\
+			&Posterior risk    &NA &0.0068 &0.0067 &0.0067 &0.0068 &0.0066 &0.0065 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			170&Estimates      &1.0057 &1.0057 &1.0086 &0.9938 &1.0171 &1.0142 &1.0055 \\
+			&Bias           &0.0057 &0.0057 &0.0086 &0.0062 &0.0171 &0.0142 &0.0055 \\
+			&MSE            &0.0060 &0.0060 &0.0061 &0.0059 &0.0062 &0.0061 &0.0058 \\
+			&Posterior risk    &NA &0.0060 &0.0059 &0.0059 &0.0060 &0.0058 &0.0057 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			195				&Estimates      &1.0046 &1.0046 &1.0072 &0.9943 &1.0146 &1.0121 &1.0044 \\
+			&Bias           &0.0046 &0.0046 &0.0072 &0.0057 &0.0146 &0.0121 &0.0044 \\
+			&MSE            &0.0052 &0.0052 &0.0053 &0.0051 &0.0053 &0.0052 &0.0050 \\
+			&Posterior risk    &NA &0.0052 &0.0051 &0.0052 &0.0052 &0.0051 &0.0050 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			\ECC
+		\end{tabular}
+	}
+	\addcontentsline{lot}{table}{Table 4.3: Estimators, their estimates, biases, mean square errors and posterior risks based on the sample sizes when $\alpha=1$ and $\sigma=1$}
+\end{minipage}\vspace{1em}\\
+\newpage
+
+{\noindent {\small\textbf{Table 4.4: Credible interval for $\alpha$=1 assuming Jeffreys prior.}}\\\vspace{1cm}}
+
+\begin{minipage}{\linewidth}
+	\makebox[\linewidth]{
+		% Table generated by Excel2LaTeX from sheet 'Sheet1'
+		\begin{tabular}{|c|c|c|c|c|}\hline
+			Credible		&\multicolumn{2}{|c|}{Jeffrey prior}&\multicolumn{2}{|c|}{gamma prior}\\\cline{2-5}
+			Interval	&   lower    &      upper	&   lower    &      upper \\			\hline
+		at n=10    &  0.15114994& 1.955466 & 0.9616218& 1.099110 \\
+		\hline
+		at n=20    & 0.16093565& 1.917417 & 0.8970086 &1.030205 \\
+		\hline
+		at n=30    &  0.16010187& 1.979891 &   0.9048190& 1.034800 \\
+		\hline
+		at n=40   & 0.12935586 &1.950412 & 0.8970858& 1.035592 \\
+		\hline
+		at n=60   & 0.16950666 &1.964599 & 0.9581447& 1.089925 \\
+		\hline
+		at n=95 &  0.08152882& 1.972078 &  0.8983024& 1.100215 \\
+		\hline
+		at n=125 &  0.09100656& 1.957614 & 0.9001074& 1.103010 \\
+		\hline
+		at n=150  &  0.15778861 &1.965951 & 0.9024573& 1.097581 \\
+		\hline
+		at n=170  &  0.16916390& 1.842261 & 0.9631837& 1.098633 \\
+		\hline
+		at n=195  & 0.04904048& 1.908082 &  0.9053532& 1.032722 \\
+		\hline
+		
+		\end{tabular}  
+	}	\addcontentsline{lot}{table}{Table 4.4: Credible interval for $\alpha$=1 assuming Jeffreys prior.}
+\end{minipage}
+\\\vspace{1cm}
+
+\indent Table 4.3, the result shows that, when the true value of the shape parameter is 1, at sample size 10, the best Bayes’ estimator is GQLF, for it gives the closest estimate to the true values when the bias is taken into consideration followed by the JSELF, JQLF, JPLF, GPLF and finally the GSELF. But when the MSE is considered, the GQLF has the least MSE value, followed by the JQLF, GPLF, GSELF, JSELF and JPLF. But in terms of the posterior risk, the GQLF has the least posterior risk value, followed by the GPLF, GSELF, JPLF, JQLF and finally the JSELF.
+As the sample size gets larger the estimates gets closer to the true value and the MSE. The bias and the posterior risk reduces with increase in the sample size. When we compared the Bayes’ estimates to that from the classical estimator MLE, we observed that the MLE and the JSELF have exactly the same results, as shown from the results of their estimators.\\
+
+\newpage
+{\noindent{\small\textbf{Table 4.5: Estimators, their estimates, biases, mean square errors and posterior risks based on the sample sizes when $\alpha=1.5$ and $\sigma=1$}}} \vspace{1cm}\\
+
+\begin{minipage}{\linewidth}
+	\small	\makebox[\linewidth]{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|}\hline
+			\LCC
+			\lightgray & & \lightgray & &  & &\lightgray & \lightgray&\lightgray \\
+			Sample size (n)&Measure &MLE          & JSELF          &  JPLF       &	JQLF	&   GSELF        & GPLF    &	GQLF	\\ \hline
+			10&		Estimates      &1.6523 &1.6523 &1.7329 &1.3218 &1.6172 &1.5623 &1.4016 \\
+			&Bias           &0.1523 &0.1523 &0.2329 &0.1782 &0.1172 &0.0623 &0.0984 \\
+			&MSE            &0.3602 &0.3602 &0.4250 &0.2474 &0.1358 &0.1178 &0.1014 \\
+			&Posterior risk    &NA &0.3132 &0.1628 &0.1111 &0.1847 &0.1067 &0.0714 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			20&		Estimates      &1.5698 &1.5698 &1.6086 &1.4128 &1.5754 &1.5436 &1.4494 \\
+			&Bias           &0.0698 &0.0698 &0.1086 &0.0872 &0.0754 &0.0436 &0.0506 \\
+			&MSE            &0.1393 &0.1393 &0.1529 &0.1165 &0.0897 &0.0826 &0.0737 \\
+			&Posterior risk    &NA &0.1325 &0.0782 &0.0526 &0.1041 &0.0628 &0.0417 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			30&		Estimates      &1.5493 &1.5493 &1.5749 &1.4460 &1.5588 &1.5364 &1.4697 \\
+			&Bias           &0.0493 &0.0493 &0.0749 &0.0540 &0.0588 &0.0364 &0.0303 \\
+			&MSE            &0.0864 &0.0864 &0.0924 &0.0760 &0.0659 &0.0620 &0.0564 \\
+			&Posterior risk    &NA &0.0826 &0.0511 &0.0345 &0.0710 &0.0442 &0.0294 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			40&		Estimates      &1.5382 &1.5382 &1.5573 &1.4613 &1.5477 &1.5304 &1.4789 \\
+			&Bias           &0.0382 &0.0382 &0.0573 &0.0387 &0.0477 &0.0304 &0.0211 \\
+			&MSE            &0.0642 &0.0642 &0.0676 &0.0581 &0.0525 &0.0501 &0.0463 \\
+			&Posterior risk    &NA &0.0607 &0.0382 &0.0256 &0.0543 &0.0342 &0.0227 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			60&		Estimates      &1.5249 &1.5249 &1.5375 &1.4740 &1.5332 &1.5214 &1.4860 \\
+			&Bias           &0.0249 &0.0249 &0.0375 &0.0260 &0.0332 &0.0214 &0.0140 \\
+			&MSE            &0.0404 &0.0404 &0.0419 &0.0379 &0.0356 &0.0344 &0.0326 \\
+			&Posterior risk    &NA &0.0396 &0.0254 &0.0169 &0.0368 &0.0235 &0.0156 \\\hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			95&		Estimates      &1.5146 &1.5146 &1.5226 &1.4827 &1.5209 &1.5132 &1.4904 \\
+			&Bias           &0.0146 &0.0146 &0.0226 &0.0173 &0.0209 &0.0132 &0.0096 \\
+			&MSE            &0.0246 &0.0246 &0.0252 &0.0237 &0.0228 &0.0223 &0.0216 \\
+			&Posterior risk    &NA &0.0244 &0.0159 &0.0106 &0.0234 &0.0152 &0.0101 \\ \hline
+			%		&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			125&	Estimates      &1.5119 &1.5119 &1.5180 &1.4877 &1.5169 &1.5111 &1.4936 \\
+			&Bias           &0.0119 &0.0119 &0.0180 &0.0123 &0.0169 &0.0111 &0.0064 \\
+			&MSE            &0.0188 &0.0188 &0.0192 &0.0182 &0.0178 &0.0175 &0.0170 \\
+			&Posterior risk    &NA &0.0184 &0.0121 &0.0081 &0.0178 &0.0116 &0.0078 \\ \hline
+			%		&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			150&	Estimates      &1.5089 &1.5089 &1.5139 &1.4888 &1.5132 &1.5083 &1.4937 \\
+			&Bias           &0.0089 &0.0089 &0.0139 &0.0112 &0.0132 &0.0083 &0.0063 \\
+			&MSE            &0.0156 &0.0156 &0.0159 &0.0153 &0.0149 &0.0147 &0.0144 \\
+			&Posterior risk    &NA &0.0153 &0.0101 &0.0067 &0.0149 &0.0098 &0.0065 \\ \hline
+			%		&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			170&	Estimates      &1.5085 &1.5085 &1.5129 &1.4907 &1.5124 &1.5080 &1.4951 \\
+			&Bias           &0.0085 &0.0085 &0.0129 &0.0093 &0.0124 &0.0080 &0.0049 \\
+			&MSE            &0.0135 &0.0135 &0.0137 &0.0132 &0.0130 &0.0128 &0.0126 \\
+			&Posterior risk    &NA &0.0135 &0.0089 &0.0059 &0.0132 &0.0086 &0.0057 \\\hline
+			%		&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			195&	Estimates      &1.5069 &1.5069 &1.5107 &1.4914 &1.5103 &1.5066 &1.4952 \\
+			&Bias           &0.0069 &0.0069 &0.0107 &0.0086 &0.0103 &0.0066 &0.0048 \\
+			&MSE            &0.0117 &0.0117 &0.0118 &0.0115 &0.0113 &0.0112 &0.0110 \\
+			&Posterior risk    &NA &0.0117 &0.0077 &0.0052 &0.0114 &0.0075 &0.0050 \\ \hline
+			%		&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			\ECC
+		\end{tabular}
+	}
+	\addcontentsline{lot}{table}{Table 4.5: Estimators, their estimates, biases, mean square errors and posterior risks based on the sample sizes when $\alpha=1.5$ and $\sigma=1$}
+\end{minipage}
+\\
+\newpage
+
+{\noindent {\small\textbf{Table 4.6: Credible interval for $\alpha$=1.5 assuming Jeffreys prior.}}\\ \vspace{1cm}}
+
+\begin{minipage}{\linewidth}
+	\makebox[\linewidth]{
+		% Table generated by Excel2LaTeX from sheet 'Sheet1'
+		\begin{tabular}{|c|c|c|c|c|}\hline
+			Credible		&\multicolumn{2}{|c|}{Jeffrey prior}&\multicolumn{2}{|c|}{gamma prior}\\\cline{2-5}
+			Interval	&   lower    &      upper	&   lower    &      upper \\			\hline
+		at n=10    &  0.5125539& 2.482244 & 1.461622 &1.599110 \\
+		\hline
+		at n=20    & 0.5167120& 2.369841 &  1.397009& 1.530205 \\
+		\hline
+		at n=30    & 0.5808191& 2.470629 & 1.404819& 1.534800 \\
+		\hline
+		at n=40   & 0.5146394& 2.417183 & 1.397086& 1.535592 \\
+		\hline
+		at n=60   & 0.5689885& 2.444381 & 1.458145& 1.589925 \\
+		\hline
+		at n=95 & 0.5422223& 2.457797 & 1.397776& 1.600468 \\
+		\hline
+		at n=125 & 0.5659270 &2.464301 & 1.436576 &1.601565 \\
+		\hline
+		at n=150  & 0.5621860& 2.459774 & 1.402457& 1.597266 \\
+		\hline
+		at n=170  &  0.4902828& 2.342224 &  1.466769& 1.597013 \\
+		\hline
+		at n=195  & 0.5378482& 2.428442 & 1.405353& 1.532722 \\
+		\hline
+		
+		\end{tabular}  
+	}	\addcontentsline{lot}{table}{Table 4.6: Credible interval for $\alpha$=1.5 assuming Jeffreys prior.}
+\end{minipage}
+\\\vspace{1cm}
+
+\indent Table 4.5, shows that, when the true value of the shape parameter is 1.5, at sample size 10, the best Bayes’ estimator is the GPLF, for it gives the closest estimate to the true values when the bias is taken into consideration followed by GQLF, GSELF, JSELF, JQLF and finally JPLF. But when the MSE is considered, the GQLF has the least MSE value, followed by GPLF, GSELF, JQLF, JSELF and JPLF. But in terms of the posterior risk  the GQLF has the least posterior risk value followed by GPLF, JQELF, JPLF, GSELF and finally JSELF.
+As the sample size gets larger the estimates gets closer to the true value and the MSE. The bias and the posterior risk also reduces with increase in the sample size. When we compared the Bayes’ estimates to that from the classical estimator MLE, we observed that the MLE and the JSELF have exactly the same results, as shown from the results of their estimators.\\
+
+\newpage
+{\noindent{\small\textbf{Table 4.7: Estimators, their estimates, biases, mean square errors and posterior risks based on the sample sizes when $\alpha=2$ and $\sigma=1$}\\}}
+
+\begin{minipage}{\linewidth}
+	\small	\makebox[\linewidth]{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|}\hline
+			\LCC
+			\lightgray & & \lightgray & &  & &\lightgray & \lightgray&\lightgray \\
+			Sample size (n)&Measure &MLE          & JSELF          &  JPLF       &	JQLF	&   GSELF        & GPLF    &	GQLF	\\ \hline
+			10&		Estimates      &2.2030 &2.2030 &2.3106 &1.7624 &1.9385 &1.8728 &1.6800  \\
+			&Bias           &0.2030 &0.2030 &0.3106 &0.2376 &0.0615 &0.1272 &0.3200   \\
+			&MSE            &0.6404 &0.6404 &0.7555 &0.4399 &0.1446 &0.1476 &0.2082  \\
+			&Posterior risk    &NA &0.5569 &0.2171 &0.1111 &0.2627 &0.1278 &0.0714 \\ \hline
+			%		&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			20&		Estimates      &2.0931 &2.0931 &2.1447 &1.8838 &1.9723 &1.9324 &1.8145 \\
+			&Bias           &0.0931 &0.0931 &0.1447 &0.1162 &0.0277 &0.0676 &0.1855 \\
+			&MSE            &0.2476 &0.2476 &0.2718 &0.2070 &0.1162 &0.1154 &0.1321 \\
+			&Posterior risk    &NA &0.2355 &0.1043 &0.0526 &0.1623 &0.0786 &0.0417 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			30&		Estimates      &2.0658 &2.0658 &2.0999 &1.9281 &1.9877 &1.9591 &1.8741 \\
+			&Bias           &0.0658 &0.0658 &0.0999 &0.0719 &0.0123 &0.0409 &0.1259 \\
+			&MSE            &0.1536 &0.1536 &0.1642 &0.1352 &0.0928 &0.0917 &0.0982 \\
+			&Posterior risk    &NA &0.1468 &0.0682 &0.0345 &0.1152 &0.0563 &0.0294 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			40&		Estimates      &2.0509 &2.0509 &2.0764 &1.9483 &1.9936 &1.9713 &1.9050 \\
+			&Bias           &0.0509 &0.0509 &0.0764 &0.0517 &0.0064 &0.0287 &0.0950\\
+			&MSE            &0.1141 &0.1141 &0.1201 &0.1033 &0.0777 &0.0767 &0.0799\\
+			&Posterior risk    &NA &0.1079 &0.0509 &0.0256 &0.0900 &0.0440 &0.0227 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			60&		Estimates      &2.0332 &2.0332 &2.0500 &1.9654 &1.9965 &1.9811 &1.9351 \\
+			&Bias           &0.0332 &0.0332 &0.0500 &0.0346 &0.0035 &0.0189 &0.0649 \\
+			&MSE            &0.0718 &0.0718 &0.0744 &0.0673 &0.0557 &0.0552 &0.0565 \\
+			&Posterior risk    &NA &0.0703 &0.0338 &0.0169 &0.0624 &0.0306 &0.0156 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			95		&Estimates      &2.0195 &2.0195 &2.0301 &1.9770 &1.9972 &1.9871 &1.9572 \\
+			&Bias           &0.0195 &0.0195 &0.0301 &0.0230 &0.0028 &0.0129 &0.0428 \\
+			&MSE            &0.0438 &0.0438 &0.0448 &0.0421 &0.0374 &0.0372 &0.0377 \\
+			&Posterior risk    &NA &0.0435 &0.0212 &0.0106 &0.0403 &0.0199 &0.0101 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			125		&Estimates      &2.0159 &2.0159 &2.0240 &1.9837 &1.9991 &1.9914 &1.9683 \\
+			&Bias           &0.0159 &0.0159 &0.0240 &0.0163 &0.0009 &0.0086 &0.0317 \\
+			&MSE            &0.0335 &0.0335 &0.0341 &0.0324 &0.0297 &0.0295 &0.0298 \\
+			&Posterior risk    &NA &0.0327 &0.0161 &0.0081 &0.0309 &0.0153 &0.0078 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			150&	Estimates      &2.0119 &2.0119 &2.0186 &1.9850 &1.9980 &1.9916 &1.9722 \\
+			&Bias           &0.0119 &0.0119 &0.0186 &0.0150 &0.0020 &0.0084 &0.0278 \\
+			&MSE            &0.0278 &0.0278 &0.0282 &0.0272 &0.0252 &0.0251 &0.0253 \\
+			&Posterior risk    &NA &0.0272 &0.0134 &0.0067 &0.0260 &0.0129 &0.0065 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			170&	Estimates      &2.0113 &2.0113 &2.0172 &1.9876 &1.9991 &1.9934 &1.9763 \\
+			&Bias           &0.0113 &0.0113 &0.0172 &0.0124 &0.0009 &0.0066 &0.0237\\
+			&MSE            &0.0241 &0.0241 &0.0244 &0.0236 &0.0220 &0.0220 &0.0221 \\
+			&Posterior risk    &NA &0.0240 &0.0118 &0.0059 &0.0230 &0.0114 &0.0057 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			195&	Estimates      &2.0092 &2.0092 &2.0143 &1.9886 &1.9986 &1.9936 &1.9786 \\
+			&Bias           &0.0092 &0.0092 &0.0143 &0.0114 &0.0014 &0.0064 &0.0214 \\
+			&MSE            &0.0208 &0.0208 &0.0210 &0.0204 &0.0193 &0.0192 &0.0193 \\
+			&Posterior risk    &NA &0.0208 &0.0103 &0.0052 &0.0200 &0.0100 &0.0050 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			\ECC
+		\end{tabular}
+	}
+	\addcontentsline{lot}{table}{Table 4.7: Estimators, their estimates, biases, mean square errors and posterior risks based on the sample sizes when $\alpha=2$ and $\sigma=1$}
+\end{minipage}
+\newpage
+
+{\noindent {\small\textbf{Table 4.8: Credible interval for $\alpha$=2 assuming Jeffreys prior.}}\\ \vspace{1cm}}
+
+\begin{minipage}{\linewidth}
+	\makebox[\linewidth]{
+		% Table generated by Excel2LaTeX from sheet 'Sheet1'
+		\begin{tabular}{|c|c|c|c|c|}\hline
+			Credible		&\multicolumn{2}{|c|}{Jeffrey prior}&\multicolumn{2}{|c|}{gamma prior}\\\cline{2-5}
+			Interval	&   lower    &      upper	&   lower    &      upper \\			\hline
+		at n=10    & 0.9930977  &2.981529 & 1.961622 & 2.099110 \\
+		\hline
+		at n=20    &  1.0167120 & 2.843271 & 1.897009 & 2.030205 \\
+		\hline
+		at n=30    &  1.1155291 & 2.954348 & 1.904819 & 2.034800 \\
+		\hline
+		at n=40   &  1.0117858 & 2.920718 & 1.897086 & 2.035592 \\
+		\hline
+		at n=60   &  1.0307752 & 2.949711 &  1.958145  &2.089925 \\
+		\hline
+		at n=95 & 1.0508585 &2.959385 &  1.901006  &2.098566 \\
+		\hline
+		at n=125 & 1.0673617 & 2.953588 & 1.963753  &2.101565 \\
+		\hline
+		at n=150  &  1.0308913 & 2.942822 & 1.902749 & 2.099074 \\
+		\hline
+		at n=170  &  0.9816780  &2.877151 & 1.966769 & 2.097013 \\
+		\hline
+		at n=195  & 1.0386617 & 2.928442 & 1.905353 & 2.032722 \\
+		\hline
+					
+		\end{tabular}  
+	}	\addcontentsline{lot}{table}{Table 4.8: Credible interval for $\alpha$=2 assuming Jeffreys prior.}
+\end{minipage}
+\\ \vspace{1cm}
+
+
+\indent Table 4.7, shows that, when the true value of the shape parameter is 2, at sample size 10, the best Bayes’ estimator is the GSELF, for it gives the closest estimate to the true values when the bias is taken into consideration followed by the GPLF, JSELF, JQLF, JPLF and finally GQLF. But when the MSE is considered the GSELF, has the least MSE value followed by GPLF, GQLF, JQLF, JSELF and JPLF. But in terms of the posterior risk  the GQLF has the least posterior risk value followed by the JQLF, GPLF, JPLF, GSELF and finally JSELF.
+As the sample size gets larger the estimates gets closer to the true value and the MSE. The bias and the posterior risk reduces with increase in the sample size. When we compared the Bayes’ estimates to that from the classical estimator MLE, we observed that the MLE and the JSELF have exactly the same results, as shown from the results of their estimators.\\
+
+\newpage
+{\noindent{\small\textbf{Table 4.9: Estimators, their estimates, biases, mean square errors and posterior risks based on the sample sizes when $\alpha=2.5$ and $\sigma=1$}\\}
+	
+\begin{minipage}{\linewidth}
+	\small	\makebox[\linewidth]{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|}\hline
+			\LCC
+			\lightgray & & \lightgray & &  & &\lightgray & \lightgray&\lightgray \\
+			Sample size (n)&Measure &MLE          & JSELF          &  JPLF       &	JQLF	&   GSELF        & GPLF    &	GQLF	\\ \hline
+			10&		Estimates      &2.7538 &2.7538 &2.8882 &2.2030 &2.2024 &2.1277 &1.9087 \\
+			&Bias           &0.2538 &0.2538 &0.3882 &0.2970 &0.2976 &0.3723 &0.5913 \\
+			&MSE            &1.0006 &1.0006 &1.1805 &0.6874 &0.2383 &0.2784 &0.4621 \\
+			&Posterior risk    &NA &0.8701 &0.2714 &0.1111 &0.3365 &0.1451 &0.0714 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			20&		Estimates      &2.6163 &2.6163 &2.6809 &2.3547 &2.3240 &2.2771 &2.1381 \\
+			&Bias           &0.1163 &0.1163 &0.1809 &0.1453 &0.1760 &0.2229 &0.3619 \\
+			&MSE            &0.3868 &0.3868 &0.4247 &0.3235 &0.1728 &0.1859 &0.2510 \\
+			&Posterior risk    &NA &0.3680 &0.1303 &0.0526 &0.2244 &0.0926 &0.0417 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			30&		Estimates      &2.5822 &2.5822 &2.6249 &2.4101 &2.3810 &2.3467 &2.2449 \\
+			&Bias           &0.0822 &0.0822 &0.1249 &0.0899 &0.1190 &0.1533 &0.2551 \\
+			&MSE            &0.2400 &0.2400 &0.2566 &0.2112 &0.1361 &0.1419 &0.1734 \\
+			&Posterior risk    &NA &0.2294 &0.0852 &0.0345 &0.1650 &0.0675 &0.0294 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			40&		Estimates      &2.5636 &2.5636 &2.5955 &2.4354 &2.4104 &2.3835 &2.3033 \\
+			&Bias           &0.0636 &0.0636 &0.0955 &0.0646 &0.0896 &0.1165 &0.1967 \\
+			&MSE            &0.1783 &0.1783 &0.1877 &0.1614 &0.1139 &0.1171 &0.1354 \\
+			&Posterior risk    &NA &0.1686 &0.0637 &0.0256 &0.1314 &0.0533 &0.0227 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			60&		Estimates      &2.5415 &2.5415 &2.5625 &2.4567 &2.4387 &2.4198 &2.3636 \\
+			&Bias           &0.0415 &0.0415 &0.0625 &0.0433 &0.0613 &0.0802 &0.1364 \\
+			&MSE            &0.1122 &0.1122 &0.1163 &0.1052 &0.0830 &0.0845 &0.0930 \\
+		 	&Posterior risk    &NA &0.1099 &0.0423 &0.0169 &0.0930 &0.0374 &0.0156 \\\hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			95&		Estimates      &2.5244 &2.5244 &2.5376 &2.4712 &2.4593 &2.4469 &2.4101 \\
+			&Bias           &0.0244 &0.0244 &0.0376 &0.0288 &0.0407 &0.0531 &0.0899 \\
+			&MSE            &0.0684 &0.0684 &0.0699 &0.0658 &0.0566 &0.0572 &0.0609 \\
+			&Posterior risk    &NA &0.0679 &0.0265 &0.0106 &0.0611 &0.0245 &0.0101 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			125&	Estimates      &2.5199 &2.5199 &2.5299 &2.4796 &2.4701 &2.4606 &2.4321 \\
+			&Bias           &0.0199 &0.0199 &0.0299 &0.0204 &0.0299 &0.0394 &0.0679 \\
+			&MSE            &0.0523 &0.0523 &0.0532 &0.0507 &0.0451 &0.0454 &0.0475 \\
+			&Posterior risk    &NA &0.0511 &0.0201 &0.0081 &0.0472 &0.0189 &0.0078 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			150		&Estimates      &2.5148 &2.5148 &2.5232 &2.4813 &2.4734 &2.4655 &2.4415 \\
+			&Bias           &0.0148 &0.0148 &0.0232 &0.0187 &0.0266 &0.0345 &0.0585 \\
+			&MSE            &0.0435 &0.0435 &0.0441 &0.0424 &0.0385 &0.0388 &0.0403 \\
+			&Posterior risk    &NA &0.0426 &0.0168 &0.0067 &0.0398 &0.0160 &0.0065 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			170		&Estimates      &2.5141 &2.5141 &2.5215 &2.4846 &2.4775 &2.4704 &2.4492 \\
+			&Bias           &0.0141 &0.0141 &0.0215 &0.0154 &0.0225 &0.0296 &0.0508 \\
+			&MSE            &0.0376 &0.0376 &0.0381 &0.0368 &0.0338 &0.0340 &0.0351 \\
+			&Posterior risk    &NA &0.0375 &0.0148 &0.0059 &0.0354 &0.0142 &0.0057 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			195		&Estimates      &2.5115 &2.5115 &2.5179 &2.4857 &2.4796 &2.4734 &2.4548 \\
+			&Bias           &0.0115 &0.0115 &0.0179 &0.0143 &0.0204 &0.0266 &0.0452 \\
+			&MSE            &0.0325 &0.0325 &0.0328 &0.0319 &0.0296 &0.0298 &0.0307 \\
+			&Posterior risk    &NA &0.0325 &0.0129 &0.0052 &0.0308 &0.0124 &0.0050 \\ \hline
+			%				&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			\ECC
+		\end{tabular}
+	}
+	\addcontentsline{lot}{table}{Table 4.9: Estimators, their estimates, biases, mean square errors and posterior risks based on the sample sizes when $\alpha=2.5$ and $\sigma=1$}
+\end{minipage}
+\newpage
+
+{\noindent {\small\textbf{Table 4.10: Credible interval for $\alpha$=2.5 assuming Jeffreys prior.}}\\\vspace{1cm}}
+
+\begin{minipage}{\linewidth}
+	\makebox[\linewidth]{
+		% Table generated by Excel2LaTeX from sheet 'Sheet1'
+		\begin{tabular}{|c|c|c|c|c|}\hline
+			Credible		&\multicolumn{2}{|c|}{Jeffrey prior}&\multicolumn{2}{|c|}{gamma prior}\\\cline{2-5}
+			Interval	&   lower    &      upper	&   lower    &      upper \\			\hline
+			at n=10    &  1.493098 &3.481529 &  2.461622& 2.599110 \\
+			\hline
+			at n=20    & 1.504559& 3.231956 &   2.398059& 2.594927 \\
+			\hline
+			at n=30    &  1.668169 &3.454348 &  2.404819& 2.534800 \\
+			\hline
+			at n=40   &  1.521672 &3.420718 & 2.397086& 2.535592 \\
+			\hline
+			at n=60   &  1.530775 &3.473102 &   2.458145& 2.589925 \\
+			\hline
+			at n=95 & 1.550858 &3.459385 & 2.466515& 2.603178 \\
+			\hline
+			at n=125 &  1.567362 &3.469927 &  2.463244& 2.601553 \\
+			\hline
+			at n=150  & 1.530891& 3.471916 &  2.403369& 2.600764 \\
+			\hline
+			at n=170  &  1.481678& 3.377151 &  2.466769& 2.597013 \\
+			\hline
+			at n=195  &  1.538962& 3.437096 & 2.405353& 2.532722 \\
+			\hline
+			
+		\end{tabular}  
+	}	\addcontentsline{lot}{table}{Table 4.10: Credible interval for $\alpha$=2.5 assuming Jeffreys prior.}
+\end{minipage}
+\\\vspace{1cm}
+
+\indent Table 4.9, shows that, when the true value of the shape parameter is 2.5, at sample size 10, the best Bayes’ estimator is the JSELF, for it gives the closest estimate to the true values when the bias is taken into consideration followed by the JQLF, GSELF, GPLF, JPLF and finally GQLF. But when the MSE is considered, the GSELF has the least MSE value followed by GPLF, GQLF, JQLF, JSELF and JPLF. But in terms of the posterior risk, the GQLF has the least posterior risk value followed by the JQLF, the GPLF, the JPLF, the GSELF and finally the JSELF.
+As the sample size gets larger the estimates gets closer to the true value and the MSE. The bias and the posterior risk also reduces with increase in the sample size. When we compared the Bayes’ estimates to that from the classical estimator MLE, we observed that the MLE and the JSELF have exactly the same results, as shown from the results of their estimators.\\
+
+\newpage
+{\noindent\small\textbf{Table 4.11: Estimators, their estimates, biases, mean square errors and posterior risks based on the sample sizes when $\alpha=3$ and $\sigma=1$}\\}
+
+\begin{minipage}{\linewidth}
+	\small	\makebox[\linewidth]{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|}\hline
+			\LCC
+			\lightgray & & \lightgray & &  & &\lightgray & \lightgray&\lightgray \\
+			Sample size (n)&Measure &MLE          & JSELF          &  JPLF       &	JQLF	&   GSELF        & GPLF    &	GQLF	\\ \hline
+			10&		Estimates      &3.3045 &3.3045 &3.4658 &2.6436 &2.4234 &2.3412 &2.1002 \\
+			&Bias           &0.3045 &0.3045 &0.4658 &0.3564 &0.5766 &0.6588 &0.8998 \\
+			&MSE            &1.4409 &1.4409 &1.6999 &0.9898 &0.4849 &0.5763 &0.9240 \\
+			&Posterior risk    &NA &1.2529 &0.3257 &0.1111 &0.4051 &0.1596 &0.0714 \\ \hline
+			%	&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			20&		Estimates      &3.1396 &3.1396 &3.2171 &2.8256 &2.6380 &2.5847 &2.4270 \\
+			&Bias           &0.1396 &0.1396 &0.2171 &0.1744 &0.3620 &0.4153 &0.5730 \\
+			&MSE            &0.5571 &0.5571 &0.6116 &0.4658 &0.2940 &0.3289 &0.4663 \\
+			&Posterior risk    &NA &0.5299 &0.1564 &0.0526 &0.2881 &0.1050 &0.0417 \\ \hline
+			%	&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			30		&Estimates      &3.0987 &3.0987 &3.1499 &2.8921 &2.7429 &2.7034 &2.5861 \\
+			&Bias           &0.0987 &0.0987 &0.1499 &0.1079 &0.2571 &0.2966 &0.4139 \\
+			&MSE            &0.3455 &0.3455 &0.3695 &0.3042 &0.2150 &0.2326 &0.3036 \\
+			&Posterior risk    &NA &0.3303 &0.1023 &0.0345 &0.2187 &0.0777 &0.0294 \\ \hline
+			%	&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			40		&Estimates      &3.0763 &3.0763 &3.1146 &2.9225 &2.8009 &2.7696 &2.6764 \\
+			&Bias           &0.0763 &0.0763 &0.1146 &0.0775 &0.1991 &0.2304 &0.3236 \\
+			&MSE            &0.2567 &0.2567 &0.2703 &0.2325 &0.1735 &0.1839 &0.2269 \\
+			&Posterior risk    &NA &0.2428 &0.0764 &0.0256 &0.1773 &0.0619 &0.0227 \\ \hline
+			%	&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			65		&Estimates      &3.0497 &3.0497 &3.0751 &2.9481 &2.8612 &2.8391 &2.7731 \\
+			&Bias           &0.0497 &0.0497 &0.0751 &0.0519 &0.1388 &0.1609 &0.2269 \\
+			&MSE            &0.1616 &0.1616 &0.1675 &0.1514 &0.1234 &0.1285 &0.1493 \\
+			&Posterior risk    &NA &0.1582 &0.0507 &0.0169 &0.1279 &0.0439 &0.0156 \\ \hline
+			%	&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			95		&Estimates      &3.0293 &3.0293 &3.0452 &2.9655 &2.9078 &2.8933 &2.8497 \\
+			&Bias           &0.0293 &0.0293 &0.0452 &0.0345 &0.0922 &0.1067 &0.1503 \\
+			&MSE            &0.0985 &0.0985 &0.1007 &0.0948 &0.0831 &0.0852 &0.0942 \\
+			&Posterior risk    &NA &0.0978 &0.0318 &0.0106 &0.0854 &0.0290 &0.0101 \\ \hline
+			%	&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			125		&Estimates      &3.0239 &3.0239 &3.0359 &2.9755 &2.9305 &2.9192 &2.8854 \\
+			&Bias           &0.0239 &0.0239 &0.0359 &0.0245 &0.0695 &0.0808 &0.1146 \\
+			&MSE            &0.0753 &0.0753 &0.0766 &0.0730 &0.0656 &0.0669 &0.0721 \\
+			&Posterior risk    &NA &0.0736 &0.0241 &0.0081 &0.0664 &0.0225 &0.0078 \\ \hline
+			%	&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			150		&Estimates      &3.0178 &3.0178 &3.0278 &2.9776 &2.9398 &2.9303 &2.9019 \\
+			&Bias           &0.0178 &0.0178 &0.0278 &0.0224 &0.0602 &0.0697 &0.0981 \\
+			&MSE            &0.0626 &0.0626 &0.0635 &0.0611 &0.0560 &0.0569 &0.0607 \\
+			&Posterior risk    &NA &0.0613 &0.0201 &0.0067 &0.0562 &0.0190 &0.0065 \\ \hline
+			%	&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			170		&Estimates      &3.0170 &3.0170 &3.0258 &2.9815 &2.9479 &2.9394 &2.9142 \\
+			&Bias           &0.0170 &0.0170 &0.0258 &0.0185 &0.0521 &0.0606 &0.0858 \\
+			&MSE            &0.0542 &0.0542 &0.0549 &0.0530 &0.0490 &0.0497 &0.0526 \\
+			&Posterior risk    &NA &0.0540 &0.0177 &0.0059 &0.0500 &0.0168 &0.0057 \\ \hline
+			%	&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			195		&Estimates      &3.0138 &3.0138 &3.0215 &2.9829 &2.9534 &2.9460 &2.9239 \\
+			&Bias           &0.0138 &0.0138 &0.0215 &0.0171 &0.0466 &0.0540 &0.0761 \\
+			&MSE            &0.0468 &0.0468 &0.0473 &0.0459 &0.0430 &0.0435 &0.0458 \\
+			&Posterior risk    &NA &0.0467 &0.0154 &0.0052 &0.0437 &0.0147 &0.0050 \\ \hline
+			%	&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			\ECC
+		\end{tabular}
+	}
+	\addcontentsline{lot}{table}{Table 4.11: Estimators, their estimates, biases, mean square errors and posterior risks based on the sample sizes when $\alpha=3$ and $\sigma=1$}
+\end{minipage}
+
+\newpage
+{\noindent {\small\textbf{Table 4.12: Credible interval for $\alpha$=3 assuming Jeffreys prior.}}\\}
+
+\begin{minipage}{\linewidth}
+	\makebox[\linewidth]{
+		% Table generated by Excel2LaTeX from sheet 'Sheet1'
+		\begin{tabular}{|c|c|c|c|c|}\hline
+			Credible		&\multicolumn{2}{|c|}{Jeffrey prior}&\multicolumn{2}{|c|}{gamma prior}\\\cline{2-5}
+			Interval	&   lower    &      upper	&   lower    &      upper \\			\hline
+			at n=10    & 2.002394 &3.981529 & 2.961622 &3.099110 \\
+			\hline
+			at n=20    & 1.993580& 3.477435 & 2.961714& 3.094927 \\
+			\hline
+			at n=30    &  2.573587 &3.954348 &  2.907252 &3.092843 \\
+			\hline
+			at n=40   & 2.023646 &3.910995 & 2.897086& 3.035592 \\
+			\hline
+			at n=60   & 2.008865& 3.960988 &  2.958145& 3.089925 \\
+			\hline
+			at n=95 & 2.054350& 3.972078 & 2.963407& 3.105920 \\
+			\hline
+			at n=125 & 2.065927 &3.969927 & 2.963244& 3.101553 \\
+			\hline
+			at n=150  & 2.030891& 3.966729 & 2.906799& 3.097266 \\
+			\hline
+			at n=170  & 1.995699& 3.864809 & 2.966769& 3.097013 \\
+			\hline
+			at n=195  & 2.037848& 3.959067 & 2.905353& 3.032722 \\
+			\hline
+			
+		\end{tabular}  
+	}	\addcontentsline{lot}{table}{Table 4.12: Credible interval for $\alpha$=3 assuming Jeffreys prior.}
+\end{minipage}
+\\\vspace{1cm}
+
+\indent Table 4.11, shows that, when the true value of the shape parameter is 3, at sample size 10, the best Bayes’ estimator is the JSELF, for it gives the closest estimate to the true values when the bias is taken into consideration followed by JQLF, JPLF, GSELF, GPLF and finally GQLF. But when the MSE is considered, the GSELF has the least MSE value, followed by GPLF, GQLF, JQLF, JSELF and JPLF. But in terms of the posterior risk, the GQLF has the least posterior risk, value followed by the JQLF, GPLF, JPLF, GSELF and finally JSELF.
+As the sample size gets larger the estimates gets closer to the true value and the MSE. The bias and the posterior risk reduces with increase in the sample size. When we compared the Bayes’ estimates to that from the classical estimator MLE, we observed that the MLE and the JSELF have exactly the same results, as shown from the results of their estimators.\\
+
+
+\newpage
+{\noindent\small\textbf{Table 4.13: Estimators, their estimates, biases, mean square errors and posterior risks based on the sample sizes when $\alpha=3.5$ and $\sigma=1$}\\}
+
+\begin{minipage}{\linewidth}
+	\small	\makebox[\linewidth]{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|}\hline
+			\LCC
+			\lightgray & & \lightgray & &  & &\lightgray & \lightgray&\lightgray \\
+			Sample size (n)&Measure &MLE          & JSELF          &  JPLF       &	JQLF	&   GSELF        & GPLF    &	GQLF	\\ \hline
+			10		&Estimates      &3.8553 &3.8553 &4.0435 &3.0842 &2.6113 &2.5227 &2.2631 \\
+			&Bias           &0.3553 &0.3553 &0.5435 &0.4158 &0.8887 &0.9773 &1.2369 \\
+			&MSE            &1.9612 &1.9612 &2.3138 &1.3472 &0.9409 &1.0961 &1.6434 \\
+			&Posterior risk    &NA &1.7054 &0.3800 &0.1111 &0.4683 &0.1719 &0.0714 \\ \hline
+			%	&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			20		&Estimates      &3.6629 &3.6629 &3.7533 &3.2966 &2.9202 &2.8612 &2.6866 \\
+			&Bias           &0.1629 &0.1629 &0.2533 &0.2034 &0.5798 &0.6388 &0.8134 \\
+			&MSE            &0.7582 &0.7582 &0.8324 &0.6341 &0.5156 &0.5803 &0.8135 \\
+			&Posterior risk    &NA &0.7212 &0.1825 &0.0526 &0.3520 &0.1162 &0.0417 \\ \hline
+			%	&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			30		&Estimates      &3.6151 &3.6151 &3.6749 &3.3741 &3.0772 &3.0329 &2.9013 \\
+			&Bias           &0.1151 &0.1151 &0.1749 &0.1259 &0.4228 &0.4671 &0.5987 \\
+			&MSE            &0.4703 &0.4703 &0.5029 &0.4140 &0.3519 &0.3864 &0.5123 \\
+			&Posterior risk    &NA &0.4496 &0.1193 &0.0345 &0.2748 &0.0872 &0.0294 \\ \hline
+			%	&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			40		&Estimates      &3.5891 &3.5891 &3.6336 &3.4096 &3.1675 &3.1321 &3.0267 \\
+			&Bias           &0.0891 &0.0891 &0.1336 &0.0904 &0.3325 &0.3679 &0.4733 \\
+			&MSE            &0.3495 &0.3495 &0.3679 &0.3164 &0.2711 &0.2923 &0.3706 \\
+			&Posterior risk    &NA &0.3305 &0.0891 &0.0256 &0.2265 &0.0700 &0.0227 \\ \hline
+			%	&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			60		&Estimates      &3.558 &3.5580 &3.5876 &3.4394 &3.2653 &3.2400 &3.1648 \\
+			&Bias           &0.058 &0.0580 &0.0876 &0.0606 &0.2347 &0.2600 &0.3352 \\
+			&MSE            &0.220 &0.2200 &0.2279 &0.2061 &0.1848 &0.1953 &0.2342 \\
+			&Posterior risk   &NA &0.2154 &0.0592 &0.0169 &0.1665 &0.0501 &0.0156 \\ \hline
+			%	&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			95		&Estimates      &3.5341 &3.5341 &3.5527 &3.4597 &3.3434 &3.3267 &3.2766 \\
+			&Bias           &0.0341 &0.0341 &0.0527 &0.0403 &0.1566 &0.1733 &0.2234 \\
+			&MSE            &0.1341 &0.1341 &0.1371 &0.1290 &0.1202 &0.1248 &0.1419 \\
+			&Posterior risk    &NA &0.1331 &0.0371 &0.0106 &0.1129 &0.0334 &0.0101 \\ \hline
+			%	&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			125		&Estimates      &3.5278 &3.5278 &3.5419 &3.4714 &3.3806 &3.3675 &3.3286 \\
+			&Bias           &0.0278 &0.0278 &0.0419 &0.0286 &0.1194 &0.1325 &0.1714 \\
+			&MSE            &0.1025 &0.1025 &0.1043 &0.0993 &0.0934 &0.0960 &0.1061 \\
+			&Posterior risk    &NA &0.1002 &0.0281 &0.0081 &0.0884 &0.0259 &0.0078 \\ \hline
+			%	&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			150		&Estimates      &3.5208 &3.5208 &3.5325 &3.4738 &3.3974 &3.3864 &3.3535 \\
+			&Bias           &0.0208 &0.0208 &0.0325 &0.0262 &0.1026 &0.1136 &0.1465 \\
+			&MSE            &0.0852 &0.0852 &0.0864 &0.0832 &0.0792 &0.0811 &0.0884 \\
+			&Posterior risk    &NA &0.0834 &0.0235 &0.0067 &0.0751 &0.0219 &0.0065 \\ \hline
+			%	&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			170		&Estimates      &3.5198 &3.5198 &3.5301 &3.4784 &3.4103 &3.4005 &3.3713 \\
+			&Bias           &0.0198 &0.0198 &0.0301 &0.0216 &0.0897 &0.0995 &0.1287 \\
+			&MSE            &0.0738 &0.0738 &0.0747 &0.0721 &0.0690 &0.0705 &0.0761 \\
+			&Posterior risk    &NA &0.0735 &0.0207 &0.0059 &0.0670 &0.0195 &0.0057 \\ \hline
+			%	&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			195		&Estimates      &3.5161 &3.5161 &3.5251 &3.4800 &3.4203 &3.4117 &3.3861 \\
+			&Bias           &0.0161 &0.0161 &0.0251 &0.0200 &0.0797 &0.0883 &0.1139 \\
+			&MSE            &0.0637 &0.0637 &0.0644 &0.0625 &0.0603 &0.0615 &0.0658 \\
+			&Posterior risk    &NA &0.0636 &0.0180 &0.0052 &0.0587 &0.0171 &0.0050 \\ \hline
+			%	&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			\ECC
+		\end{tabular}
+	}
+	\addcontentsline{lot}{table}{Table 4.13: Estimators, their estimates, biases, mean square errors and posterior risks based on the sample sizes when $\alpha=3.5$ and $\sigma=1$}
+\end{minipage}
+
+\newpage
+{\noindent\small\textbf{Table 4.14: Credible interval for $\alpha$=3.5 assuming Jeffreys prior.}\\}
+
+\begin{minipage}{\linewidth}
+	\makebox[\linewidth]{
+		% Table generated by Excel2LaTeX from sheet 'Sheet1'
+		\begin{tabular}{|c|c|c|c|c|}\hline
+			Credible		&\multicolumn{2}{|c|}{Jeffrey prior}&\multicolumn{2}{|c|}{gamma prior}\\\cline{2-5}
+			Interval	&   lower    &      upper	&   lower    &      upper \\			\hline
+			at n=10    & 2.502394& 4.482244 &  3.461622 &3.599110 \\
+			\hline
+			at n=20    & 2.493580& 3.821804 & 3.461714& 3.594927 \\
+			\hline
+			at n=30    & 3.071410& 4.454348 & 3.462828& 3.596856 \\
+			\hline
+			at n=40   & 2.567815& 4.393624 & 3.397086& 3.535592 \\
+			\hline
+			at n=60   &  2.506455& 4.449711 & 3.458145& 3.589925 \\
+			\hline
+			at n=95 & 2.550858& 4.473668 &  3.463407& 3.605920 \\
+			\hline
+			at n=125 & 2.555688& 4.469927 & 3.463244& 3.601553 \\
+			\hline
+			at n=150  & 2.553755& 4.451048 & 3.417424& 3.596804 \\
+			\hline
+			at n=170  &  2.495699& 4.364809 & 3.466769& 3.597013 \\
+			\hline
+			at n=195  & 2.524107& 4.470695 & 3.405353& 3.532722 \\
+			\hline
+			
+		\end{tabular}  
+	}	\addcontentsline{lot}{table}{Table 4.14: Credible interval for $\alpha$=3.5 assuming Jeffreys prior.}
+\end{minipage}
+\\\vspace{1cm}
+
+{\normalfont\indent Table 4.13, shows that, when the true value of the shape parameter is 3.5, at sample size 10, the best Bayes’ estimator is the the JSELF, for it gives the closest estimate to the true values when the bias is taken into consideration followed by JQLF, JPLF, GSELF, GPLF and finally GQLF. But when the MSE is considered, the GSELF has the least MSE value followed by GPLF, GQLF, JQLF, JSELF and JPLF. But in terms of the posterior risk, the GQLF has the least posterior risk value followed by JQLF, GPLF, JPLF, GSELF and finally JSELF.
+As the sample size gets larger the estimates gets closer to the true value and the MSE. The bias and the posterior risk reduces with increase in the sample size. When we compared the Bayes’ estimates to that from the classical estimator MLE, we observed that the MLE and the JSELF have exactly the same results, as shown from the results of their estimators.\\
+}
+
+
+\newpage
+{\noindent\small\textbf{Table 4.15: Estimators, their estimates, biases, mean square errors and posterior risks based on the sample sizes when $\alpha=4$ and $\sigma=1$}\\}
+
+\begin{minipage}{\linewidth}
+	\small	\makebox[\linewidth]{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|}\hline
+			\LCC
+			\lightgray & & \lightgray & &  & &\lightgray & \lightgray&\lightgray \\
+			Sample size (n)&Measure &MLE          & JSELF          &  JPLF       &	JQLF	&   GSELF        & GPLF    &	GQLF	\\ \hline
+			10		&Estimates      &4.4061 &4.4061 &4.6211 &3.5248 &2.7731 &2.6791 &2.4034 \\
+			&Bias           &0.4061 &0.4061 &0.6211 &0.4752 &1.2269 &1.3209 &1.5966 \\
+			&MSE            &2.5615 &2.5615 &3.0221 &1.7596 &1.6525 &1.8822 &2.6598 \\
+			&Posterior risk    &NA &2.2274 &0.4342 &0.1111 &0.5262 &0.1825 &0.0714 \\ \hline
+			%	&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			20		&Estimates      &4.1861 &4.1861 &4.2895 &3.7675 &3.1752 &3.1111 &2.9212 \\
+			&Bias           &0.1861 &0.1861 &0.2895 &0.2325 &0.8248 &0.8889 &1.0788 \\
+			&MSE            &0.9903 &0.9903 &1.0873 &0.8282 &0.8719 &0.9742 &1.3260 \\
+			&Posterior risk    &NA &0.9420 &0.2085 &0.0526 &0.4151 &0.1264 &0.0417 \\\hline
+			%	&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			30		&Estimates      &4.1316 &4.1316 &4.1999 &3.8561 &3.3869 &3.3382 &3.1934 \\
+			&Bias           &0.1316 &0.1316 &0.1999 &0.1439 &0.6131 &0.6618 &0.8066 \\
+			&MSE            &0.6143 &0.6143 &0.6568 &0.5407 &0.5703 &0.6269 &0.8235 \\
+			&Posterior risk    &NA &0.5872 &0.1364 &0.0345 &0.3325 &0.0960 &0.0294 \\\hline
+			%	&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			40		&Estimates      &4.1018 &4.1018 &4.1527 &3.8967 &3.5124 &3.4732 &3.3563 \\
+			&Bias           &0.1018 &0.1018 &0.1527 &0.1033 &0.4876 &0.5268 &0.6437 \\
+			&MSE            &0.4564 &0.4564 &0.4806 &0.4133 &0.4233 &0.4590 &0.5838 \\
+			&Posterior risk    &NA &0.4316 &0.1019 &0.0256 &0.2782 &0.0776 &0.0227 \\\hline
+			%	&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			60		&Estimates      &4.0663 &4.0663 &4.1001 &3.9308 &3.6522 &3.6240 &3.5398 \\
+			&Bias           &0.0663 &0.0663 &0.1001 &0.0692 &0.3478 &0.3760 &0.4602 \\
+			&MSE            &0.2874 &0.2874 &0.2977 &0.2692 &0.2763 &0.2943 &0.3576 \\
+			&Posterior risk    &NA &0.2813 &0.0676 &0.0169 &0.2082 &0.0561 &0.0156 \\\hline
+			%	&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			95		&Estimates      &4.0390 &4.0390 &4.0602 &3.9540 &3.7666 &3.7478 &3.6913 \\
+			&Bias           &0.0390 &0.0390 &0.0602 &0.0460 &0.2334 &0.2522 &0.3087 \\
+			&MSE            &0.1751 &0.1751 &0.1790 &0.1685 &0.1725 &0.1805 &0.2086 \\
+			&Posterior risk    &NA &0.1738 &0.0424 &0.0106 &0.1432 &0.0376 &0.0101 \\\hline
+			%	&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			125		&Estimates      &4.0318 &4.0318 &4.0479 &3.9673 &3.8206 &3.8059 &3.7619 \\
+			&Bias           &0.0318 &0.0318 &0.0479 &0.0327 &0.1794 &0.1941 &0.2381 \\
+			&MSE            &0.1339 &0.1339 &0.1362 &0.1297 &0.1310 &0.1357 &0.1525 \\
+			&Posterior risk    &NA &0.1308 &0.0322 &0.0081 &0.1128 &0.0293 &0.0078 \\\hline
+			%	&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			150		&Estimates      &4.0237 &4.0237 &4.0371 &3.9701 &3.8464 &3.8339 &3.7967 \\
+			&Bias           &0.0237 &0.0237 &0.0371 &0.0299 &0.1536 &0.1661 &0.2033 \\
+			&MSE            &0.1112 &0.1112 &0.1128 &0.1086 &0.1100 &0.1134 &0.1255 \\
+			&Posterior risk    &NA &0.1089 &0.0268 &0.0067 &0.0962 &0.0248 &0.0065 \\\hline
+			%	&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			170		&Estimates      &4.0226 &4.0226 &4.0344 &3.9753 &3.8650 &3.8540 &3.8209 \\
+			&Bias           &0.0226 &0.0226 &0.0344 &0.0247 &0.1350 &0.1460 &0.1791 \\
+			&MSE            &0.0963 &0.0963 &0.0976 &0.0942 &0.0951 &0.0978 &0.1073 \\
+			&Posterior risk    &NA &0.0960 &0.0237 &0.0059 &0.0860 &0.0221 &0.0057 \\\hline
+			%	&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			195		&Estimates      &4.0184 &4.0184 &4.0287 &3.9771 &3.8804 &3.8706 &3.8416 \\
+			&Bias           &0.0184 &0.0184 &0.0287 &0.0229 &0.1196 &0.1294 &0.1584 \\
+			&MSE            &0.0832 &0.0832 &0.0841 &0.0817 &0.0827 &0.0848 &0.0921 \\
+			&Posterior risk    &NA &0.0831 &0.0206 &0.0052 &0.0755 &0.0194 &0.0050 \\\hline
+			%	&\multicolumn{2}{|c|}{Credible interval} &\multicolumn{3}{|c|}{0.35-3.2}&\multicolumn{3}{|c|}{0.42-3.2} \\ \hline
+			\ECC
+		\end{tabular}
+	}
+	\addcontentsline{lot}{table}{Table 4.15: Estimators, their estimates, biases, mean square errors and posterior risks based on the sample sizes when $\alpha=4$ and $\sigma=1$}
+\end{minipage}
+
+\newpage
+{\noindent\small\textbf{Table 4.16: Credible interval for $\alpha$=4 assuming Jeffreys prior.}}
+
+\begin{minipage}{\linewidth}
+	\makebox[\linewidth]{
+		% Table generated by Excel2LaTeX from sheet 'Sheet1'
+		\begin{tabular}{|c|c|c|c|c|}\hline
+			Credible		&\multicolumn{2}{|c|}{Jeffrey prior}&\multicolumn{2}{|c|}{gamma prior}\\\cline{2-5}
+			Interval	&   lower    &      upper	&   lower    &      upper \\			\hline
+			at n=10    &  2.993098& 4.982244 & 3.961622& 4.099110 \\
+			\hline
+			at n=20    & 3.004559& 4.278533 &  3.961714& 4.094927 \\
+			\hline
+			at n=30    & 3.593468& 4.954348 &   3.962828& 4.096856 \\
+			\hline
+			at n=40   & 3.120608& 4.882474 &  3.897086& 4.035592 \\
+			\hline
+			at n=60   & 3.008865& 4.960988 & 3.958145& 4.089925 \\
+			\hline
+			at n=95 &  3.054350& 4.973668 &  3.963407& 4.105920 \\
+			\hline
+			at n=125 & 3.055688& 4.978274 & 3.963244 &4.101553 \\
+			\hline
+			at n=150  &  3.034791& 4.942822 &  3.963806& 4.097266 \\
+			\hline
+			at n=170  & 2.995699 &4.864809 & 3.966769& 4.097013 \\
+			\hline
+			at n=195  & 3.037848 &4.975443 &  3.905353& 4.032722 \\
+			\hline			
+		\end{tabular}  
+	}	\addcontentsline{lot}{table}{Table 4.16: Credible interval for $\alpha$=4 assuming Jeffreys prior.}
+\end{minipage}\\
+
+
+\indent Table 4.15, shows that, when the true value of the shape parameter is 4, at sample size 10, the best Bayes’ estimator is the the JSELF, for it gives the closest estimate to the true values when the bias is taken into consideration followed by JQLF, JPLF, GSELF, GPLF and finally GQLF. But when the MSE is considered, the GSELF has the least MSE value followed by JQLF, GPLF, JSELF, GQLF and JPLF. In terms of the posterior risk, the GQLF has the least posterior risk value followed by JQLF, GPLF, JPLF, GSELF and finally JSELF. As the sample size gets larger the estimates gets closer to the true value and the MSE. The bias and the posterior risk also reduces with increase in the sample size. When we compared the Bayes’ estimates to that from the classical estimator MLE we observed that the MLE and the JSELF have exactly the same results, as shown from the results of their estimators.\\
+
+\indent The figures 4.2, 4.4, 4.6, 4.8, 4.10, 4.12, 4.14, and 4.16 show the trace plot of the estimates of $\alpha$ MCMC simulation and the credible interval at various values of the shape parameter while the scale parameter is fixed at 1 for the Jeffrey prior, the figures 4.3, 4.5, 4.7, 4.9, 4.11, 4.13, 4.15, and 4.17 show the trace plot of the estimates of $\alpha$ via MCMC simulation and the credible interval at various values of the shape parameter while the scale parameter is fixed at 1 for the gamma prior. It is observed that the credible interval for the non-informative prior is wider than that of the informative prior, The estimates when the Jeffrey prior was assumed consistently gave estimates that fell within the credible interval, whereas, the reverse was the case under the gamma prior as the value of the shape parameter increases. It is worthy of note that the 90\% credible interval were fairly equal irrespective of the sample sizes
+
+\clearpage
+\restoregeometry
+
+
+\newpage
+\chapter{SUMMARY, CONCLUSION AND RECOMMENDATION}
+
+\section{Summary}
+
+\noindent\para As stated in the chapter one of this dissertation, the aim of the study was to estimate the shape parameter of the Exponentiated Inverse Rayleigh distribution EIRD, using the Bayesian approach of estimation, and comparing it with the classical counterpart MLE, which was seen to give the best estimates when compared to the performances of some other classical estimators specifically percentile based estimator, least squares estimator and weighted least square estimators.\\
+\indent The shape parameter was estimated under the assumptions of a non-informative and an informative prior which are: Jeffreys prior and Gamma prior respectively. Using both the symmetric and non-symmetric loss functions (of which are: squared error loss function, precautionary loss function and the quadratic loss function), the Bayes estimates, the biases, the mean square error and the posterior risk of the estimators were computed with regards to the loss function under the two priors of interest. At the end, the Monte Carlo simulations were carried out in order to compare the performances of the estimators using the measures computed as yardstick for the assessments of the estimators. Finally a 90\% Bayesian credible interval was obtained for the various values of the shape parameter and the results were then presented and discussed.  
+\section{Conclusion}
+\noindent\para The shape parameter was estimated using the squared error loss function, the precautionary loss function and the quadratic loss function assuming the Jeffrey and gamma prior.\\
+
+\noindent\para When the Jeffreys prior was considered, the estimates under the squared error loss function (JSELF) had the best estimates in terms of bias, the estimate under the quadratic loss function (JQLF) was best in terms of the mean square error MSE and posterior risk.\\
+
+\noindent\para Similarly when the gamma prior was considered, the estimates under the quadratic loss function (GQLF) had the best estimates in terms of bias and the posterior risk, the estimate under the  squared error loss function (GSELF) was best in terms of the mean square error MSE.\\
+
+\noindent\para In the overall assessment the estimator under the Jeffreys prior when the squared error loss function was used consistently gave the best estimates in terms of bias. The estimator under the gamma prior when the squared error loss function was used consistently gave the best estimates when the means square error MSE was considered. The estimator under the quadratic loss function consistently gave the best estimates in terms of the posterior risk when considered. All this conclusions hold irrespective of the sample size. When compared to the best classical estimator of this parameter it is clear that the Bayes estimator under the squared error loss function assuming the Jeffreys prior JSELF gave exactly the same estimates with that of the maximum likelihood estimators as their formulae are equal to each other. We discovered from the results that due to the tendency of high mean square error from the classical best estimator ie the maximum likelihood estimator the Bayesian estimator under squared error loss function assuming gamma prior can be considered as a better alternative to the classical estimator.
+
+\section{Recommendation}
+Based on the findings of the study as presented in chapter four, we recommend that:
+\begin{itemize}
+	\item[i] In the presence of sufficient knowledge about the shape parameter of the Exponentiated Inverse Rayleigh distribution EIRD, the informative prior, gamma prior, is suggested for use to represent the previous knowledge of the parameter and the squared error loss function SELF is suggested for good estimates regarding the parameter based on the mean square error and the quadratic loss function is suggested for good estimates regarding the parameter based on the posterior risk.
+	
+	\item[ii] In the absence of sufficient knowledge about the shape parameter of the Exponentiated Inverse Rayleigh distribution EIRD, the non-informative prior, Jeffreys prior, is suggested for use to represent the previous knowledge of the parameter and the quadratic loss function QLF is suggested for good estimates regarding the parameter based on its mean square error and its posterior risk.
+\end{itemize}
+
+\section{Contribution to knowledge}
+This research contributed to knowledge in the following ways: 
+\begin{itemize}
+	\item[i] This study has been able to derive the posterior distributions of the shape parameter of the Exponentiated Inverse Rayleigh distribution EIRD assuming Jeffrey and gamma priors using SELF, PLF and QLF. 
+	\item[ii] The Estimators, Biases, Mean Square Errors and Posterior risks of the posterior distributions derived were also obtained in this study mathematically and through the use of Monte-Carlo simulation techniques. 
+	\item[iii] Following the comparative analysis of this study, it has been found that the shape parameter of the Exponentiated Inverse Rayleigh distribution EIRD can best be estimated using the method of Bayesian estimation with squared error loss function under the assumption of a gamma prior. 
+\end{itemize}
+
+
+\section{Areas for Further Research}
+The following areas can be considered for further studies.
+\begin{itemize}
+	\item[i] Estimation of the shape parameter of the Exponentiated Inverse Rayleigh distribution EIRD assuming more informative or non-informative priors other than the ones used in this study to compare which is most efficient under various other loss functions too.
+	\item[ii] Estimation of the scale parameter of the Exponentiated Inverse Rayleigh distribution EIRD using appropriate technique.
+\end{itemize}
+
+
+\addcontentsline{toc}{chapter}{REFERENCES}
+\bibliographystyle{apalike}
+\bibliography{Ref}
+\nocite{Afaq2014}
+\nocite{mudasir2016bayesian}
+\nocite{yahgmaei2013bayesian}
+\nocite{guure2012bayesian}
+\nocite{metroplis}
+\nocite{chen}
+
+\newpage
+\addcontentsline{toc}{chapter}{Appendix}
+\begin{center}
+	\Huge	\textbf{Appendix}
+\end{center}
+\appendix
+\small
+\begin{verbatim}
+# To compare the MLE and Bayesian Estimates assuming Jeffrey and Gamma Priors.
+under SELF, PLF and QLF
+
+shapeparameterestimator <- function(n, R, alpha, sigma, a, b){
+
+# To generate random numbers from the Exponentiated Inverse Rayleigh distribution
+and also get the estimates of alpha
+Estimates <- function(n, alpha, sigma, a, b){
+x <- c()
+for (i in 1:n) {
+u <- runif(1)
+x[i] <- sigma/sqrt(-log(1-(1-u)^(1/alpha)))
+}
+x
+# Computes the various estimates
+
+MLE <- -n/sum(log(1-exp(-(sigma/x)^2)))
+
+# Under Jeffreys' Prior
+
+JSELF <- n/log(prod(1-exp(-(sigma/x)^2))^(-1))
+JPLF <- sqrt((n+1)*n)/log(prod(1-exp(-(sigma/x)^2))^(-1))
+JQLF <- (n-2)/log(prod(1-exp(-(sigma/x)^2))^(-1))
+
+# Under the Gamma Prior
+
+GSELF <- (n+a)/(b+log(prod(1-exp(-(sigma/x)^2))^(-1)))
+GPLF <- sqrt((n+a)*(n+a-1))/(b+log(prod(1-exp(-(sigma/x)^2))^(-1)))
+GQLF <- (n+a-2)/(b+log(prod(1-exp(-(sigma/x)^2))^(-1)))
+
+list(MLE, JSELF, JPLF, JQLF, GSELF, GPLF, GQLF)
+
+}
+
+# To compute the various estimates a large number of times as in monte carlo studies
+
+monte.carloE <- replicate(R, Estimates(n, alpha, sigma, a, b))
+
+# Computes the various posterior risk
+
+posterior.risk <- function(n, alpha, sigma, a, b){
+x <- c()
+for (i in 1:n) {
+u <- runif(1)
+x[i] <- sigma/sqrt(-log(1-(1-u)^(1/alpha)))
+}
+x
+
+# Under Jeffreys' Prior
+
+RJSELF <- n/(log(prod(1-exp(-(sigma/x)^2))^(-1)))^2
+RJPLF <- 2*((sqrt((n+1)*n)- n)/(log(prod(1-exp(-(sigma/x)^2))^(-1))))
+RJQLF <- 1/(n-1)
+
+# Under the Gamma Prior
+
+RGSELF <- (n+a)/((b+log(prod(1-exp(-(sigma/x)^2))^(-1))))^2
+RGPLF <- 2*((sqrt((n+a)*(n+a+1))-(n+a))/(b+log(prod(1-exp(-(sigma/x)^2))^(-1))))
+RGQLF <- 1/(n+a-1)
+
+list(RJSELF, RJPLF, RJQLF, RGSELF, RGPLF,  RGQLF)
+
+}
+
+# To compute the various posterior risk a large number of times as in monte carlo studies
+
+monte.carloR <- replicate(R, posterior.risk(n, alpha, sigma, a, b))
+
+Ests <- matrix(NA, nrow = 4, ncol = 7, 
+dimnames = list(c("Estimates", "BIAS", "MSE", "POSTERIOR RISK"),
+c("MLE", "JSELF", "JPLF", "JQLF","GSELF", "GPLF", "GQLF")))
+
+# Averages out each of the estimates
+Ests[1,1] <- round(mean(unlist(monte.carloE[1,])),4)
+Ests[1,2] <- round(mean(unlist(monte.carloE[2,])),4)
+Ests[1,3] <- round(mean(unlist(monte.carloE[3,])),4)
+Ests[1,4] <- round(mean(unlist(monte.carloE[4,])),4)
+Ests[1,5] <- round(mean(unlist(monte.carloE[5,])),4)
+Ests[1,6] <- round(mean(unlist(monte.carloE[6,])),4)
+Ests[1,7] <- round(mean(unlist(monte.carloE[7,])),4)
+
+# Computes the bias of each of the estimates
+Ests[2,] <- abs(alpha - Ests[1,])
+
+# Computes the MSE of each of the estimates
+Ests[3,1] <- round(sum((alpha - unlist(monte.carloE[1,]))^2)/R, 4)
+Ests[3,2] <- round(sum((alpha - unlist(monte.carloE[2,]))^2)/R, 4)
+Ests[3,3] <- round(sum((alpha - unlist(monte.carloE[3,]))^2)/R, 4)
+Ests[3,4] <- round(sum((alpha - unlist(monte.carloE[4,]))^2)/R, 4)
+Ests[3,5] <- round(sum((alpha - unlist(monte.carloE[5,]))^2)/R, 4)
+Ests[3,6] <- round(sum((alpha - unlist(monte.carloE[6,]))^2)/R, 4)
+Ests[3,7] <- round(sum((alpha - unlist(monte.carloE[7,]))^2)/R, 4)
+
+# compute posterior risk
+Ests[4,1] <- round(NA, 4)
+Ests[4,2] <- round(mean(unlist(monte.carloR[1,])),4)
+Ests[4,3] <- round(mean(unlist(monte.carloR[2,])),4)
+Ests[4,4] <- round(mean(unlist(monte.carloR[3,])),4)
+Ests[4,5] <- round(mean(unlist(monte.carloR[4,])),4)
+Ests[4,6] <- round(mean(unlist(monte.carloR[5,])),4)
+Ests[4,7] <- round(mean(unlist(monte.carloR[6,])),4)
+
+Ests
+}
+
+# alpha = 0.5, sigma = 1
+set.seed(1452)
+shapeparameterestimator(n = 10, R = 10000, alpha = 0.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 20, R = 10000, alpha = 0.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 30, R = 10000, alpha = 0.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 40, R = 10000, alpha = 0.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 60, R = 10000, alpha = 0.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 95, R = 10000, alpha = 0.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 125, R = 10000, alpha = 0.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 150, R = 10000, alpha = 0.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 170, R = 10000, alpha = 0.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 195, R = 10000, alpha = 0.5, sigma = 1, a= 5, b = 3)
+
+# alpha = 1, sigma = 1
+set.seed(1452)
+shapeparameterestimator(n = 10, R = 10000, alpha = 1, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 20, R = 10000, alpha = 1, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 30, R = 10000, alpha = 1, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 40, R = 10000, alpha = 1, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 60, R = 10000, alpha = 1, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 95, R = 10000, alpha = 1, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 125, R = 10000, alpha = 1, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 150, R = 10000, alpha = 1, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 170, R = 10000, alpha = 1, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 195, R = 10000, alpha = 1, sigma = 1, a= 5, b = 3)
+
+# alpha = 1.5, sigma = 1
+set.seed(1452)
+shapeparameterestimator(n = 10, R = 10000, alpha = 1.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 20, R = 10000, alpha = 1.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 30, R = 10000, alpha = 1.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 40, R = 10000, alpha = 1.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 60, R = 10000, alpha = 1.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 95, R = 10000, alpha = 1.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 125, R = 10000, alpha = 1.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 150, R = 10000, alpha = 1.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 170, R = 10000, alpha = 1.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 195, R = 10000, alpha = 1.5, sigma = 1, a= 5, b = 3)
+
+# alpha = 2, sigma = 1
+set.seed(1452)
+shapeparameterestimator(n = 10, R = 10000, alpha = 2, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 20, R = 10000, alpha = 2, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 30, R = 10000, alpha = 2, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 40, R = 10000, alpha = 2, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 60, R = 10000, alpha = 2, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 95, R = 10000, alpha = 2, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 125, R = 10000, alpha = 2, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 150, R = 10000, alpha = 2, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 170, R = 10000, alpha = 2, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 195, R = 10000, alpha = 2, sigma = 1, a= 5, b = 3)
+
+# alpha = 2.5, sigma = 1
+set.seed(1452)
+shapeparameterestimator(n = 10, R = 10000, alpha = 2.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 20, R = 10000, alpha = 2.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 30, R = 10000, alpha = 2.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 40, R = 10000, alpha = 2.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 60, R = 10000, alpha = 2.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 95, R = 10000, alpha = 2.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 125, R = 10000, alpha = 2.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 150, R = 10000, alpha = 2.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 170, R = 10000, alpha = 2.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 195, R = 10000, alpha = 2.5, sigma = 1, a= 5, b = 3)
+
+# alpha = 3, sigma = 1
+set.seed(1452)
+shapeparameterestimator(n = 10, R = 10000, alpha = 3, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 20, R = 10000, alpha = 3, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 30, R = 10000, alpha = 3, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 40, R = 10000, alpha = 3, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 60, R = 10000, alpha = 3, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 95, R = 10000, alpha = 3, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 125, R = 10000, alpha = 3, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 150, R = 10000, alpha = 3, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 170, R = 10000, alpha = 3, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 195, R = 10000, alpha = 3, sigma = 1, a= 5, b = 3)
+
+# alpha = 3.5, sigma = 1
+set.seed(1452)
+shapeparameterestimator(n = 10, R = 10000, alpha = 3.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 20, R = 10000, alpha = 3.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 30, R = 10000, alpha = 3.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 40, R = 10000, alpha = 3.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 60, R = 10000, alpha = 3.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 95, R = 10000, alpha = 3.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 125, R = 10000, alpha = 3.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 150, R = 10000, alpha = 3.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 170, R = 10000, alpha = 3.5, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 195, R = 10000, alpha = 3.5, sigma = 1, a= 5, b = 3)
+
+# alpha = 4, sigma = 1
+set.seed(1452)
+shapeparameterestimator(n = 10, R = 10000, alpha = 4, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 20, R = 10000, alpha = 4, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 30, R = 10000, alpha = 4, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 40, R = 10000, alpha = 4, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 60, R = 10000, alpha = 4, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 95, R = 10000, alpha = 4, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 125, R = 10000, alpha = 4, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 150, R = 10000, alpha = 4, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 170, R = 10000, alpha = 4, sigma = 1, a= 5, b = 3)
+shapeparameterestimator(n = 195, R = 10000, alpha = 4, sigma = 1, a= 5, b = 3)
+
+
+# Probability density function
+deird<-function(x,sigma,alpha){
+p<-(2*alpha*sigma^2)/x^3*exp(-(sigma/x^2))*(1- exp(-(sigma/x)^2))^(alpha-1)
+return(p)
+}
+
+# cumulative distribution function
+peird<-function(x,sigma,alpha){
+d<-1-(1-exp(-(sigma/x)^2))^alpha
+return(d)
+}
+
+# PdfCurves
+x <- seq(0, 5, by=.001)
+plot(x, deird(x, 1,0.5), type="l", ylim=c(0,5),  ylab="Density",
+main=" ",lwd=3)
+lines(x, deird(x, 1,1), col=2,lwd=3)
+lines(x, deird(x, 1,1.5), col=3,lwd=3)
+lines(x, deird(x, 1,2), col=4,lwd=3)
+lines(x, deird(x, 1,2.5), col=5,lwd=3)
+lines(x, deird(x, 1,3), col=6,lwd=3)
+lines(x, deird(x, 1,3.5), col=7,lwd=3)
+lines(x, deird(x, 1,4), col=8,lwd=3)
+
+
+#legend(3,1.7, legend = c(''exp(1)'', ''exp(2)'', ''exp(3)'', ''exp(4)'',
+''exp(5)'',''exp(6)'',''exp(7)'',''exp(8)''),
+
+pch=c(20,20,20,20,20,20,20,20)
+col=c(1,2,3,4,5,6,7,8) 
+
+legend(par('usr')[2], par('usr')[4], xjust=1,
+c(c(as.expression(substitute(EIRD(sigma==1,alpha==0.5))),
+as.expression(substitute(EIRD(sigma==1,alpha==1))),
+as.expression(substitute(EIRD(sigma==1,alpha==1.5))),
+as.expression(substitute(EIRD(sigma==1,alpha==2))),
+as.expression(substitute(EIRD(sigma==1,alpha==2.5))),
+as.expression(substitute(EIRD(sigma==1,alpha==3))),
+as.expression(substitute(EIRD(sigma==1,alpha==3.5))),
+as.expression(substitute(EIRD(sigma==1,alpha==4))))),
+
+lty=c(2,2,2,2,2,2,2,2), lwd =c(3,3,3,3,3,3,3,3),
+pch=c(20,20,20,20,20,20,20,20), col=c(1,2,3,4,5,6,7,8)) 
+
+####To find the credible interval for alpha assuming the Jeffrey prior###
+credintajeff<-function(n,alpha,sigma,startvalue,iterations,BurnIn){
+n=n
+alpha=alpha
+startvalue=startvalue
+iterations=iterations
+BurnIn=BurnIn
+x<-c()
+for (i in 1:n) {
+u<-runif(1)
+x[i]<- sigma/sqrt(-log(1-(1-u)^(1/alpha)))
+}
+x
+
+likelihood<-function(alpha){
+ll<-((alpha^(n))*(prod(1-exp(-(sigma/x)^2))^(alpha-1)))
+}
+summary(likelihood(alpha))
+log(likelihood(alpha))
+
+prior<-function(alpha){
+jefferyPrior<-(1/alpha)
+}
+summary(prior(alpha))
+
+posterior<-function(alpha){
+return(likelihood(alpha)*prior(alpha))
+}
+summary(posterior(alpha))
+
+randnum=c()
+randnum[1] = startvalue    
+for (j in 1:20000) {
+randnum[j+1]<-rnorm(1,alpha,0.5)
+round(randnum,4)
+}
+round(randnum,4)
+
+alphaI = c()
+for (i in 1:iterations){
+
+proposal= randnum[i+10]
+
+probab = posterior(alpha=proposal)/posterior(alpha=randnum[i])
+
+if (probab>1){alphaI[i+1]=randnum[i]
+}else{alphaI[i+1]=alphaI[i]}
+}
+
+alpha_I<-c(alphaI[-(1:BurnIn)])
+return(alpha_I)
+}
+
+credintajefffin<-function(alphaI,n=1800,al=0.1){
+S<-sort(alphaI)
+cre.int<-c(S[round((al/2)*n)],S[round((1-(al/2))*n)])
+return(cre.int)
+}
+
+{
+SB=
+B=
+set.seed(18)
+n10<-credintajeff(10,B,1,SB,2000,201)
+n20<-credintajeff(20,B,1,SB,2000,201)
+n30<-credintajeff(30,B,1,SB,2000,201)
+n40<-credintajeff(40,B,1,SB,2000,201)
+n60<-credintajeff(60,B,1,SB,2000,201)
+n95<-credintajeff(95,B,1,SB,2000,201)
+n125<-credintajeff(125,B,1,SB,2000,201)
+n150<-credintajeff(150,B,1,SB,2000,201)
+n170<-credintajeff(170,B,1,SB,2000,201)
+n195<-credintajeff(195,B,1,SB,2000,201)
+
+n10CI<-credintajefffin(n10)
+n20CI<-credintajefffin(n20)
+n30CI<-credintajefffin(n30)
+n40CI<-credintajefffin(n40)
+n60CI<-credintajefffin(n60)
+n95CI<-credintajefffin(n95)
+n125CI<-credintajefffin(n125)
+n150CI<-credintajefffin(n150)
+n170CI<-credintajefffin(n170)
+n195CI<-credintajefffin(n195)
+
+ci<-rbind(n10CI,n20CI,n30CI,n40CI,n60CI,n95CI,n125CI,n150CI,n170CI,n195CI)
+credible_interval<-matrix(ci,nrow=10,ncol=2,byrow = F,
+dimnames=list(c("at n=10","at n=20","at n=30","at n=40","at n=60",
+"at n=95","at n=125","at n=150","at n=170","at n=195"),
+c("lower","upper")))
+credible_interval
+}
+
+{
+b=B
+par(mfrow = c(2,5))
+plot(n10,type = "l", ylab="(assuming a Jeffrey prior)",xlab="number of iteration",
+main = "When sample size=10")
+abline(h=b,col="red")
+abline(h=c(n10CI[1],h=n10CI[2]),col="blue")
+
+plot(n20,type = "l" ,ylab="(assuming a Jeffrey prior)",xlab="number of iteration",
+main = "When sample size=20")
+abline(h=b,col="red")
+abline(h=c(n20CI[1],h=n20CI[2]),col="blue")
+
+plot(n30,type = "l" ,ylab="(assuming a Jeffrey prior)",xlab="number of iteration",
+main = "When sample size=30")
+abline(h=b,col="red")
+abline(h=c(n30CI[1],h=n30CI[2]),col="blue")
+
+plot(n40,type = "l" ,ylab="(assuming a Jeffrey prior)",xlab="number of iteration",
+main = "When sample size=40")
+abline(h=b,col="red")
+abline(h=c(n40CI[1],h=n40CI[2]),col="blue")
+
+plot(n60,type = "l" ,ylab="(assuming a Jeffrey prior)",xlab="number of iteration",
+main = "When sample size=60")
+abline(h=b,col="red")
+abline(h=c(n60CI[1],h=n60CI[2]),col="blue")
+
+plot(n95,type = "l" ,ylab="(assuming a Jeffrey prior)",xlab="number of iteration",
+main = "When sample size=95")
+abline(h=b,col="red")
+abline(h=c(n95CI[1],h=n95CI[2]),col="blue")
+
+plot(n125,type = "l" ,ylab="(assuming a Jeffrey prior)",xlab="number of iteration",
+main = "When sample size=125")
+abline(h=b,col="red")
+abline(h=c(n125CI[1],h=n125CI[2]),col="blue")
+
+plot(n150,type = "l" ,ylab="(assuming a Jeffrey prior)",xlab="number of iteration",
+main = "When sample size=150")
+abline(h=b,col="red")
+abline(h=c(n150CI[1],h=n150CI[2]),col="blue")
+
+plot(n170,type = "l" ,ylab="(assuming a Jeffrey prior)",xlab="number of iteration",
+main = "When sample size=170")
+abline(h=b,col="red")
+abline(h=c(n170CI[1],h=n170CI[2]),col="blue")
+
+plot(n195,type = "l" ,ylab="(assuming a Jeffrey prior)",xlab="number of iteration",
+main = "When sample size=195")
+abline(h=b,col="red")
+abline(h=c(n195CI[1],h=n195CI[2]),col="blue")
+}
+
+####To find the credible interval for alpha assuming the gamma prior###
+credintagam<-function(n,alpha,sigma,startvalue,iterations,BurnIn){
+n=n
+alpha=alpha
+startvalue=startvalue
+iterations=iterations
+BurnIn=BurnIn
+a=5
+b=3
+
+x<-c()
+for (i in 1:n) {
+u<-runif(1)
+x[i]<- sigma/sqrt(-log(1-(1-u)^(1/alpha)))
+}
+x
+
+likelihood<-function(alpha){
+ll<-((alpha^(n))*(prod(1-exp(-(sigma/x)^2))^(alpha-1)))
+}
+summary(likelihood(alpha))
+log(likelihood(alpha))
+
+prior<-function(alpha){
+GammaPrior<-((b^a)/gamma(a))*(alpha^(a-1))*exp(-alpha*b)
+}
+summary(prior(alpha))
+
+posterior<-function(alpha){
+return(likelihood(alpha)*prior(alpha))
+}
+summary(posterior(alpha))
+
+
+randnum=c()
+randnum[1] = startvalue    
+for (j in 1:10000) {
+randnum[j+1]<-rnorm(1,alpha,0.05)
+round(randnum,4)
+}
+
+alphaI = c()
+for (i in 1:iterations){
+
+proposal= randnum[i+10]
+
+probab = posterior(alpha=proposal)/posterior(alpha=randnum[i])
+
+if (probab>1){alphaI[i+1]=randnum[i]
+}else{alphaI[i+1]=alphaI[i]}
+}
+alpha_I<-c(alphaI[-(1:BurnIn)])
+alpha_I
+
+}
+credintagamfin<-function(alphaI,n=1800,al=0.1){
+S<-sort(alphaI)
+cre.int<-c(S[round((al/2)*n)],S[round((1-(al/2))*n)])
+return(cre.int)
+}
+
+{
+set.seed(11111)
+SA=1.4
+A=1
+n10<-credintagam(10,A,1,SA,2000,201)
+n20<-credintagam(20,A,1,SA,2000,201)
+n30<-credintagam(30,A,1,SA,2000,201)
+n40<-credintagam(40,A,1,SA,2000,201)
+n60<-credintagam(60,A,1,SA,2000,201)
+n95<-credintagam(95,A,1,SA,2000,201)
+n125<-credintagam(125,A,1,SA,2000,201)
+n150<-credintagam(150,A,1,SA,2000,201)
+n170<-credintagam(170,A,1,SA,2000,201)
+n195<-credintagam(195,A,1,SA,2000,201)
+
+n10CI<-credintagamfin(n10)
+n20CI<-credintagamfin(n20)
+n30CI<-credintagamfin(n30)
+n40CI<-credintagamfin(n40)
+n60CI<-credintagamfin(n60)
+n95CI<-credintagamfin(n95)
+n125CI<-credintagamfin(n125)
+n150CI<-credintagamfin(n150)
+n170CI<-credintagamfin(n170)
+n195CI<-credintagamfin(n195)
+
+ci<-rbind(n10CI,n20CI,n30CI,n40CI,n60CI,n95CI,n125CI,n150CI,n170CI,n195CI)
+credible_interval<-matrix(ci,nrow=10,ncol=2,byrow = F,
+dimnames=list(c("at n=10","at n=20","at n=30","at n=40","at n=60",
+"at n=95","at n=125","at n=150","at n=170","at n=195"),
+c("lower","upper")))
+credible_interval
+}
+
+{
+a=A
+par(mfrow = c(2,5))
+plot(n10,type = "l", ylab="(assuming a gamma prior)",xlab="number of iteration",
+main = "When sample size=10")
+abline(h=a,col="red")
+abline(h=c(n10CI[1],h=n10CI[2]),col="blue")
+
+plot(n20,type = "l" ,ylab="(assuming a gamma prior)",xlab="number of iteration",
+main = "When sample size=20")
+abline(h=a,col="red")
+abline(h=c(n20CI[1],h=n20CI[2]),col="blue")
+
+plot(n30,type = "l" ,ylab="(assuming a gamma prior)",xlab="number of iteration",
+main = "When sample size=30")
+abline(h=a,col="red")
+abline(h=c(n30CI[1],h=n30CI[2]),col="blue")
+
+plot(n40,type = "l" ,ylab="(assuming a gamma prior)",xlab="number of iteration",
+main = "When sample size=40")
+abline(h=a,col="red")
+abline(h=c(n40CI[1],h=n40CI[2]),col="blue")
+
+plot(n60,type = "l" ,ylab="(assuming a gamma prior)",xlab="number of iteration",
+main = "When sample size=60")
+abline(h=a,col="red")
+abline(h=c(n60CI[1],h=n60CI[2]),col="blue")
+
+plot(n95,type = "l" ,ylab="(assuming a gamma prior)",xlab="number of iteration",
+main = "When sample size=95")
+abline(h=a,col="red")
+abline(h=c(n95CI[1],h=n95CI[2]),col="blue")
+
+plot(n125,type = "l" ,ylab="(assuming a gamma prior)",xlab="number of iteration",
+main = "When sample size=125")
+abline(h=a,col="red")
+abline(h=c(n125CI[1],h=n125CI[2]),col="blue")
+
+plot(n150,type = "l" ,ylab="(assuming a gamma prior)",xlab="number of iteration",
+main = "When sample size=150")
+abline(h=a,col="red")
+abline(h=c(n150CI[1],h=n150CI[2]),col="blue")
+
+plot(n170,type = "l" ,ylab="(assuming a gamma prior)",xlab="number of iteration",
+main = "When sample size=170")
+abline(h=a,col="red")
+abline(h=c(n170CI[1],h=n170CI[2]),col="blue")
+
+plot(n195,type = "l" ,ylab="(assuming a gamma prior)",xlab="number of iteration",
+main = "When sample size=195")
+abline(h=a,col="red")
+abline(h=c(n195CI[1],h=n195CI[2]),col="blue")
+}
+\end{verbatim}
+\newpage
+\begin{center}
+\large PLOTS
+\end{center}
+{\noindent{\textbf{Figure 4.2: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming Jeffrey prior at $\alpha$=0.5 }}}\\
+\noindent
+\begin{minipage}{\linewidth}
+	\makebox[\linewidth]{\label{1}
+		\includegraphics[scale=0.5]{jeff05}}
+	\noindent	\addcontentsline{lof}{figure}{Figure 4.2: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming Jeffrey prior at $\alpha$=0.5 }
+\end{minipage}
+
+{\noindent{\textbf{Figure 4.3: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming gamma prior at $\alpha$=0.5}}}\\
+\begin{minipage}{\linewidth}
+	\makebox[\linewidth]{\label{2}
+		\includegraphics[scale=0.5]{gam05}}
+	\noindent	\addcontentsline{lof}{figure}{Figure 4.3: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming gamma prior at $\alpha$=0.5 }
+\end{minipage}
+
+{\noindent{\textbf{Figure 4.4: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming Jeffrey prior at $\alpha$=1 }}}\\
+\noindent
+\begin{minipage}{\linewidth}
+	\makebox[\linewidth]{\label{1}
+		\includegraphics[scale=0.5]{jeff1}}
+	\noindent	\addcontentsline{lof}{figure}{Figure 4.4: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming Jeffrey prior at $\alpha$=1 }
+\end{minipage}
+
+{\noindent{\textbf{Figure 4.5: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming gamma prior at $\alpha$=1}}}\\
+\begin{minipage}{\linewidth}
+	\makebox[\linewidth]{\label{2}
+		\includegraphics[scale=0.5]{gam1}}
+	\noindent	\addcontentsline{lof}{figure}{Figure 4.5: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming gamma prior at $\alpha$=1 }
+\end{minipage}
+
+
+{\noindent{\textbf{Figure 4.6: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming Jeffrey prior at $\alpha$=1.5 }}}\\
+\noindent
+\begin{minipage}{\linewidth}
+	\makebox[\linewidth]{\label{1}
+		\includegraphics[scale=0.5]{jeff15}}
+	\noindent	\addcontentsline{lof}{figure}{Figure 4.6: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming Jeffrey prior at $\alpha$=1.5 }
+\end{minipage}
+
+{\noindent{\textbf{Figure 4.7: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming gamma prior at $\alpha$=1.5}}}\\
+\begin{minipage}{\linewidth}
+	\makebox[\linewidth]{\label{2}
+		\includegraphics[scale=0.5]{gam15}}
+	\noindent	\addcontentsline{lof}{figure}{Figure 4.7: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming gamma prior at $\alpha$=1.5 }
+\end{minipage}
+
+{\noindent{\textbf{Figure 4.8: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming Jeffrey prior at $\alpha$=2 }}}\\
+\noindent
+\begin{minipage}{\linewidth}
+	\makebox[\linewidth]{\label{1}
+		\includegraphics[scale=0.5]{jeff2}}
+	\noindent	\addcontentsline{lof}{figure}{Figure 4.8: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming Jeffrey prior at $\alpha$=2 }
+\end{minipage}
+
+
+{\noindent{\textbf{Figure 4.9: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming gamma prior at $\alpha$=2}}}\\
+\begin{minipage}{\linewidth}
+	\makebox[\linewidth]{\label{2}
+		\includegraphics[scale=0.5]{gam2}}
+	\noindent	\addcontentsline{lof}{figure}{Figure 4.9: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming gamma prior at $\alpha$=2 }
+\end{minipage}
+
+{\noindent{\textbf{Figure 4.10: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming Jeffrey prior at $\alpha$=2.5 }}}\\
+
+\noindent
+\begin{minipage}{\linewidth}
+	\makebox[\linewidth]{\label{1}
+		\includegraphics[scale=0.5]{jeff25}}
+	\noindent	\addcontentsline{lof}{figure}{Figure 4.10: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming Jeffrey prior at $\alpha$=2.5 }
+\end{minipage}
+{\noindent{\textbf{Figure 4.11: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming gamma prior at $\alpha$=2.5}}}\\
+\begin{minipage}{\linewidth}
+	\makebox[\linewidth]{\label{2}
+		\includegraphics[scale=0.5]{gam25}}
+	\noindent	\addcontentsline{lof}{figure}{Figure 4.11: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming gamma prior at $\alpha$=2.5 }
+\end{minipage}
+
+{\noindent{\textbf{Figure 4.12: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming Jeffrey prior at $\alpha$=3 }}}\\
+\noindent
+\begin{minipage}{\linewidth}
+	\makebox[\linewidth]{\label{1}
+		\includegraphics[scale=0.5]{jeff3}}
+	\noindent	\addcontentsline{lof}{figure}{Figure 4.12: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming Jeffrey prior at $\alpha$=3 }
+\end{minipage}
+
+{\noindent{\textbf{Figure 4.13: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming gamma prior at $\alpha$=3}}}\\
+\begin{minipage}{\linewidth}
+	\makebox[\linewidth]{\label{2}
+		\includegraphics[scale=0.5]{gam3}}
+	\noindent	\addcontentsline{lof}{figure}{Figure 4.13: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming gamma prior at $\alpha$=3 }
+\end{minipage}
+\newpage
+
+
+{\noindent{\textbf{Figure 4.14: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming Jeffrey prior at $\alpha$=3.5 }}}\\
+\noindent
+\begin{minipage}{\linewidth}
+	\makebox[\linewidth]{\label{1}
+		\includegraphics[scale=0.5]{jeff35}}
+	\noindent	\addcontentsline{lof}{figure}{Figure 4.14: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming Jeffrey prior at $\alpha$=3.5 }
+\end{minipage}
+
+{\noindent{\textbf{Figure 4.15: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming gamma prior at $\alpha$=3.5}}}\\
+\begin{minipage}{\linewidth}
+	\makebox[\linewidth]{\label{2}
+		\includegraphics[scale=0.5]{gam35}}
+	\noindent	\addcontentsline{lof}{figure}{Figure 4.15: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming gamma prior at $\alpha$=3.5 }
+\end{minipage}
+
+{\noindent{\textbf{Figure 4.16: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming Jeffrey prior at $\alpha$=4 }}}\\
+
+\noindent
+\begin{minipage}{\linewidth}
+	\makebox[\linewidth]{\label{1}
+		\includegraphics[scale=0.5]{jeff4}}
+	\noindent	\addcontentsline{lof}{figure}{Figure 4.16: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming Jeffrey prior at $\alpha$=4 }
+\end{minipage}
+
+{\noindent{\textbf{Figure 4.17: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming gamma prior at $\alpha$=4}}}\\
+
+\begin{minipage}{\linewidth}
+	\makebox[\linewidth]{\label{2}
+		\includegraphics[scale=0.5]{gam4}}
+	\noindent	\addcontentsline{lof}{figure}{Figure 4.17: The trace plot of estimates and the credible interval for the shape parameter of the Exponentiated Inverse Rayleigh Distribution assuming gamma prior at $\alpha$=4 }
+\end{minipage}
+}
+
+\end{document}
